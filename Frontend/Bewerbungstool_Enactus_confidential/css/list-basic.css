@@ -1,0 +1,64 @@
+html{
+    background-color: #f3f3f3;
+}
+
+/* Tables */
+.table-users {
+  box-sizing: border-box;
+  background-color:  #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font: normal 20px sans-serif;
+  max-width: 800px;
+  margin: 2em auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+table td {
+  text-align: center;
+  vertical-align: middle;
+  color: #000000;
+  padding: 10px;
+  width: 33%
+}
+
+table td:last-child {
+  font-weight: normal; 
+  font-size: 14px;
+}
+
+table tr:nth-child(2n) {
+  background-color: white;
+}
+table tr:nth-child(2n+1) {
+  background-color: #e8e8e8;
+}
+
+.userphoto {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+}
+
+.excelexp {
+  height: 75px;
+  width: 75px;
+}
+
+@media (max-width: 600px) {
+
+    .table-users{
+        padding: 0px;
+        max-width: 100%px;
+		font: normal 16px sans-serif;
+    }
+	
+	table td:last-child {
+  		font-size: 10px;
+		font-weight: normal;
+	}
+}

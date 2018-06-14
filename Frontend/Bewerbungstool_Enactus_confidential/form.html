@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Enactus Münster | Bewerbungstool</title>
+    <link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/form-basic.css">
+	<link rel="icon" href="/img/favicon.png">
+  </head>
+  <body>
+    <div class="site">
+	  <header>
+      <div class="container">
+        <div id="brandlogo">
+			<a href="index.html"><img src="./img/logo_enactus.png" width=150px></a>
+		  </div>
+      </div>
+    </header>
+	<main>
+      <div class="main-content">
+          <form class="form-basic" method="post" action="./php/database.php" enctype="multipart/form-data">
+            <div class="form-title-row">
+                <h1>Bewerbungsformular</h1>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Vorname</span>
+                    <input type="text" name="firstname" required>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Nachname</span>
+                    <input type="text" name="lastname" required>
+                </label>
+            </div>  
+
+            <div class="form-row">
+                <label>
+                    <span>Geburtsdatum</span>
+                    <input type="date" name="birthday" required>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>E-Mail</span>
+                    <input type="email" name="email" required>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Handynummer</span>
+                    <input type="text" name="phone" required>
+                </label>
+            </div>  
+			  
+			<div class="form-row">
+                <label>
+                    <span>Studiengang</span>
+                    <input type="text" name="course" required>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Semester</span>
+                    <input type="number" name="semester" required>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Foto</span>
+                    <input type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" required>
+                </label>
+            </div>  
+			
+			<div class="form-row">
+                <label>
+                    <span>Welche Erfahrungen und Stärken zeichnen dich anderen gegenüber aus? (Auslandserfahrung, Engagement, Qualifikationen, Praktika, ...)</span>
+					<textarea name="experience" required></textarea>
+                </label>
+            </div>  
+
+			<div class="form-row">
+                <label>
+                    <span>Warum möchtest du Mitglied bei Enactus Münster werden?</span>
+					<textarea name="reason" required></textarea>
+                </label>
+            </div> 
+			
+			<div class="form-row">
+                <label>
+                    <span>Engagierst du dich momentan bei anderen studentischen / gemeinnützigen Organisationen oder hast du dies in der Vergangenheit einmal gemacht?</span>
+					<textarea name="engagement" required></textarea>
+                </label>
+            </div>  
+			  
+            <div class="form-row">
+                <label>
+                    <span>Wie viel Zeit kannst du pro Woche in die Team- und Projektarbeit investieren?</span>
+                    <select name="time">
+                        <option>weniger als 2 Stunden</option>
+                        <option>2 bis 3 Stunden</option>
+                        <option>4 bis 5 Stunden</option>
+                        <option>mehr als 5 Stunden</option>
+                    </select>
+                </label>
+            </div>
+            
+			<div class="form-row">
+                <label>
+                    <span>Welches Projekt / Ressort hat dein Interesse geweckt und warum denkst du, dass du dafür das perfekte Mitglied bist?</span>
+					<textarea name="project" required></textarea>
+                </label>
+            </div>  
+			
+			<div class="form-row">
+                <label>
+                    <span>Welche anderen Projekte / Ressorts würden dich noch interessieren?</span>
+					<textarea name="otherproject" required></textarea>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Wie kannst du Leute begeistern?</span>
+					<textarea name="motivating" required></textarea>
+                </label>
+            </div>
+			  
+			<div class="form-row">
+                <label>
+                    <span>Wenn du etwas erfinden könntest, was es noch nicht gibt, was wäre das?</span>
+					<textarea name="invention" required></textarea>
+                </label>
+            </div>  
+			  
+			<div class="form-row">
+                <label>
+                    <span>Wie hast du von uns erfahren?</span>
+                    <input type="contact" name="contact" required>
+                </label>
+            </div>  
+			  
+            <div class="form-row">
+                <button class="button_1" type="submit">Abschicken</button>
+			  </div>
+	    </form>
+      </div>
+	</main>
+	</div>
+    <footer class="footer">
+      <p>Enactus Münster e.V., Copyright &copy; 2018</p>
+    </footer>
+  </body>
+</html>
