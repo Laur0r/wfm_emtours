@@ -1,0 +1,4 @@
+org\camunda\bpm\getstarted\loanapproval\GenerateRecommendationDelegate.class
+org\camunda\bpm\getstarted\loanapproval\WebappExampleProcessApplication.class
+org\camunda\bpm\getstarted\loanapproval\LoggerDelegate.class
+org\camunda\bpm\getstarted\loanapproval\SaveInfosDelegate.class
