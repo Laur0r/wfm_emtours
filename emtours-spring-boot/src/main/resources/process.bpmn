@@ -14,12 +14,12 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_14yw1qo" sourceRef="Task_0yqal0b" targetRef="ExclusiveGateway_02ef6hr" />
     <bpmn:sequenceFlow id="SequenceFlow_0tewkgc" sourceRef="Task_1u1k4le" targetRef="Task_059y935" />
-    <bpmn:serviceTask id="Task_1u1k4le" name="Save Information" camunda:class="org.camunda.bpm.getstarted.emtours.SaveInfosDelegate">
+    <bpmn:serviceTask id="Task_1u1k4le" name="Save Information" camunda:class="org.camunda.bpm.services.SaveInfosDelegate">
       <bpmn:incoming>SequenceFlow_1ju9z86</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0tewkgc</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_00n87d9" sourceRef="Task_059y935" targetRef="EndEvent_10dyw6k" />
-    <bpmn:serviceTask id="Task_059y935" name="Generate Recommendations" camunda:class="org.camunda.bpm.getstarted.emtours.GenerateRecommendationDelegate">
+    <bpmn:serviceTask id="Task_059y935" name="Generate Recommendations" camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
       <bpmn:incoming>SequenceFlow_0tewkgc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_00n87d9</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -32,11 +32,16 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEvent_12gr1z4" name="Process cancelled">
-      <bpmn:incoming>SequenceFlow_0xngtwn</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_062l2lx</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0xngtwn" name="no" sourceRef="ExclusiveGateway_02ef6hr" targetRef="EndEvent_12gr1z4">
+    <bpmn:sequenceFlow id="SequenceFlow_0xngtwn" name="no" sourceRef="ExclusiveGateway_02ef6hr" targetRef="Task_0yh822b">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_062l2lx" sourceRef="Task_0yh822b" targetRef="EndEvent_12gr1z4" />
+    <bpmn:sendTask id="Task_0yh822b" name="Invalid Info Message" camunda:class="org.camunda.bpm.sendMessages.Customer.InvalidInformationMessageDelegate">
+      <bpmn:incoming>SequenceFlow_0xngtwn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_062l2lx</bpmn:outgoing>
+    </bpmn:sendTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SampleProcess">
@@ -99,8 +104,18 @@
       <bpmndi:BPMNEdge id="SequenceFlow_0xngtwn_di" bpmnElement="SequenceFlow_0xngtwn">
         <di:waypoint x="412" y="145" />
         <di:waypoint x="412" y="240" />
+        <di:waypoint x="528" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="421" y="183" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_062l2lx_di" bpmnElement="SequenceFlow_062l2lx">
+        <di:waypoint x="628" y="240" />
         <di:waypoint x="815" y="240" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_0xyb8zo_di" bpmnElement="Task_0yh822b">
+        <dc:Bounds x="528" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
