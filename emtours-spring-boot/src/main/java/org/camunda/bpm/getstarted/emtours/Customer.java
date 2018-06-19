@@ -1,5 +1,7 @@
 package org.camunda.bpm.getstarted.emtours;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +15,9 @@ public class Customer {
     private Integer id;
 
     private String name;
-
     private String email;
+    private String address;
+    private Date birthday;
 
 	public Integer getId() {
 		return id;
@@ -38,6 +41,22 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 

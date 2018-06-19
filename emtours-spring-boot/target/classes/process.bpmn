@@ -14,12 +14,12 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_14yw1qo" sourceRef="Task_0yqal0b" targetRef="ExclusiveGateway_02ef6hr" />
     <bpmn:sequenceFlow id="SequenceFlow_0tewkgc" sourceRef="Task_1u1k4le" targetRef="Task_059y935" />
-    <bpmn:serviceTask id="Task_1u1k4le" name="Save Information" camunda:class="org.camunda.bpm.getstarted.loanapproval.SaveInfosDelegate">
+    <bpmn:serviceTask id="Task_1u1k4le" name="Save Information" camunda:class="org.camunda.bpm.getstarted.emtours.SaveInfosDelegate">
       <bpmn:incoming>SequenceFlow_1ju9z86</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0tewkgc</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_00n87d9" sourceRef="Task_059y935" targetRef="EndEvent_10dyw6k" />
-    <bpmn:serviceTask id="Task_059y935" name="Generate Recommendations" camunda:class="org.camunda.bpm.getstarted.loanapproval.GenerateRecommendationDelegate">
+    <bpmn:serviceTask id="Task_059y935" name="Generate Recommendations" camunda:class="org.camunda.bpm.getstarted.emtours.GenerateRecommendationDelegate">
       <bpmn:incoming>SequenceFlow_0tewkgc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_00n87d9</bpmn:outgoing>
     </bpmn:serviceTask>
