@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_1vcna3o" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_recommendation" name="Recommendation">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Climate">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>climate</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pxds4h" label="Budget">
+        <inputExpression id="LiteralExpression_017i42v" typeRef="string">
+          <text>budget</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Hotel" name="hotel" typeRef="string" />
+      <output id="OutputClause_1q78kpi" label="Location" name="location" typeRef="string" />
+      <output id="OutputClause_0zyqqyn" label="Flight" name="flight" typeRef="string" />
+      <rule id="DecisionRule_0wavwmp">
+        <inputEntry id="UnaryTests_19pht68">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1012vfl">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0aepo6h">
+          <text>"Hostel Downtown"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i5uk2k">
+          <text>"poland"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0plds6n">
+          <text>"POL 6453"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1azcftj">
+        <inputEntry id="UnaryTests_0gdj7t8">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kmnsi7">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0coi8d2">
+          <text>"Landhaus Adler"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rh4btv">
+          <text>"austria"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bm2jqp">
+          <text>"AUS 3245"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hf2g18">
+        <inputEntry id="UnaryTests_01e89wz">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oupr43">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cywuey">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jtem5d">
+          <text>"sweden"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07ght0y">
+          <text>"SW 3224"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j7rdam">
+        <inputEntry id="UnaryTests_1rxnepk">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c0bcwk">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jg086u">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ck3k8m">
+          <text>"netherlands"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0djxmdc">
+          <text>"GER 2345"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1db0imy">
+        <inputEntry id="UnaryTests_0bqp7wb">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ac93t9">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15x1jur">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c4vex2">
+          <text>"ireland"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0peosgz">
+          <text>"IRE 2532"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wbhk02">
+        <inputEntry id="UnaryTests_0ncb8dj">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15xdsfe">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fmu9zv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vduckf">
+          <text>"england"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02xrhvb">
+          <text>"BAW 1466"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06sc3vn">
+        <inputEntry id="UnaryTests_1mvj6tf">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s2njxu">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09cyc2z">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qzmuhn">
+          <text>"thailand"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f1foc0">
+          <text>"THA 7843"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17adoqd">
+        <inputEntry id="UnaryTests_0npngjv">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tjt2zs">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09t7gu5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tq5wn4">
+          <text>"south africa"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w8h3bh">
+          <text>"EMI 3856"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kcy6n5">
+        <inputEntry id="UnaryTests_1cncw97">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0msgu9f">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_033tqyq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14e1oba">
+          <text>"australia"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00pty3y">
+          <text>"EY 262"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
