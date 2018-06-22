@@ -31,12 +31,18 @@ public class CustomerController {
   private ProcessEngine camunda;
 
   @RequestMapping(value="/incomingInformation", method=RequestMethod.POST)
-  public void incomingInformationPOST(String name, String email) {
+  public void incomingInformationPOST(String name, String address, String zip, String city, String country, Date birthday,  String email ) {
 	  camunda.getRuntimeService().startProcessInstanceByKey(//
 		        "SampleProcess", //
 		        Variables //
 		          .putValue("name", name)
+                  .putValue("address", address)
+                  .putValue("zip", zip)
+                  .putValue("city", city)
+                  .putValue("country", country)
+                  .putValue("birthday", birthday)
 		          .putValue("email", email));
+
   }
   
   @RequestMapping(value="/testSend", method=RequestMethod.POST)

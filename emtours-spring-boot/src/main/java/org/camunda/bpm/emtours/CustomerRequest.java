@@ -18,31 +18,23 @@ public class CustomerRequest {
 	@ManyToOne
 	private Customer customer;
 	
-	private Date start;
-	private Date end;
-	private String destination;
+	private Date arrival;
+	private Date departure;
+	private String climate;
 	private int numberPeople;
-	private String preferences;
-	private float budget;
-	private String paymentMethod;
-	
-	public Date getStart() {
-		return start;
+	private String experienceType;
+	private String budget;
+	private int numberActivities ;
+
+	public Date getArrival() {
+		return arrival;
 	}
-	public void setStart(Date start) {
-		this.start = start;
+	public void setArrival(Date arrival) { this.arrival = arrival; }
+	public Date getDeparture() {
+		return departure;
 	}
-	public String getDestination() {
-		return destination;
-	}
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-	public Date getEnd() {
-		return end;
-	}
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setDeparture(Date departure) {
+		this.departure = departure;
 	}
 	public int getNumberPeople() {
 		return numberPeople;
@@ -50,23 +42,24 @@ public class CustomerRequest {
 	public void setNumberPeople(int numberPeople) {
 		this.numberPeople = numberPeople;
 	}
-	public String getPreferences() {
-		return preferences;
+	public String getExperienceType() {
+		return experienceType;
 	}
-	public void setPreferences(String preferences) {
-		this.preferences = preferences;
+	public void setExperienceType(String experienceType) {
+		this.experienceType = experienceType;
 	}
-	public float getBudget() {
+	public String getBudget() {
 		return budget;
 	}
-	public void setBudget(float budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
-	public String getPaymentMethod() {
-		return paymentMethod;
+	public int getNumberActivities() {
+		return numberActivities;
 	}
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
+	public void setNumberActivities(int numberActivities) {
+		this.numberActivities = numberActivities;
 	}
 
 }
+
