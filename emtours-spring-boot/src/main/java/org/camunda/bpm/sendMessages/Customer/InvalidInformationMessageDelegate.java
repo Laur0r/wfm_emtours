@@ -17,7 +17,7 @@ public class InvalidInformationMessageDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 
 		try {
-			eMailerService.sendSimpleMessage("redhair@byom.de","Test","Dies ist ein Test");
+			eMailerService.sendSimpleMessage("book.emtours@gmail.com","Test","Dies ist ein Test");
 			System.out.println("E-Mail sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email: "+ex);

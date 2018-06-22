@@ -3,11 +3,11 @@ package org.camunda.bpm.services;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-import org.camunda.bpm.emtours.Customer;
 import org.camunda.bpm.emtours.CustomerRepository;
 import org.camunda.bpm.emtours.LoggerDelegate;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

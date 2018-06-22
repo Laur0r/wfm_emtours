@@ -1,4 +1,4 @@
-package org.camunda.bpm.emtours;
+package org.camunda.bpm.entities;
 
 import java.util.Date;
 
