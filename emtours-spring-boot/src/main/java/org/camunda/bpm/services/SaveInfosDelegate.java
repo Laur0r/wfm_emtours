@@ -1,9 +1,13 @@
 package org.camunda.bpm.services;
 
-import org.camunda.bpm.emtours.Customer;
+import java.util.Date;
+
 import org.camunda.bpm.emtours.CustomerRepository;
+import org.camunda.bpm.emtours.CustomerRequest;
+import org.camunda.bpm.emtours.CustomerRequestRepository;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +34,7 @@ public class SaveInfosDelegate implements JavaDelegate {
 		int numberPeople = (int) execution.getVariable("numberPeople");
 		String experienceType = (String) execution.getVariable("experienceType");
 		String budget = (String) execution.getVariable("budget");
-		int numberActivities = (int) execution.getVariable("numberActivities")
+		int numberActivities = (int) execution.getVariable("numberActivities");
 
 		//	validate customer already exist via email
 
@@ -38,18 +42,18 @@ public class SaveInfosDelegate implements JavaDelegate {
 		Customer cust = new Customer();
 		cust.setName(name);
 		cust.setAddress(address);
-		cust.setZip (zip);
-		cust.setCity (city);
-		cust.setCountry (country);
+//		cust.setZip (zip);
+//		cust.setCity (city);
+//		cust.setCountry (country);
 		cust.setBirthday (birthday);
 		cust.setEmail(email);
 		custrepository.save(cust);
 
 		CustomerRequest custrequest = new CustomerRequest();
-		custrequest.setEmail (email)
+//		custrequest.setEmail (email);
 		custrequest.setArrival(arrival);
 		custrequest.setDeparture(departure);
-		custrequest.setClimate(climate);
+//		custrequest.setClimate(climate);
 		custrequest.setNumberPeople(numberPeople);
 		custrequest.setExperienceType(experienceType);
 		custrequest.setBudget(budget);
