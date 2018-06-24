@@ -32,10 +32,10 @@ public class SaveInfosDelegate implements JavaDelegate {
 		Date arrival = (Date) execution.getVariable("arrival");
 		Date departure = (Date) execution.getVariable("departure");
 		String climate = (String) execution.getVariable("climate");
-		int numberPeople = (int) execution.getVariable("numberPeople");
+		int numberPeople = (Integer) execution.getVariable("numberPeople");
 		String experienceType = (String) execution.getVariable("experienceType");
 		String budget = (String) execution.getVariable("budget");
-		int numberActivities = (int) execution.getVariable("numberActivities");
+		int numberActivities = (Integer) execution.getVariable("numberActivities");
 
 		//	validate customer already exist via email
 

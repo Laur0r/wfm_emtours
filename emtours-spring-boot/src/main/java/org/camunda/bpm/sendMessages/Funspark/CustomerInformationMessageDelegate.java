@@ -30,14 +30,14 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
-			int requestId = (int) execution.getVariable("requestId");
+			int requestId = (Integer) execution.getVariable("requestId");
 			CustomerRequest custrequest = requestrepository.findById(requestId).get();
 			
-			int recommendationId = (int) execution.getVariable("recommendationId");
+			int recommendationId = (Integer) execution.getVariable("recommendationId");
 			Recommendation recommendation = recommendationrepository.findById(recommendationId).get();
 			
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
-			postElement.setCustomerId((int) execution.getVariable("customerId"));
+			postElement.setCustomerId((Integer) execution.getVariable("customerId"));
 			postElement.setDestination(recommendation.getDestination());
 			postElement.setStart(recommendation.getArrival());
 			postElement.setEnd(recommendation.getDeparture());
