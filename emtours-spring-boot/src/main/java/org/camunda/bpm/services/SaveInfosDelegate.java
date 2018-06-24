@@ -16,6 +16,7 @@ public class SaveInfosDelegate implements JavaDelegate {
 	
 	@Autowired(required = true)
 	public CustomerRepository custrepository;
+	@Autowired(required = true)
 	public CustomerRequestRepository requestrepository;
 
 	public void execute(DelegateExecution execution) throws Exception {
@@ -59,6 +60,8 @@ public class SaveInfosDelegate implements JavaDelegate {
 		custrequest.setBudget(budget);
 		custrequest.setNumberActivities(numberActivities);
 		requestrepository.save(custrequest);
+		execution.setVariable("customerId", cust.getId());
+		execution.setVariable("requestId", custrequest.getId());
 	}
 
 }

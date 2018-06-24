@@ -62,6 +62,9 @@ public class CustomerRequest {
 	public void setNumberActivities(int numberActivities) {
 		this.numberActivities = numberActivities;
 	}
+	public int getId() {
+		return id;
+	}
 
 }
 
