@@ -1,5 +1,6 @@
 package org.camunda.bpm.emtours;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,35 +45,4 @@ public class CustomerController {
 		          .putValue("email", email));
 
   }
-  
-  @RequestMapping(value="/testSend", method=RequestMethod.POST)
-  public ResponseEntity<String> testPOST(@RequestBody String cust) {
-	  System.out.println("received Post request");
-	  if(cust != null) {
-		  System.out.println("Name: "+cust);
-	  }
-	  return ResponseEntity.status(HttpStatus.CREATED).build();
-  }
-  
- /* private String doPOST(String[] array, String name) {
-	  MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-      Map map = new HashMap<String, String>();
-      map.put("Content-Type", "application/json");
-
-      headers.setAll(map);
-
-      Map req_payload = new HashMap();
-      req_payload.put("name", name);
-
-      HttpEntity<?> request = new HttpEntity<>(req_payload, headers);
-      String url = "http://localhost:8080/testSend";
-
-      String result = "";
-      ResponseEntity<?> response = new RestTemplate().postForEntity(url, request, String.class);
-      HttpStatus statusCode = response.getStatusCode();
-      if (statusCode == HttpStatus.ACCEPTED) {
-          result = (String) response.getBody();
-      }
-      return result;
-	}*/
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.camunda.bpm.emtours.Customer;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.http.HttpEntity;
@@ -21,33 +22,26 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class InvalidInformationMessageDelegate implements JavaDelegate {
 
 	public void execute(DelegateExecution execution) throws Exception {
-		String test = doPost("Testing!!!!!!!");
+		Customer cust = new Customer();
+		cust.setName("Laura");
+		cust.setEmail("bla@test.de");
+		String test = doPost(cust);
 		System.out.println("result: "+test);
 	
 	}
 	
 	  
-	private String doPost(String string) {
+	private String doPost(Customer string) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-	      
-	      //System.out.println(req_payload.toString());
-	      //System.out.println(headers.toString());
-
-	      HttpEntity<String> request = new HttpEntity<>(string, headers);
-	      UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
-	      builder.queryParam("name", string);
-	     
-	      //String url = "http://localhost:8080/testSend";
-
-	      String result = "";
-	      ResponseEntity<?> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, String.class);
-	      HttpStatus statusCode = response.getStatusCode();
-	      System.out.println(statusCode.toString());
-	      if (statusCode == HttpStatus.ACCEPTED) {
-	          result = (String) response.getBody();
-	      }
-	      return result;
-		}
+		HttpEntity<Customer> request = new HttpEntity<>(string, headers);
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
+		builder.queryParam("name", string);
+		
+	    ResponseEntity<Customer> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, Customer.class);
+	    HttpStatus statusCode = response.getStatusCode();
+	    System.out.println(statusCode.toString());
+	    return statusCode.toString();
+	}
 }
