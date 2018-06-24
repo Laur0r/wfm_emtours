@@ -2,7 +2,7 @@ package org.camunda.bpm.sendMessages.Funspark;
 
 import java.util.Arrays;
 
-import org.camunda.bpm.emtours.Customer;
+import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.http.HttpEntity;

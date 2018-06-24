@@ -1,5 +1,6 @@
 package org.camunda.bpm.entities;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Recommendation {
@@ -17,27 +19,30 @@ public class Recommendation {
 	@ManyToOne
 	private Customer customer;
 	
-	private Date start;
-	private Date end;
+	private Date arrival;
+	private Date departure;
 	private String destination;
 	private int numberPeople;
-	private String preferences;
+	
+	@OneToMany
+	private Collection<Activity> activities;
+	
 	private float cost;
 	
 	public Recommendation() {
 		
 	}
-	public Date getStart() {
-		return start;
+	public Date getArrival() {
+		return arrival;
 	}
-	public void setStart(Date start) {
-		this.start = start;
+	public void setArrival(Date arrival) {
+		this.arrival = arrival;
 	}
-	public Date getEnd() {
-		return end;
+	public Date getDeparture() {
+		return departure;
 	}
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setDeparture(Date departure) {
+		this.departure = departure;
 	}
 	public String getDestination() {
 		return destination;
@@ -51,11 +56,11 @@ public class Recommendation {
 	public void setNumberPeople(int numberPeople) {
 		this.numberPeople = numberPeople;
 	}
-	public String getPreferences() {
-		return preferences;
+	public Collection<Activity> getActivities() {
+		return activities;
 	}
-	public void setPreferences(String preferences) {
-		this.preferences = preferences;
+	public void setActivities(Collection<Activity> activities) {
+		this.activities = activities;
 	}
 	public float getCost() {
 		return cost;

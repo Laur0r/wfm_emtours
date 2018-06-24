@@ -1,4 +1,4 @@
-package org.camunda.bpm.emtours;
+package org.camunda.bpm.entities;
 
 import java.util.Date;
 
@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import org.camunda.bpm.entities.Customer;
 
 @Entity
 public class CustomerRequest {
@@ -31,12 +29,20 @@ public class CustomerRequest {
 	public Date getArrival() {
 		return arrival;
 	}
-	public void setArrival(Date arrival) { this.arrival = arrival; }
+	public void setArrival(Date arrival) { 
+		this.arrival = arrival; 
+	}
 	public Date getDeparture() {
 		return departure;
 	}
 	public void setDeparture(Date departure) {
 		this.departure = departure;
+	}
+	public String getClimate() {
+		return climate;
+	}
+	public void setClimate(String climate) {
+		this.climate = climate;
 	}
 	public int getNumberPeople() {
 		return numberPeople;
@@ -62,6 +68,5 @@ public class CustomerRequest {
 	public void setNumberActivities(int numberActivities) {
 		this.numberActivities = numberActivities;
 	}
-
 }
 
