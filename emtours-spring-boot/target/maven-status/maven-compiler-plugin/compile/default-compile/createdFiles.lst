@@ -1,7 +1,0 @@
-org\camunda\bpm\getstarted\emtours\GenerateRecommendationDelegate.class
-org\camunda\bpm\getstarted\emtours\CustomerRepository.class
-org\camunda\bpm\getstarted\emtours\SaveInfosDelegate.class
-org\camunda\bpm\getstarted\emtours\IncomingInformationController.class
-org\camunda\bpm\getstarted\emtours\LoggerDelegate.class
-org\camunda\bpm\getstarted\emtours\WebappExampleProcessApplication.class
-org\camunda\bpm\getstarted\emtours\Customer.class
