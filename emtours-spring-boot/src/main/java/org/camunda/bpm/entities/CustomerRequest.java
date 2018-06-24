@@ -1,4 +1,4 @@
-package org.camunda.bpm.emtours;
+package org.camunda.bpm.entities;
 
 import java.util.Date;
 
@@ -64,6 +64,12 @@ public class CustomerRequest {
 	}
 	public int getId() {
 		return id;
+	}
+	public String getClimate() {
+		return climate;
+	}
+	public void setClimate(String climate) {
+		this.climate = climate;
 	}
 
 }
