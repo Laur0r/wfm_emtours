@@ -15,6 +15,7 @@ public class WebappExampleProcessApplication {
 		SpringApplication.run(WebappExampleProcessApplication.class, args);
 	}
 	
+	/*
 	@Autowired
 	private RuntimeService runtimeService;
 
@@ -22,4 +23,5 @@ public class WebappExampleProcessApplication {
 	private void processPostDeploy(PostDeployEvent event) {
 		runtimeService.startProcessInstanceByKey("SampleProcess");
 	}
+	*/
 }

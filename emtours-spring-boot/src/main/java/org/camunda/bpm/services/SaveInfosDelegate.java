@@ -32,10 +32,16 @@ public class SaveInfosDelegate implements JavaDelegate {
 		Date arrival = (Date) execution.getVariable("arrival");
 		Date departure = (Date) execution.getVariable("departure");
 		String climate = (String) execution.getVariable("climate");
-		int numberPeople = (Integer) execution.getVariable("numberPeople");
 		String experienceType = (String) execution.getVariable("experienceType");
 		String budget = (String) execution.getVariable("budget");
-		int numberActivities = (Integer) execution.getVariable("numberActivities");
+		int numberPeople = 0;
+		if(execution.getVariable("numberPeople") != null) {
+			numberPeople = (Integer) execution.getVariable("numberPeople");
+		}
+		int numberActivities = 0;
+		if(execution.getVariable("numberActivities") != null) {
+			numberActivities = (Integer) execution.getVariable("numberActivities");
+		}
 
 		//	validate customer already exist via email
 
@@ -43,23 +49,22 @@ public class SaveInfosDelegate implements JavaDelegate {
 		Customer cust = new Customer();
 		cust.setName(name);
 		cust.setAddress(address);
-//		cust.setZip (zip);
-//		cust.setCity (city);
-//		cust.setCountry (country);
+		cust.setZip (zip);
+		cust.setCity (city);
+		cust.setCountry (country);
 		cust.setBirthday (birthday);
 		cust.setEmail(email);
-		custrepository.save(cust);
+		cust = custrepository.save(cust);
 
 		CustomerRequest custrequest = new CustomerRequest();
-//		custrequest.setEmail (email);
 		custrequest.setArrival(arrival);
 		custrequest.setDeparture(departure);
-//		custrequest.setClimate(climate);
+		custrequest.setClimate(climate);
 		custrequest.setNumberPeople(numberPeople);
 		custrequest.setExperienceType(experienceType);
 		custrequest.setBudget(budget);
 		custrequest.setNumberActivities(numberActivities);
-		requestrepository.save(custrequest);
+		custrequest = requestrepository.save(custrequest);
 		execution.setVariable("customerId", cust.getId());
 		execution.setVariable("requestId", custrequest.getId());
 	}

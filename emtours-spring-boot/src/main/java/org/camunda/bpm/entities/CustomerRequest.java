@@ -62,7 +62,7 @@ public class CustomerRequest {
 	public void setNumberActivities(int numberActivities) {
 		this.numberActivities = numberActivities;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public String getClimate() {
