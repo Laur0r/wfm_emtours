@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_1vcna3o" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
-  <decision id="Decision_recommendation" name="Recommendation">
+  <decision id="decision_recommendation" name="Recommendation">
     <decisionTable id="decisionTable_1" hitPolicy="COLLECT">
       <input id="input_1" label="Climate">
         <inputExpression id="inputExpression_1" typeRef="string">
@@ -14,6 +14,7 @@
       </input>
       <output id="output_1" label="Hotel" name="hotel" typeRef="string" />
       <output id="OutputClause_1q78kpi" label="Location" name="location" typeRef="string" />
+      <output id="OutputClause_0lwlph6" label="Price" name="price" typeRef="integer" />
       <rule id="DecisionRule_0wavwmp">
         <inputEntry id="UnaryTests_19pht68">
           <text>"cold"</text>
@@ -22,10 +23,13 @@
           <text>"low"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0aepo6h">
-          <text>"Hostel Proha Downtown"</text>
+          <text>"Hostel Praha Downtown"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0i5uk2k">
           <text>"Czech Republic"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0glw8rc">
+          <text>29</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_184b4ju">
@@ -41,6 +45,9 @@
         <outputEntry id="LiteralExpression_0kz7qeu">
           <text>"Georgia"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0c67wyw">
+          <text>25</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1azcftj">
         <inputEntry id="UnaryTests_0gdj7t8">
@@ -54,6 +61,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0rh4btv">
           <text>"Austria"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nvx790">
+          <text>64</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12rhsns">
@@ -69,6 +79,9 @@
         <outputEntry id="LiteralExpression_0iu4r9x">
           <text>"Sweden"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1qevg8p">
+          <text>79</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0hf2g18">
         <inputEntry id="UnaryTests_01e89wz">
@@ -82,6 +95,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0jtem5d">
           <text>"Switzerland"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mqbbbc">
+          <text>211</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01zgb0c">
@@ -97,6 +113,9 @@
         <outputEntry id="LiteralExpression_0us3wty">
           <text>"Canada"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1v0u8mk">
+          <text>199</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0j7rdam">
         <inputEntry id="UnaryTests_1rxnepk">
@@ -110,6 +129,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0ck3k8m">
           <text>"Netherlands"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_002psms">
+          <text>35</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wjdu4s">
@@ -125,6 +147,9 @@
         <outputEntry id="LiteralExpression_0wqlj2z">
           <text>"Poland"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1lsfnck">
+          <text>30</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1db0imy">
         <inputEntry id="UnaryTests_0bqp7wb">
@@ -137,7 +162,10 @@
           <text>"Factory Hotel Münster"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c4vex2">
-          <text>"Münster"</text>
+          <text>"Germany"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01uz5zk">
+          <text>88</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fu3cp5">
@@ -153,6 +181,9 @@
         <outputEntry id="LiteralExpression_1avsfy0">
           <text>"Ireland"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0lhsdp4">
+          <text>96</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1wbhk02">
         <inputEntry id="UnaryTests_0ncb8dj">
@@ -167,6 +198,9 @@
         <outputEntry id="LiteralExpression_0vduckf">
           <text>"England"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_17zjm3d">
+          <text>239</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1rcada4">
         <inputEntry id="UnaryTests_1ci2r52">
@@ -176,10 +210,13 @@
           <text>"high"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0o5mayo">
-          <text>"Croyby Residential"</text>
+          <text>"Trump Residential"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ibqrae">
-          <text>"New York"</text>
+          <text>"United States of America"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w18hkb">
+          <text>189</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_06sc3vn">
@@ -195,6 +232,9 @@
         <outputEntry id="LiteralExpression_1qzmuhn">
           <text>"Thailand"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0kouvep">
+          <text>13</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0rgty2x">
         <inputEntry id="UnaryTests_1eudrpe">
@@ -208,6 +248,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1bb4buu">
           <text>"Cuba"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fpykrc">
+          <text>24</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_17adoqd">
@@ -223,6 +266,9 @@
         <outputEntry id="LiteralExpression_1tq5wn4">
           <text>"South Africa"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_19ywo8o">
+          <text>86</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0f3ytjo">
         <inputEntry id="UnaryTests_1el0v5n">
@@ -236,6 +282,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_08al1z5">
           <text>"Egypt"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09jb0co">
+          <text>98</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1kcy6n5">
@@ -251,6 +300,9 @@
         <outputEntry id="LiteralExpression_14e1oba">
           <text>"Australia"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_01shw7r">
+          <text>195</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0qcmgn3">
         <inputEntry id="UnaryTests_1fn3fpr">
@@ -264,6 +316,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0z2tlmw">
           <text>"United Arab Emirates"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16fbnq5">
+          <text>359</text>
         </outputEntry>
       </rule>
     </decisionTable>
