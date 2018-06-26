@@ -17,11 +17,13 @@ public class Recommendation {
     private Integer id;
 	
 	@ManyToOne
-	private Customer customer;
+	private CustomerRequest request;
 	
 	private Date arrival;
 	private Date departure;
 	private String destination;
+	private String hotel;
+	private String flight;
 	private int numberPeople;
 	
 	@OneToMany
@@ -67,6 +69,27 @@ public class Recommendation {
 	}
 	public void setCost(float cost) {
 		this.cost = cost;
+	}
+	public String getHotel() {
+		return hotel;
+	}
+	public void setHotel(String hotel) {
+		this.hotel = hotel;
+	}
+	public String getFlight() {
+		return flight;
+	}
+	public void setFlight(String flight) {
+		this.flight = flight;
+	}
+	public void setRequest(CustomerRequest request) {
+		this.request = request;
+	}
+	public CustomerRequest getRequest() {
+		return request;
+	}
+	public Integer getId() {
+		return id;
 	}
 
 }
