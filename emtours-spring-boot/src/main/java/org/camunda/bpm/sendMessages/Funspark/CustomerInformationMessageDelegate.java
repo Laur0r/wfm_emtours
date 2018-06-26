@@ -2,10 +2,9 @@ package org.camunda.bpm.sendMessages.Funspark;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
-import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.Recommendation;
-import org.camunda.bpm.emtours.CustomerRepository;
 import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.emtours.CustomerRequestRepository;
 import org.camunda.bpm.emtours.RecommendationRepository;
@@ -17,9 +16,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Component
 public class CustomerInformationMessageDelegate implements JavaDelegate {
 
 	@Autowired(required = true)
@@ -31,7 +32,9 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
 			int requestId = (Integer) execution.getVariable("requestId");
-			CustomerRequest custrequest = requestrepository.findById(requestId).get();
+			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
+			System.out.println(custrequesto);
+			CustomerRequest custrequest = custrequesto.get();
 			
 			int recommendationId = (Integer) execution.getVariable("recommendationId");
 			Recommendation recommendation = recommendationrepository.findById(recommendationId).get();

@@ -10,7 +10,7 @@
       <bpmn:outgoing>SequenceFlow_14yw1qo</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="EndEvent_10dyw6k" name="End Process">
-      <bpmn:incoming>SequenceFlow_00n87d9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_14k2lii</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_14yw1qo" sourceRef="Task_0yqal0b" targetRef="ExclusiveGateway_02ef6hr" />
     <bpmn:sequenceFlow id="SequenceFlow_0tewkgc" sourceRef="Task_1u1k4le" targetRef="Task_059y935" />
@@ -18,7 +18,7 @@
       <bpmn:incoming>SequenceFlow_1ju9z86</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0tewkgc</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_00n87d9" sourceRef="Task_059y935" targetRef="EndEvent_10dyw6k" />
+    <bpmn:sequenceFlow id="SequenceFlow_00n87d9" sourceRef="Task_059y935" targetRef="Task_07fxmtr" />
     <bpmn:serviceTask id="Task_059y935" name="Generate Recommendations" camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
       <bpmn:incoming>SequenceFlow_0tewkgc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_00n87d9</bpmn:outgoing>
@@ -42,6 +42,11 @@
       <bpmn:incoming>SequenceFlow_0xngtwn</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_062l2lx</bpmn:outgoing>
     </bpmn:sendTask>
+    <bpmn:sequenceFlow id="SequenceFlow_14k2lii" sourceRef="Task_07fxmtr" targetRef="EndEvent_10dyw6k" />
+    <bpmn:sendTask id="Task_07fxmtr" name="Send Recommendation" camunda:class="org.camunda.bpm.sendMessages.Funspark.CustomerInformationMessageDelegate">
+      <bpmn:incoming>SequenceFlow_00n87d9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_14k2lii</bpmn:outgoing>
+    </bpmn:sendTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SampleProcess">
@@ -59,9 +64,9 @@
         <dc:Bounds x="255" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_10dyw6k_di" bpmnElement="EndEvent_10dyw6k">
-        <dc:Bounds x="815" y="102" width="36" height="36" />
+        <dc:Bounds x="1032" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="802" y="145" width="63" height="14" />
+          <dc:Bounds x="1019" y="145" width="63" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_14yw1qo_di" bpmnElement="SequenceFlow_14yw1qo">
@@ -77,7 +82,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_00n87d9_di" bpmnElement="SequenceFlow_00n87d9">
         <di:waypoint x="750" y="120" />
-        <di:waypoint x="815" y="120" />
+        <di:waypoint x="817" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1304tc7_di" bpmnElement="Task_059y935">
         <dc:Bounds x="650" y="80" width="100" height="80" />
@@ -115,6 +120,13 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SendTask_0xyb8zo_di" bpmnElement="Task_0yh822b">
         <dc:Bounds x="528" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_14k2lii_di" bpmnElement="SequenceFlow_14k2lii">
+        <di:waypoint x="917" y="120" />
+        <di:waypoint x="1032" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_1galm3w_di" bpmnElement="Task_07fxmtr">
+        <dc:Bounds x="817" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
