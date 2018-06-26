@@ -26,7 +26,7 @@
           <text>"Hostel Praha Downtown"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0i5uk2k">
-          <text>"Czech Republic"</text>
+          <text>"Prague, Czech Republic"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0glw8rc">
           <text>29</text>
@@ -43,7 +43,7 @@
           <text>"Tblisi Central"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kz7qeu">
-          <text>"Georgia"</text>
+          <text>"Tbilisi, Georgia"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c67wyw">
           <text>25</text>
@@ -60,7 +60,7 @@
           <text>"Landhaus Adler"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rh4btv">
-          <text>"Austria"</text>
+          <text>"Klagenfurt, Austria"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1nvx790">
           <text>64</text>
@@ -77,7 +77,7 @@
           <text>"Villa Von Otterska"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iu4r9x">
-          <text>"Sweden"</text>
+          <text>"Gothenburg, Sweden"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qevg8p">
           <text>79</text>
@@ -94,7 +94,7 @@
           <text>"Alpenhaus Grindelwald"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jtem5d">
-          <text>"Switzerland"</text>
+          <text>"Luzern, Switzerland"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0mqbbbc">
           <text>211</text>
@@ -111,7 +111,7 @@
           <text>"Rocky Mountain Sky Lodge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0us3wty">
-          <text>"Canada"</text>
+          <text>"Victoria, Canada"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1v0u8mk">
           <text>199</text>
@@ -128,7 +128,7 @@
           <text>"White Tulip Amsterdam"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ck3k8m">
-          <text>"Netherlands"</text>
+          <text>"Amsterdam, Netherlands"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_002psms">
           <text>35</text>
@@ -145,7 +145,7 @@
           <text>"Hotel Stary Browar"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wqlj2z">
-          <text>"Poland"</text>
+          <text>"Wroclaw, Poland"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1lsfnck">
           <text>30</text>
@@ -162,7 +162,7 @@
           <text>"Factory Hotel Münster"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0c4vex2">
-          <text>"Germany"</text>
+          <text>"Munster, Germany"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01uz5zk">
           <text>88</text>
@@ -179,7 +179,7 @@
           <text>"Shamrock Lodge"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1avsfy0">
-          <text>"Ireland"</text>
+          <text>"Limerick, Ireland"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0lhsdp4">
           <text>96</text>
@@ -196,7 +196,7 @@
           <text>"Thornbury Castle Hotel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vduckf">
-          <text>"England"</text>
+          <text>"Cambridge, England"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17zjm3d">
           <text>239</text>
@@ -213,7 +213,7 @@
           <text>"Trump Residential"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ibqrae">
-          <text>"United States of America"</text>
+          <text>"Las Vegas, United States of America"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0w18hkb">
           <text>189</text>
@@ -230,7 +230,7 @@
           <text>"My Thai Hostel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1qzmuhn">
-          <text>"Thailand"</text>
+          <text>"Pattaya, Thailand"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0kouvep">
           <text>13</text>
@@ -247,7 +247,7 @@
           <text>"Backpackers Inn"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1bb4buu">
-          <text>"Cuba"</text>
+          <text>"Havanna, Cuba"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1fpykrc">
           <text>24</text>
@@ -264,7 +264,7 @@
           <text>"The Westin Cape Town"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tq5wn4">
-          <text>"South Africa"</text>
+          <text>"Cape Town, South Africa"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19ywo8o">
           <text>86</text>
@@ -281,7 +281,7 @@
           <text>"Pharao Resort Azur"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08al1z5">
-          <text>"Egypt"</text>
+          <text>"Cairo, Egypt"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_09jb0co">
           <text>98</text>
