@@ -33,22 +33,20 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 		try {
 			int requestId = (Integer) execution.getVariable("requestId");
 			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
-			System.out.println(custrequesto);
 			CustomerRequest custrequest = custrequesto.get();
 			
-			int recommendationId = (Integer) execution.getVariable("recommendationId");
-			Recommendation recommendation = recommendationrepository.findById(recommendationId).get();
+			//int recommendationId = (Integer) execution.getVariable("recommendationId");
+			//Recommendation recommendation = recommendationrepository.findById(recommendationId).get();
 			
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
 			postElement.setCustomerId((Integer) execution.getVariable("customerId"));
-			postElement.setDestination(recommendation.getDestination());
-			postElement.setStart(recommendation.getArrival());
-			postElement.setEnd(recommendation.getDeparture());
+			//postElement.setDestination(recommendation.getDestination());
+			//postElement.setStart(recommendation.getArrival());
+			//postElement.setEnd(recommendation.getDeparture());
 			postElement.setNumberActivities(custrequest.getNumberActivities());
 			postElement.setNumberPeople(custrequest.getNumberPeople());
 			postElement.setExperienceType(custrequest.getExperienceType());
 			String test = doPost(postElement);
-			System.out.println("result: "+test);
 		} catch(NoSuchElementException e) {
 		}	
 	}
@@ -64,7 +62,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
 	    HttpStatus statusCode = response.getStatusCode();
-	    System.out.println(statusCode.toString());
 	    return statusCode.toString();
 	}
 }
