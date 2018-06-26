@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_1vcna3o" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_recommendation" name="Recommendation">
+    <decisionTable id="decisionTable_1" hitPolicy="COLLECT">
+      <input id="input_1" label="Climate">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text>climate</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0pxds4h" label="Budget">
+        <inputExpression id="LiteralExpression_017i42v" typeRef="string">
+          <text>budget</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Hotel" name="hotel" typeRef="string" />
+      <output id="OutputClause_1q78kpi" label="Location" name="location" typeRef="string" />
+      <rule id="DecisionRule_0wavwmp">
+        <inputEntry id="UnaryTests_19pht68">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1012vfl">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0aepo6h">
+          <text>"Hostel Proha Downtown"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i5uk2k">
+          <text>"Czech Republic"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_184b4ju">
+        <inputEntry id="UnaryTests_0ximwx8">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uiitno">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ovzvfw">
+          <text>"Tblisi Central"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kz7qeu">
+          <text>"Georgia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1azcftj">
+        <inputEntry id="UnaryTests_0gdj7t8">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kmnsi7">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0coi8d2">
+          <text>"Landhaus Adler"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rh4btv">
+          <text>"Austria"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12rhsns">
+        <inputEntry id="UnaryTests_0bfd8x3">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05wrhhf">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1awa438">
+          <text>"Villa Von Otterska"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iu4r9x">
+          <text>"Sweden"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hf2g18">
+        <inputEntry id="UnaryTests_01e89wz">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oupr43">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cywuey">
+          <text>"Alpenhaus Grindelwald"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jtem5d">
+          <text>"Switzerland"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01zgb0c">
+        <inputEntry id="UnaryTests_10sjsta">
+          <text>"cold"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02j6fxq">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0902e3n">
+          <text>"Rocky Mountain Sky Lodge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0us3wty">
+          <text>"Canada"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j7rdam">
+        <inputEntry id="UnaryTests_1rxnepk">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1c0bcwk">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jg086u">
+          <text>"White Tulip Amsterdam"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ck3k8m">
+          <text>"Netherlands"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wjdu4s">
+        <inputEntry id="UnaryTests_1olhmfp">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08mru7a">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfw293">
+          <text>"Hotel Stary Browar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wqlj2z">
+          <text>"Poland"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1db0imy">
+        <inputEntry id="UnaryTests_0bqp7wb">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ac93t9">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15x1jur">
+          <text>"Factory Hotel Münster"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c4vex2">
+          <text>"Münster"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fu3cp5">
+        <inputEntry id="UnaryTests_1xkohes">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dq0at2">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zhi60i">
+          <text>"Shamrock Lodge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1avsfy0">
+          <text>"Ireland"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wbhk02">
+        <inputEntry id="UnaryTests_0ncb8dj">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15xdsfe">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fmu9zv">
+          <text>"Thornbury Castle Hotel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vduckf">
+          <text>"England"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rcada4">
+        <inputEntry id="UnaryTests_1ci2r52">
+          <text>"medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0npekii">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o5mayo">
+          <text>"Croyby Residential"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ibqrae">
+          <text>"New York"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06sc3vn">
+        <inputEntry id="UnaryTests_1mvj6tf">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s2njxu">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09cyc2z">
+          <text>"My Thai Hostel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qzmuhn">
+          <text>"Thailand"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rgty2x">
+        <inputEntry id="UnaryTests_1eudrpe">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rb6ndk">
+          <text>"low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ehrwr4">
+          <text>"Backpackers Inn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bb4buu">
+          <text>"Cuba"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17adoqd">
+        <inputEntry id="UnaryTests_0npngjv">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tjt2zs">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09t7gu5">
+          <text>"The Westin Cape Town"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tq5wn4">
+          <text>"South Africa"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f3ytjo">
+        <inputEntry id="UnaryTests_1el0v5n">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17jqnpr">
+          <text>"medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xepp04">
+          <text>"Pharao Resort Azur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08al1z5">
+          <text>"Egypt"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kcy6n5">
+        <inputEntry id="UnaryTests_1cncw97">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0msgu9f">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_033tqyq">
+          <text>"Park Hyatt Sydney"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14e1oba">
+          <text>"Australia"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qcmgn3">
+        <inputEntry id="UnaryTests_1fn3fpr">
+          <text>"hot"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06eaj55">
+          <text>"high"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1177blf">
+          <text>"Burj Khalifa Hotel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z2tlmw">
+          <text>"United Arab Emirates"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
