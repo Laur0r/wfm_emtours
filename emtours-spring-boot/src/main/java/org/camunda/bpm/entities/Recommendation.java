@@ -29,7 +29,7 @@ public class Recommendation {
 	@OneToMany
 	private Collection<Activity> activities;
 	
-	private float cost;
+	private double cost;
 	
 	public Recommendation() {
 		
@@ -64,10 +64,10 @@ public class Recommendation {
 	public void setActivities(Collection<Activity> activities) {
 		this.activities = activities;
 	}
-	public float getCost() {
+	public double getCost() {
 		return cost;
 	}
-	public void setCost(float cost) {
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
 	public String getHotel() {
