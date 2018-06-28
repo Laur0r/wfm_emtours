@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.entities.CustomerRequest;
-import org.camunda.bpm.emtours.CustomerRequestRepository;
+import org.camunda.bpm.emtours.CustomerRequestRepository; 
 import org.camunda.bpm.emtours.RecommendationRepository;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -33,7 +33,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 		try {
 			int requestId = (Integer) execution.getVariable("requestId");
 			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
-			System.out.println(custrequesto);
 			CustomerRequest custrequest = custrequesto.get();
 			
 			int recommendationId = (Integer) execution.getVariable("recommendationId");
@@ -48,7 +47,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			postElement.setNumberPeople(custrequest.getNumberPeople());
 			postElement.setExperienceType(custrequest.getExperienceType());
 			String test = doPost(postElement);
-			System.out.println("result: "+test);
 		} catch(NoSuchElementException e) {
 		}	
 	}
@@ -64,7 +62,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
 	    HttpStatus statusCode = response.getStatusCode();
-	    System.out.println(statusCode.toString());
 	    return statusCode.toString();
 	}
 }
