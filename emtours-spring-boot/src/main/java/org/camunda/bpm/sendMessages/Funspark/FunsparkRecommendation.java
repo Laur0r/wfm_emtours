@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class FunsparkRecommendation {
 
-	private int customerId;
+	private int recommendationId;
 	private Date start;
 	private Date end;
 	private String destination;
@@ -12,11 +12,11 @@ public class FunsparkRecommendation {
 	private String experienceType;
 	private int numberActivities;
 	
-	public int getCustomerId() {
-		return customerId;
+	public int getRecommendationId() {
+		return recommendationId;
 	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setRecommendationId(int recommendationId) {
+		this.recommendationId = recommendationId;
 	}
 	public Date getStart() {
 		return start;
