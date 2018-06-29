@@ -15,6 +15,7 @@
       <output id="output_1" label="Hotel" name="hotel" typeRef="string" />
       <output id="OutputClause_1q78kpi" label="Location" name="location" typeRef="string" />
       <output id="OutputClause_0lwlph6" label="Price" name="price" typeRef="integer" />
+      <output id="OutputClause_0i1ugt1" label="Flight" name="flight" typeRef="string" />
       <rule id="DecisionRule_0wavwmp">
         <inputEntry id="UnaryTests_19pht68">
           <text>"cold"</text>
@@ -30,6 +31,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0glw8rc">
           <text>29</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05yjptm">
+          <text>"OK 536"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_184b4ju">
@@ -48,6 +52,9 @@
         <outputEntry id="LiteralExpression_0c67wyw">
           <text>25</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1o9heyu">
+          <text>"A9 71"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1azcftj">
         <inputEntry id="UnaryTests_0gdj7t8">
@@ -64,6 +71,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1nvx790">
           <text>64</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vqzdve">
+          <text>"OS 20"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12rhsns">
@@ -82,6 +92,9 @@
         <outputEntry id="LiteralExpression_1qevg8p">
           <text>79</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_17rrub9">
+          <text>"SK 330"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0hf2g18">
         <inputEntry id="UnaryTests_01e89wz">
@@ -98,6 +111,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0mqbbbc">
           <text>211</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i7o39w">
+          <text>"LX 18"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_01zgb0c">
@@ -116,6 +132,9 @@
         <outputEntry id="LiteralExpression_1v0u8mk">
           <text>199</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1n2q21i">
+          <text>"AC 581"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0j7rdam">
         <inputEntry id="UnaryTests_1rxnepk">
@@ -132,6 +151,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_002psms">
           <text>35</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i35pvj">
+          <text>"KL 45"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wjdu4s">
@@ -150,6 +172,9 @@
         <outputEntry id="LiteralExpression_1lsfnck">
           <text>30</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_05dh7bd">
+          <text>"LO 170"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1db0imy">
         <inputEntry id="UnaryTests_0bqp7wb">
@@ -166,6 +191,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_01uz5zk">
           <text>88</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03pqiph">
+          <text>"QYG 23718"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fu3cp5">
@@ -184,6 +212,9 @@
         <outputEntry id="LiteralExpression_0lhsdp4">
           <text>96</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0d2942x">
+          <text>"EI 135"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1wbhk02">
         <inputEntry id="UnaryTests_0ncb8dj">
@@ -200,6 +231,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_17zjm3d">
           <text>239</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xzzi41">
+          <text>"BA 5381"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1rcada4">
@@ -218,6 +252,9 @@
         <outputEntry id="LiteralExpression_0w18hkb">
           <text>189</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0uh0kb2">
+          <text>"AA 242"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_06sc3vn">
         <inputEntry id="UnaryTests_1mvj6tf">
@@ -234,6 +271,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0kouvep">
           <text>13</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09yn13c">
+          <text>"EW 603"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0rgty2x">
@@ -252,6 +292,9 @@
         <outputEntry id="LiteralExpression_1fpykrc">
           <text>24</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1tzkgp4">
+          <text>"CU 69"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_17adoqd">
         <inputEntry id="UnaryTests_0npngjv">
@@ -268,6 +311,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_19ywo8o">
           <text>86</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1t4h5sf">
+          <text>"SA 297"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0f3ytjo">
@@ -286,6 +332,9 @@
         <outputEntry id="LiteralExpression_09jb0co">
           <text>98</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_17l9a0n">
+          <text>"MS 15"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1kcy6n5">
         <inputEntry id="UnaryTests_1cncw97">
@@ -298,10 +347,13 @@
           <text>"Park Hyatt Sydney"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14e1oba">
-          <text>"Australia"</text>
+          <text>"Sydney, Australia"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01shw7r">
           <text>195</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f09df9">
+          <text>"QF550"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0qcmgn3">
@@ -315,10 +367,13 @@
           <text>"Burj Khalifa Hotel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z2tlmw">
-          <text>"United Arab Emirates"</text>
+          <text>"Dubai, United Arab Emirates"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16fbnq5">
           <text>359</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bswwon">
+          <text>"EK 81"</text>
         </outputEntry>
       </rule>
     </decisionTable>
