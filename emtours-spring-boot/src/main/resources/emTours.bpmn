@@ -827,7 +827,9 @@
     <intermediateCatchEvent id="IntermediateThrowEvent_10w7ls3" name="14 Days no payment received">
       <incoming>SequenceFlow_1l4yfrp</incoming>
       <outgoing>SequenceFlow_1wfpa26</outgoing>
-      <timerEventDefinition />
+      <timerEventDefinition>
+        <timeDuration xsi:type="tFormalExpression">P14D</timeDuration>
+      </timerEventDefinition>
     </intermediateCatchEvent>
     <exclusiveGateway id="ExclusiveGateway_1idz85h">
       <incoming>SequenceFlow_1fmla0x</incoming>
