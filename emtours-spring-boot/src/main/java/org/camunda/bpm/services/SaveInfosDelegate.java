@@ -22,6 +22,7 @@ public class SaveInfosDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 		// TODO Auto-generated method stub
 		String name = (String) execution.getVariable("name");
+		String gender = (String) execution.getVariable("gender");
 		String address = (String) execution.getVariable("address");
 		String zip = (String) execution.getVariable("zip");
 		String city = (String) execution.getVariable("city");
@@ -48,6 +49,7 @@ public class SaveInfosDelegate implements JavaDelegate {
 
 		Customer cust = new Customer();
 		cust.setName(name);
+		cust.setGender(gender);
 		cust.setAddress(address);
 		cust.setZip (zip);
 		cust.setCity (city);

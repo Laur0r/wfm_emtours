@@ -18,6 +18,7 @@ public class Activity {
 	private float price;
 	private String description;
 	private Date date;
+	private String provider;
 	
 public Activity() {
 		
@@ -51,5 +52,11 @@ public Activity() {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getProvider() {
+		return provider;
+	}
+	public void setProvider(String provider) {
+		this.provider = provider;
 	}
 }

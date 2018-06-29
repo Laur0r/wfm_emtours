@@ -695,7 +695,9 @@
       </extensionElements>
       <incoming>sid-46AD0FA2-5001-468E-B9CB-1440DEF6D3F3</incoming>
       <outgoing>sid-B39923B5-75CA-4F0D-B5D9-7C72B93E2009</outgoing>
-      <timerEventDefinition id="sid-645a1323-5471-45d4-9f6d-890cee3166a9" />
+      <timerEventDefinition id="sid-645a1323-5471-45d4-9f6d-890cee3166a9">
+        <timeDuration xsi:type="tFormalExpression">P30D</timeDuration>
+      </timerEventDefinition>
     </intermediateCatchEvent>
     <sendTask id="sid-2E3C3D97-E5FF-4443-B341-54E9DE0317BD" name="Send booking request" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.RequestBookingMessageDelegate">
       <extensionElements>
@@ -825,7 +827,9 @@
     <intermediateCatchEvent id="IntermediateThrowEvent_10w7ls3" name="14 Days no payment received">
       <incoming>SequenceFlow_1l4yfrp</incoming>
       <outgoing>SequenceFlow_1wfpa26</outgoing>
-      <timerEventDefinition />
+      <timerEventDefinition>
+        <timeDuration xsi:type="tFormalExpression">P14D</timeDuration>
+      </timerEventDefinition>
     </intermediateCatchEvent>
     <exclusiveGateway id="ExclusiveGateway_1idz85h">
       <incoming>SequenceFlow_1fmla0x</incoming>
