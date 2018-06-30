@@ -47,7 +47,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			postElement.setNumberPeople(custrequest.getNumberPeople());
 			postElement.setExperienceType(custrequest.getExperienceType());
 			doPost(postElement);
-			System.out.println("feedback!!! "+(String)execution.getVariable("feedback"));
+			System.out.println("feedback!!! "+(Boolean)execution.getVariable("feedback"));
 		} catch(NoSuchElementException e) {
 		}	
 	}

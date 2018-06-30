@@ -74,7 +74,7 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${feedback}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1ex8bgb" sourceRef="ExclusiveGateway_04lywgc" targetRef="EndEvent_12gr1z4">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${feedback}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!feedback}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmn:message id="Message_1otb6m7" name="feedback" />

@@ -29,15 +29,13 @@ public class FunsparkController implements ExecutionListener{
 	 
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST)
 	public String receiveFeedback(String feedback) {
-		System.out.println("received Feedback");
-		if(feedback == "true") {
+		System.out.println("received Feedback: "+feedback);
+		if(feedback.equals("yes")) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);
 		} else {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", false);
 		}
-		camunda.getRuntimeService().createMessageCorrelation("feedback")
-		  .processInstanceId(executionId)
-		  .correlate();
+		camunda.getRuntimeService().messageEventReceived("feedback", executionId);
 		
 		return "";
 	}
