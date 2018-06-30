@@ -415,12 +415,14 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
         <signavio:signavioLabel align="left" distance="7.0005" from="0" orientation="ul" ref="text_name" to="1" valign="top" x="1047.9995" y="550.835598684888" />
       </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${feedback}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="sid-758DA423-CE8A-4FCC-B905-7AAAC39256CE" name="Negative: Request for further information" sourceRef="sid-54F42652-DE4C-4CF7-B272-C215E0284BEE" targetRef="sid-FBDDA2F9-FA73-4F3C-B6C5-52CC386A8AF7">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
         <signavio:signavioLabel align="center" distance="-89.0115" from="0" ref="text_name" to="1" valign="middle" x="1047.0" y="456.16000270843506" />
       </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${!feedback}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="sid-008C8E38-9039-450F-B4FC-D76D9C7E18F8" name="" sourceRef="sid-FBDDA2F9-FA73-4F3C-B6C5-52CC386A8AF7" targetRef="sid-7C7F84E8-26CB-4760-BF1D-D6A07F8A436F">
       <extensionElements>
@@ -564,7 +566,7 @@
       </extensionElements>
       <incoming>sid-55A891A8-1D52-402D-93DF-D4C8497CC9BF</incoming>
       <outgoing>sid-6AD3FACD-B436-4EBC-A76A-61A4D80A6CD6</outgoing>
-      <messageEventDefinition id="sid-f16cf61a-bcfe-4f44-8b9e-69d870255330" />
+      <messageEventDefinition id="sid-f16cf61a-bcfe-4f44-8b9e-69d870255330" messageRef="Message_1pvh9nb" />
     </intermediateCatchEvent>
     <sequenceFlow id="sid-ACB6A631-71BB-47D2-8527-72238C6565C0" name="" sourceRef="sid-D87DE093-DFA1-4C85-B182-9884F7D35BA1" targetRef="sid-3BC7CC6D-3189-4436-B02F-C90B8D28451D">
       <extensionElements>
@@ -907,7 +909,7 @@
         <signavio:signavioLabel ref="text_name" valign="middle" x="56.0" y="-14.0" />
       </extensionElements>
     </dataStoreReference>
-    <businessRuleTask id="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" name="Generate recommendations" implementation="##WebService" camunda:decisionRef="">
+    <businessRuleTask id="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" name="Generate recommendations" implementation="##WebService" camunda:resultVariable="dmn_result" camunda:decisionRef="decision_recommendation">
       <incoming>sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6</incoming>
       <outgoing>sid-0259508E-9C63-4488-9F84-11453102A3EA</outgoing>
       <property id="Property_1kms3n4" name="__targetRef_placeholder" />
@@ -945,6 +947,7 @@
       </lane>
     </laneSet>
   </process>
+  <message id="Message_1pvh9nb" name="feedback" />
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
       <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
