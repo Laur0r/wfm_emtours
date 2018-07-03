@@ -22,7 +22,7 @@ public class InvalidInformationMessageDelegate implements JavaDelegate {
 			Integer customerId = (Integer) execution.getVariable("customerId");
 			String mailSubject = "Invalid Information";
 			
-			eMailerService.sendInvalidMessage(customerId, mailSubject);
+			eMailerService.sendSimpleMessage(customerId, mailSubject);
 			System.out.println("E-Mail:InvalidInformation sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (InvalidInformation): "+ex);

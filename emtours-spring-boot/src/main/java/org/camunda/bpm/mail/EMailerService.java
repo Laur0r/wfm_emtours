@@ -51,7 +51,7 @@ public class EMailerService {
 		return result;
 	}
 
-	public void sendInvalidMessage(int customerId, String subject) {
+	public void sendSimpleMessage(int customerId, String subject) {
 
 		Optional<Customer> customer = custRepository.findById(customerId);
 
@@ -66,7 +66,15 @@ public class EMailerService {
 				salutation = "Mr.";
 			}
 
-			String msg = String.format(INVALID_MSG, salutation, name);
+			String msg = "";
+			if(subject.equals("Invalid Information")) {
+				msg = String.format(INVALID_MSG, salutation, name);
+			} else if (subject.equals("Request for further information")) {
+				msg = String.format(FURTHERINFO_MSG, salutation, name);
+			} else if (subject.equals("No offer available")) {
+				msg = String.format(UNAVAILABLE_MSG, salutation, name);
+			}
+			
 
 			sendMessage(eMail, subject, msg);
 		} else {
@@ -74,7 +82,7 @@ public class EMailerService {
 		}
 	}
 
-	public void sendConfirmationMessage(int customerId, int recommendationId, String subject) {
+	public void sendComplexMessage(int customerId, int recommendationId, String subject) {
 		Optional<Customer> customer = custRepository.findById(customerId);
 
 		String eMail = customer.get().getEmail();
@@ -99,8 +107,15 @@ public class EMailerService {
 			int numberPeople = recommendation.get().getNumberPeople();
 			 Collection<Activity> activities = recommendation.get().getActivities();
 
-			String msg = String.format(CONFIRMATION_MSG, salutation, name, destination, startDate, endDate, flight,
-					hotel, price, numberPeople, activities, currentDate);
+			String msg = "";
+			if (subject.equals("Booking confirmation")) {
+					msg = String.format(CONFIRMATION_MSG, salutation, name, destination, startDate, endDate, flight,
+						hotel, price, numberPeople, activities, currentDate);
+			} else if (subject.equals("Travel recommendation")) {
+					msg = String.format(RECOMMENDATION_MSG, salutation, name, startDate, endDate, flight, destination,
+						hotel, price, numberPeople, activities, currentDate);
+			} 
+			
 
 			sendMessage(eMail, subject, msg);
 			
@@ -131,5 +146,26 @@ public class EMailerService {
 			+ "\nYou can find information on payment and emTours account data in the attached documents. Please settle the invoice within 14 days from today: %s."
 			+ "\n" + "\nThank you for travelling with emTours - your #1 travel agency in Münster!" + "\n"
 			+ "\nYours sincerely," + "\nemTours TravelAgency";
-
+	
+	public static String RECOMMENDATION_MSG = "Dear %s %s, "
+			+ "\nthank you for your travel request! We are happy to inform you that we were able to provide you with an unbeatable, exclusive travel package!"
+			+ "\nThe dates of our offer are as follows:" + "\n" 
+			+ "\nFrom: %s To: %s" + "\nFlight: %s"
+			+ "\nDestination: %s"
+			+ "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
+			+ "\nYour journey will include the following activities:" + "\n%s" + "\n"
+			+ "\nFeel free to contact us, if you would like to refine our recommendation offer."
+			+ "\n" + "\nWe are looking forward to your reply!" + "\n"
+			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	
+	public static String FURTHERINFO_MSG = "Dear %s %s, "
+			+ "\nto generate a proper travel recommendation, we need to get to know you and your attitudes better!\n" 
+			+ "\nWould you like to take part in activities during your journey"
+			+ "\n" + "\nPlease choose your preferred type of activities and a number of how many activities you plan to experience!" 
+			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	
+	public static String UNAVAILABLE_MSG = "Dear %s %s, "
+			+ "\nwe are sorry to inform you that your requested booking can not be completed: Our partner informed us, that at least one of the proposed activities is already booked out." 
+			+ "\nWe hope that you are still interested in travelling with us! - You will receive a new offer soon!"
+			+ "\nYours sincerely," + "\nemTours TravelAgency";
 }
