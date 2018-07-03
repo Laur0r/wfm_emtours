@@ -948,11 +948,9 @@
     </laneSet>
   </process>
   <message id="Message_1pvh9nb" name="feedback" />
-<<<<<<< HEAD
   <message id="Message_0typ243" name="activityRecos" />
   <message id="Message_1qcyabp" name="unavailable" />
   <message id="Message_1ue6wq4" name="bookingandbill" />
-=======
   <message id="Message_0qb2cym" name="furtherCustomerInformation" />
   <message id="Message_0bhnh7l" name="Message_3t7aa9l" />
   <message id="Message_0bsgoei" name="bookingRequest" />
@@ -960,7 +958,6 @@
   <message id="Message_1i98nc5" name="customerRecommendationFeedback" />
   <message id="Message_0tjbr0i" name="customerIncorrectPayment" />
   <message id="Message_1qa4ter" name="customerPayment" />
->>>>>>> origin/spring-boot
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
       <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
