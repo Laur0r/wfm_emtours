@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Activity {
@@ -13,6 +14,8 @@ public class Activity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 	
+	@OneToMany
+	private Recommendation recommendation;
 	private String name;
 	private String location;
 	private float price;

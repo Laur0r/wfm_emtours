@@ -30,6 +30,7 @@ public class Recommendation {
 	private Collection<Activity> activities;
 	
 	private double cost;
+	private double activityCost;
 	
 	public Recommendation() {
 		
@@ -90,6 +91,12 @@ public class Recommendation {
 	}
 	public Integer getId() {
 		return id;
+	}
+	public double getActivityCost() {
+		return activityCost;
+	}
+	public void setActivityCost(double activityCost) {
+		this.activityCost = activityCost;
 	}
 
 }
