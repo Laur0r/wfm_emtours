@@ -621,7 +621,7 @@
       </extensionElements>
       <incoming>sid-F0D32138-3483-42F7-B82A-142E8ACD0318</incoming>
       <outgoing>SequenceFlow_0crrtbh</outgoing>
-      <messageEventDefinition id="sid-56c8b6c1-6e17-4434-9c2c-9dc2f6636313" />
+      <messageEventDefinition id="sid-56c8b6c1-6e17-4434-9c2c-9dc2f6636313" messageRef="Message_0typ243" />
     </intermediateCatchEvent>
     <dataStoreReference id="sid-D168A141-8AC1-46BB-B827-19E6E59F0E19" name="Recommendations DB" dataStoreRef="sid-97b17f29-c896-4be3-b82c-544eda2aa58b">
       <extensionElements>
@@ -737,7 +737,7 @@
       </extensionElements>
       <incoming>sid-0F92390E-E945-48F4-A643-5EB8B71763E2</incoming>
       <outgoing>sid-3B29BA3E-3152-402E-8961-1C15A9F59458</outgoing>
-      <messageEventDefinition id="sid-44fe6fc8-622e-4c9a-b673-68fdd15059b4" />
+      <messageEventDefinition id="sid-44fe6fc8-622e-4c9a-b673-68fdd15059b4" messageRef="Message_1qcyabp" />
     </intermediateCatchEvent>
     <sendTask id="sid-563594AE-FCA3-4BEF-BE8B-7CA4ECA769F7" name="Inform Customer about unavailability" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Customer.UnavailabilityMessageDelegate">
       <extensionElements>
@@ -769,7 +769,7 @@
       </extensionElements>
       <incoming>sid-662FC740-398D-401B-B0A5-44BFA0388FF5</incoming>
       <outgoing>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</outgoing>
-      <messageEventDefinition id="sid-ce45fe63-a7fb-4b0f-a5c5-5fa81caa86e2" />
+      <messageEventDefinition id="sid-ce45fe63-a7fb-4b0f-a5c5-5fa81caa86e2" messageRef="Message_1ue6wq4" />
     </intermediateCatchEvent>
     <sequenceFlow id="sid-70853680-F8D7-4E05-A96D-7A699F4F7D09" name="" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="ExclusiveGateway_00f10q4">
       <extensionElements>
@@ -948,6 +948,9 @@
     </laneSet>
   </process>
   <message id="Message_1pvh9nb" name="feedback" />
+  <message id="Message_0typ243" name="activityRecos" />
+  <message id="Message_1qcyabp" name="unavailable" />
+  <message id="Message_1ue6wq4" name="bookingandbill" />
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
       <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
