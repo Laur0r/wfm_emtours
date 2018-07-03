@@ -362,7 +362,7 @@
       </extensionElements>
       <incoming>sid-AA5DE1F1-181C-431E-9941-4D62AB150572</incoming>
       <outgoing>sid-F6FA6098-4126-4D97-BBC0-D1F58BDBE35A</outgoing>
-      <messageEventDefinition id="sid-fbf1d0eb-b05d-40e6-9100-e54e095b61e5" />
+      <messageEventDefinition id="sid-fbf1d0eb-b05d-40e6-9100-e54e095b61e5" messageRef="Message_1i98nc5" />
     </intermediateCatchEvent>
     <sendTask id="sid-32878A8F-33E8-477C-9463-1D32F1604805" name="Send cancellation Notification" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.CancellationNotificationMessageDelegate">
       <extensionElements>
@@ -580,7 +580,7 @@
       </extensionElements>
       <incoming>sid-008C8E38-9039-450F-B4FC-D76D9C7E18F8</incoming>
       <outgoing>sid-FC181170-D4DC-4111-869D-DDAB0743E827</outgoing>
-      <messageEventDefinition id="sid-f1acefed-22bf-4237-82e9-8e38a953209d" />
+      <messageEventDefinition id="sid-f1acefed-22bf-4237-82e9-8e38a953209d" messageRef="Message_0qb2cym" />
     </intermediateCatchEvent>
     <sendTask id="sid-EB079445-E16E-45D7-93A1-27B7331F67C5" name="Send further information" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.CustomerInformationMessageDelegate">
       <extensionElements>
@@ -678,7 +678,7 @@
       </extensionElements>
       <incoming>sid-698BB9E9-4CC6-48C6-945C-E7429EA05A0E</incoming>
       <outgoing>sid-B9ACFE6D-3920-407A-A771-6F89BA762015</outgoing>
-      <messageEventDefinition id="sid-00cec912-2b69-481d-bc8c-7f09ace90acb" />
+      <messageEventDefinition id="sid-00cec912-2b69-481d-bc8c-7f09ace90acb" messageRef="Message_1f2zcau" />
     </intermediateCatchEvent>
     <intermediateCatchEvent id="sid-ACF5955F-6B83-44D6-9126-45C7EF3FD06B" name="Booking request received">
       <extensionElements>
@@ -688,7 +688,7 @@
       </extensionElements>
       <incoming>sid-0E46F452-DAFC-4631-8EAF-B2A26A8BBBA7</incoming>
       <outgoing>sid-B5579E73-BD40-4E35-A34A-66F25A52F823</outgoing>
-      <messageEventDefinition id="sid-ce4d9790-ab92-41e9-979c-92dca4bbab11" />
+      <messageEventDefinition id="sid-ce4d9790-ab92-41e9-979c-92dca4bbab11" messageRef="Message_0bsgoei" />
     </intermediateCatchEvent>
     <intermediateCatchEvent id="sid-F456C265-B716-4BA0-974B-DE568579AE45" name="30 days">
       <extensionElements>
@@ -824,7 +824,7 @@
     <intermediateCatchEvent id="IntermediateThrowEvent_1u2sjtp" name="Incorrect payment received">
       <incoming>SequenceFlow_1ess3z8</incoming>
       <outgoing>SequenceFlow_1fmla0x</outgoing>
-      <messageEventDefinition />
+      <messageEventDefinition messageRef="Message_0tjbr0i" />
     </intermediateCatchEvent>
     <intermediateCatchEvent id="IntermediateThrowEvent_10w7ls3" name="14 Days no payment received">
       <incoming>SequenceFlow_1l4yfrp</incoming>
@@ -900,7 +900,7 @@
       </extensionElements>
       <incoming>SequenceFlow_12leeyv</incoming>
       <outgoing>sid-2F40EB1D-5621-4D1B-AABC-D45C941DDDBF</outgoing>
-      <messageEventDefinition id="sid-fa1b7ac1-47e0-4060-9d7e-0a509895916e" />
+      <messageEventDefinition id="sid-fa1b7ac1-47e0-4060-9d7e-0a509895916e" messageRef="Message_1qa4ter" />
     </intermediateCatchEvent>
     <dataStoreReference id="sid-EF94DAEF-A518-4173-A0C4-6DA9F6A9F337" name="Recommendations DB" dataStoreRef="sid-97b17f29-c896-4be3-b82c-544eda2aa58b">
       <extensionElements>
@@ -948,9 +948,19 @@
     </laneSet>
   </process>
   <message id="Message_1pvh9nb" name="feedback" />
+<<<<<<< HEAD
   <message id="Message_0typ243" name="activityRecos" />
   <message id="Message_1qcyabp" name="unavailable" />
   <message id="Message_1ue6wq4" name="bookingandbill" />
+=======
+  <message id="Message_0qb2cym" name="furtherCustomerInformation" />
+  <message id="Message_0bhnh7l" name="Message_3t7aa9l" />
+  <message id="Message_0bsgoei" name="bookingRequest" />
+  <message id="Message_1f2zcau" name="bookingCancellation" />
+  <message id="Message_1i98nc5" name="customerRecommendationFeedback" />
+  <message id="Message_0tjbr0i" name="customerIncorrectPayment" />
+  <message id="Message_1qa4ter" name="customerPayment" />
+>>>>>>> origin/spring-boot
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
       <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
