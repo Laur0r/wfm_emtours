@@ -2,9 +2,13 @@ package org.camunda.bpm.sendMessages.Funspark;
 
 import java.util.Date;
 
+import org.camunda.bpm.entities.Customer;
+
 public class FunsparkRecommendation {
 
 	private int recommendationId;
+	private String executionId;
+	private Customer customer;
 	private Date start;
 	private Date end;
 	private String destination;
@@ -53,5 +57,17 @@ public class FunsparkRecommendation {
 	}
 	public void setEnd(Date end) {
 		this.end = end;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public String getExecutionId() {
+		return executionId;
+	}
+	public void setExecutionId(String executionId) {
+		this.executionId = executionId;
 	}
 }
