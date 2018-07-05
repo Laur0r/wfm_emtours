@@ -64,7 +64,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://10.65.11.103:8080/funspark/orderRecommendations");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://10.68.8.236:8080/funspark/orderRecommendations");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);

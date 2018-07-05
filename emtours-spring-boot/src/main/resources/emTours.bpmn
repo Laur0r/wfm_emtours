@@ -321,7 +321,7 @@
         <signavio:signavioLabel bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="31.0" y="-8.0" />
       </extensionElements>
     </dataStoreReference>
-    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
       <incoming>sid-0259508E-9C63-4488-9F84-11453102A3EA</incoming>
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
