@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>emTours | Your awesome booking tool</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/form-basic.css">
+<link rel="icon" href="/img/favicon.png">
+  </head>
+<body>
+  <div class="form-basic"> <h1 style="color: rgb(83,153,245);", align="center">emTours - Your booking portal!</h1>
+    <p style="color: #555;", align="center">Find your perfect destination! Help us get to know you and fill out the following information
+    </p>
+    <div id="Chill-out" class="tabcontent">
+
+      <h3>I want chilling!</h3>
+
+      <p>Sun, sea, golden sand! Give your mind some break!</p>
+
+      <img src="Meer1.jpg" alt="Meer" height="100" width="150">
+
+    </div>
+    <div id="Adventure" class="tabcontent">
+
+      <h3>I want adventure!</h3>
+
+      <p>Liberate your inner Indiana Jones and start the discovery of your lifetime!</p>
+      <img src="Adventure.jpeg" alt="Adventure" height="100" width="150">
+
+    </div>
+    <div id="Romance" class="tabcontent">
+
+      <h3>I want romance!</h3>
+
+      <p>Fancy hotels, thousand roses and candlelight awaits you.</p>
+      <img src="Romance.jpeg" alt="Romance" height="100" width="150">
+    </div>
+    <div id="Action" class="tabcontent">
+
+      <h3>I want action!</h3>
+
+      <p>No matter how fast, or deep, or high. We get you there!</p>
+<img src="Action.jpeg" alt="Action" height="100" width="150">
+    </div>
+    <div id="Family" class="tabcontent">
+
+      <h3>I want family!</h3>
+
+      <p>No matter how fast, or deep, or high. We get you there!</p>
+<img src="Family.jpeg" alt="Family" height="100" width="150">
+    </div>
+    <button class="tablink" onclick="openCity('Chill-out', this, '#188DF7')" id="defaultOpen">Chill-out</button>
+    <button class="tablink" onclick="openCity('Adventure', this, '#cc6b00')">Adventure</button>
+
+    <button class="tablink" onclick="openCity('Romance', this, '#bd0000')">Romance</button>
+
+    <button class="tablink" onclick="openCity('Action', this, '#217521')">Action</button>
+
+    <button class="tablink" onclick="openCity('Family', this, '#ff5c00')">Family</button>
+    <br><br><br><br><br><br>
+    <form id="form1" action="Try.php", method="post">
+    <div class="form-row">
+      <label>
+        <span>First name: </span>
+        <input type="text" name="fname" required>
+      </label>
+      <label>
+        <span>Last name:</span>
+        <input type="text" name="lname" required>
+      </label>
+    </div>
+    <div class = "form-row">
+      <label>
+        <span>Home Address:</span>
+        <input type="text" name="adress" required>
+        <span>ZIP Code:</span>
+        <input type="text" pattern="[0-9]{5}" title="Five digit zip code" name="zip" required>
+        <span>City: </span>
+        <input type="text" name="city" required>
+        <span>Country:</span>
+        <input type="text" name="country" required>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>
+        <span>Birthday</span>
+        <input type = "date" required  name="bday">
+      </label>
+    </div>
+    <div  class="form-row">
+      <label>
+        <span>E-Mail Adress</span>
+        <input type = "email" name = "email" required>
+      </label>
+    </div>
+    <input type="submit" value="Next"/>
+  </form>
+</div>
+  <script>function myFunction() {    document.getElementById("frm1").submit();}</script>
+  <script>
+function openCity(cityName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(cityName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
+
+
+</body>
+</html>
