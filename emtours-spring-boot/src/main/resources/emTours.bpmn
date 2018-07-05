@@ -124,7 +124,7 @@
     <messageFlow id="MessageFlow_02d4617" sourceRef="Participant_1l66cs8" targetRef="sid-51FE67A7-268F-4EF3-9BF4-FE1E70706A9E" />
     <messageFlow id="MessageFlow_0v0uyjv" sourceRef="Participant_1l66cs8" targetRef="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" />
   </collaboration>
-  <process id="sid-D8CB8470-0604-4B41-A465-D408FCB086DC" name="emTours" processType="None" isClosed="false" isExecutable="false">
+  <process id="sid-D8CB8470-0604-4B41-A465-D408FCB086DC" name="emTours" processType="None" isClosed="false" isExecutable="true">
     <extensionElements />
     <laneSet id="sid-55a11a90-5f05-4ee6-a4a0-53d99b97040f">
       <lane id="sid-25B71532-DE93-49F3-8F13-ADDE4C9250AC">
@@ -187,9 +187,9 @@
         <signavio:signavioMetaData metaKey="vorgngerprozesse" metaValue="[]" />
       </extensionElements>
       <outgoing>sid-DD386AF0-AABD-4015-804D-3FFC2D4555A9</outgoing>
-      <messageEventDefinition id="sid-63b90d7b-bd7f-4503-a5dc-06d38c18127a" />
+      <messageEventDefinition id="sid-63b90d7b-bd7f-4503-a5dc-06d38c18127a" messageRef="Message_0n59nmp" />
     </startEvent>
-    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService">
+    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService" camunda:formKey="embedded:app:forms/validateInformation.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -272,6 +272,7 @@
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${approved}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="sid-C31B6D43-B745-4628-B961-E267B53708F0" name="" sourceRef="sid-864E52BF-24DF-4DC4-A4B5-D5AD332E4CE2" targetRef="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2">
       <extensionElements>
@@ -287,6 +288,7 @@
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6" name="" sourceRef="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2" targetRef="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D">
       <extensionElements>
@@ -308,7 +310,9 @@
       <incoming>SequenceFlow_13hampo</incoming>
       <outgoing>sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6</outgoing>
     </exclusiveGateway>
-    <sequenceFlow id="SequenceFlow_13hampo" sourceRef="ExclusiveGateway_0mqughd" targetRef="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2" />
+    <sequenceFlow id="SequenceFlow_13hampo" sourceRef="ExclusiveGateway_0mqughd" targetRef="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2">
+      <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_0sokcmm" sourceRef="Task_0qnh7sl" targetRef="ExclusiveGateway_0mqughd" />
     <dataStoreReference id="sid-8EFA5E71-D00D-471E-A4E6-FA1B0537549E" name="Customer DB" dataStoreRef="sid-6b06e96d-ec81-4cdf-8e95-6284999f159d">
       <extensionElements>
@@ -317,7 +321,7 @@
         <signavio:signavioLabel bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="31.0" y="-8.0" />
       </extensionElements>
     </dataStoreReference>
-    <userTask id="Task_0qnh7sl" name="Review recommendations">
+    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/validateInformation.html">
       <incoming>sid-0259508E-9C63-4488-9F84-11453102A3EA</incoming>
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
@@ -399,7 +403,9 @@
       <incoming>sid-B39923B5-75CA-4F0D-B5D9-7C72B93E2009</incoming>
       <outgoing>sid-B64934B9-A670-4239-8EAC-D57A825314E2</outgoing>
     </exclusiveGateway>
-    <sequenceFlow id="SequenceFlow_1ws6vpg" sourceRef="ExclusiveGateway_0mqughd" targetRef="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" />
+    <sequenceFlow id="SequenceFlow_1ws6vpg" sourceRef="ExclusiveGateway_0mqughd" targetRef="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A">
+      <conditionExpression xsi:type="tFormalExpression">${approved}</conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="sid-55A891A8-1D52-402D-93DF-D4C8497CC9BF" name="" sourceRef="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" targetRef="sid-43255A06-4863-4570-B9E9-9CA5DF933891">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -789,7 +795,7 @@
     <sequenceFlow id="SequenceFlow_1wfpa26" sourceRef="IntermediateThrowEvent_10w7ls3" targetRef="ExclusiveGateway_1idz85h" />
     <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg" />
     <sequenceFlow id="SequenceFlow_0pr328a" sourceRef="Task_0vih4zg" targetRef="ExclusiveGateway_09vp1w4" />
-    <userTask id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" name="Book holiday" implementation="##WebService">
+    <userTask id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" name="Book holiday" implementation="##WebService" camunda:formKey="embedded:app:forms/validateInformation.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -838,7 +844,7 @@
       <incoming>SequenceFlow_1wfpa26</incoming>
       <outgoing>SequenceFlow_09rrwss</outgoing>
     </exclusiveGateway>
-    <userTask id="Task_0vih4zg" name="Invoke legal action">
+    <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/validateInformation.html">
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
@@ -958,6 +964,7 @@
   <message id="Message_1i98nc5" name="customerRecommendationFeedback" />
   <message id="Message_0tjbr0i" name="customerIncorrectPayment" />
   <message id="Message_1qa4ter" name="customerPayment" />
+  <message id="Message_0n59nmp" name="Incoming Information" />
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
       <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
@@ -1324,7 +1331,7 @@
         <omgdi:waypoint x="405" y="510.40487804878046" />
         <omgdi:waypoint x="438" y="510.2439024390244" />
         <bpmndi:BPMNLabel labelStyle="sid-717e0566-9046-4d94-881e-3fa5b7c4b07c">
-          <omgdc:Bounds x="412.812350403685" y="490.2721414486791" width="19.344010048909524" height="12.093929565862652" />
+          <omgdc:Bounds x="414" y="490" width="18" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-C31B6D43-B745-4628-B961-E267B53708F0_gui" bpmnElement="sid-C31B6D43-B745-4628-B961-E267B53708F0">
@@ -1371,7 +1378,7 @@
         <omgdi:waypoint x="385" y="490" />
         <omgdi:waypoint x="385" y="409.5" />
         <bpmndi:BPMNLabel labelStyle="sid-717e0566-9046-4d94-881e-3fa5b7c4b07c">
-          <omgdc:Bounds x="365" y="467.8428649902344" width="12" height="14.657135009765625" />
+          <omgdc:Bounds x="364" y="468" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6_gui" bpmnElement="sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6">
