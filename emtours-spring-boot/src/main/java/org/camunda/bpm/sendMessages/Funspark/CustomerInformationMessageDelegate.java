@@ -4,12 +4,13 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.camunda.bpm.entities.Recommendation;
-import org.camunda.bpm.entities.CustomerRequest;
-import org.camunda.bpm.emtours.CustomerRequestRepository; 
+import org.camunda.bpm.emtours.CustomerRequestRepository;
 import org.camunda.bpm.emtours.RecommendationRepository;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.entities.CustomerRequest;
+import org.camunda.bpm.entities.Recommendation;
+import org.camunda.bpm.properties.EmToursConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,6 +29,8 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	
 	@Autowired(required = true)
 	public CustomerRequestRepository requestrepository;
+	
+//	private EmToursConfigurationProperties config;
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
@@ -58,11 +61,15 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://10.65.11.103:8080/funspark/orderRecommendations");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	}
+	
+//	private String createUrlForIncomingInformation() {
+//		return config.getService().getFunspark().getLocation();
+//	}
 }

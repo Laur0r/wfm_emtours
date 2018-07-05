@@ -180,7 +180,7 @@
         <flowNodeRef>sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D</flowNodeRef>
       </lane>
     </laneSet>
-    <startEvent id="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" name="Basic information&#10;received">
+    <startEvent id="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" name="Basic information&#10;received" camunda:formKey="embedded:app:forms/Test_1.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -189,7 +189,7 @@
       <outgoing>sid-DD386AF0-AABD-4015-804D-3FFC2D4555A9</outgoing>
       <messageEventDefinition id="sid-63b90d7b-bd7f-4503-a5dc-06d38c18127a" messageRef="Message_0n59nmp" />
     </startEvent>
-    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService" camunda:formKey="embedded:app:forms/Test_2.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -531,7 +531,7 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sendTask id="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" name="&#10;Send customer information and recommendations" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.FunsparkRecommendation">
+    <sendTask id="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" name="&#10;Send customer information and recommendations" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.CustomerInformationMessageDelegate">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
