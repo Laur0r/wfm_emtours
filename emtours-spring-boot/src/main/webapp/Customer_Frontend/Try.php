@@ -16,6 +16,7 @@
     $_SESSION["country"] = $_POST["country"];
     $_SESSION["bday"] = $_POST["bday"];
     $_SESSION["email"] = $_POST["email"];
+    $_SESSION["gender"] = $_POST["gender"];
   ?>
   <div class="form-basic">
     <h1 style="color: rgb(83,153,245);", align="center">emTours - Your booking portal!</h1>

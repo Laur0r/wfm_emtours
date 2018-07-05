@@ -31,6 +31,11 @@ $_SESSION["return"] = $_POST["return"];
   <span class="view-field"><?php echo $_SESSION["lname"];?></span>
 </div>
 <div class="view-row">
+  <span> Gender </span>
+  <span class="view-field"><?php echo $_SESSION["gender"];?></span>
+</div>
+
+<div class="view-row">
   <span> Home Adress </span>
   <span class="view-field"><?php echo $_SESSION["adress"];?></span>
 </div>
