@@ -1,0 +1,134 @@
+<script cam-script type="text/form-script">
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.dateFieldOpened = true;
+  };
+</script>
+<form role="form" name="form">
+  <div class="form-group">
+    <label for="name">First Name</label>
+    <input required
+           cam-variable-name="name"
+           cam-variable-type="String"
+           class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input cam-variable-name="lname"
+           cam-variable-type="String"
+           class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="email">E-Mail</label>
+    <input cam-variable-name="email"
+           cam-variable-type="String"
+           class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="adress">Adress</label>
+    <input cam-variable-name="adress"
+           cam-variable-type="String"
+           class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="zip">ZIP</label>
+    <input cam-variable-name="zip"
+           cam-variable-type="String"
+           class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input cam-variable-name="city"
+           cam-variable-type="String"
+           class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input cam-variable-name="country"
+           cam-variable-type="String"
+           class="form-control"/>
+</div>
+<div class="form-group">
+  <label for="climate">Climate Preference</label>
+  <input cam-variable-name="climate"
+         cam-variable-type="String"
+         class="form-control"/>
+</div>
+<div class="form-group">
+  <label for="experience">Experience Preference</label>
+  <input cam-variable-name="experience"
+         cam-variable-type="String"
+         class="form-control"/>
+</div>
+<div class="form-group">
+  <label for="activities">Number of Activities</label>
+  <input cam-variable-name="activities"
+         cam-variable-type="Integer"
+         class="form-control"/>
+</div>
+<div class="form-group">
+  <label for="budget">Budget</label>
+  <input cam-variable-name="budget"
+         cam-variable-type="String"
+         class="form-control"/>
+</div>
+<div class="form-group">
+  <label for="persons">Number of Persons</label>
+  <input cam-variable-name="persons"
+         cam-variable-type="Integer"
+         class="form-control"/>
+</div>
+<p class="input-group">
+  <label for="birthday">Birthday</label>
+  <input type="text"
+       cam-variable-name="birthday"
+       cam-variable-type="Date"
+       class="form-control"
+       datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+       is-open="dateFieldOpened" />
+
+  <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+</p>
+<p class="input-group">
+  <label for="arrival">Arrival Date</label>
+  <input type="text"
+       cam-variable-name="arrival"
+       cam-variable-type="Date"
+       class="form-control"
+       datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+       is-open="dateFieldOpened" />
+
+  <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+</p>
+<p class="input-group">
+  <label for="departure">Departure Date</label>
+  <input type="text"
+       cam-variable-name="departure"
+       cam-variable-type="Date"
+       class="form-control"
+       datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+       is-open="dateFieldOpened" />
+
+  <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+</p>
+</form>
