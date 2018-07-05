@@ -48,7 +48,7 @@ public class GenerateRecommendationDelegate implements JavaDelegate {
 		int index = ThreadLocalRandom.current().nextInt(dmnresult.size());
 		Map<String, Object> accommodation = dmnresult.get(index);
 	    String hotel = (String) accommodation.get((Object)"hotel");
-	    String location = (String) accommodation.get((Object)"location");
+	    String destination = (String) accommodation.get((Object)"location");
 	    
 	    Date arrival = custrequest.getArrival();
 	    Date departure = custrequest.getDeparture();
@@ -57,16 +57,10 @@ public class GenerateRecommendationDelegate implements JavaDelegate {
 	    Integer hotelcost = (Integer) accommodation.get((Object)"price");
 	    cost = cost + hotelcost*custrequest.getNumberPeople()*days;
 	    
-	    Recommendation recommendation = new Recommendation();
-	    recommendation.setDestination(location);
-	    recommendation.setHotel(hotel);
-	    recommendation.setArrival(custrequest.getArrival());
-	    recommendation.setDeparture(custrequest.getDeparture());
-	    recommendation.setNumberPeople(custrequest.getNumberPeople());
-	    recommendation.setRequest(custrequest);
-	    recommendation.setCost(cost);
-	    recommendation = recomrepository.save(recommendation);
-	    execution.setVariable("recommendationId", recommendation.getId());
+	    execution.setVariable("cost", cost);
+	    execution.setVariable("destination", destination);
+	    execution.setVariable("hotel", hotel);
+	    
 	    System.out.println("DMN-Result: "+dmnresult);
 
 	}

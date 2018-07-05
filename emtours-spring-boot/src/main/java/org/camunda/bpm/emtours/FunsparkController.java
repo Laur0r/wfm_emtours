@@ -41,7 +41,7 @@ public class FunsparkController implements ExecutionListener{
 	}
 	 
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST)
-	public String receiveFeedback(String feedback) {
+	public String receiveFeedback(String feedback, String executionId) {
 		System.out.println("received Feedback: "+feedback);
 		if(feedback.equals("yes")) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);

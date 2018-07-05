@@ -39,6 +39,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
 			CustomerRequest custrequest = custrequesto.get();
 			
+			System.out.println("recommendationId in CustomerInfSend: "+execution.getVariable("recommendationId"));
 			int recommendationId = (Integer) execution.getVariable("recommendationId");
 			Recommendation recommendation = recommendationrepository.findById(recommendationId).get();
 			
@@ -64,7 +65,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://10.65.11.103:8080/funspark/orderRecommendations");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
