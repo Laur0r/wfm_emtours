@@ -75,10 +75,11 @@ public class FunsparkController implements ExecutionListener{
 		return "";
 	}
 	
-	@RequestMapping(value="/booking&bill", method=RequestMethod.POST)
+	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
 	public String receiveBookingAndBill(Collection<Activity> activityBooking, double costs) {
 		System.out.println("received booking confirmation and bill from FunSpark");
 		
+		//TODO activities date update
 		int recommendationId = (Integer)camunda.getRuntimeService().getVariable(executionId, "recommendationId");
 		Optional<Recommendation> recommendationo = recoRepository.findById(recommendationId);
 		Recommendation recommendation = recommendationo.get();
@@ -94,8 +95,6 @@ public class FunsparkController implements ExecutionListener{
 	@Override
 	public void notify(DelegateExecution execution) throws Exception {
 		System.out.println("activated Listener!!!!!!!!!!!!!!!!!!");
-		this.executionId = execution.getId();
-		
+		this.executionId = execution.getId();	
 	}
-
 }

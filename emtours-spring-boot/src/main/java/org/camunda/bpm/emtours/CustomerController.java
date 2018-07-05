@@ -20,7 +20,6 @@ public class CustomerController implements ExecutionListener{
   
   @Autowired
   private ProcessEngine camunda;
-  private String executionId;
   @Autowired(required = true)
   public CustomerRequestRepository repository;
 
@@ -49,7 +48,7 @@ public class CustomerController implements ExecutionListener{
   }
   
   @RequestMapping(value="/furtherCustomerInformation", method=RequestMethod.POST)
-	public String receiveFurtherInformation(Integer numberActivities, String experienceType) {
+	public String receiveFurtherInformation(Integer numberActivities, String experienceType, String executionId) {
 		try {
 			Integer requestId = (Integer) camunda.getRuntimeService().getVariable(executionId, "requestId");
 			Optional<CustomerRequest> customero = repository.findById(requestId);
@@ -67,31 +66,31 @@ public class CustomerController implements ExecutionListener{
   }
   
   @RequestMapping(value="/CustomerBookingRequest", method=RequestMethod.POST)
-	public String receiveBookingRequest(String Bookingrequest) {
+	public String receiveBookingRequest(String Bookingrequest, String executionId) {
 		camunda.getRuntimeService().messageEventReceived("bookingRequest", executionId);
 		return "";
 	}
   
   @RequestMapping(value="/CustomerBookingCancellation", method=RequestMethod.POST)
-	public String receiveCancellation(String Bookingcancellation) {
+	public String receiveCancellation(String Bookingcancellation, String executionId) {
 		camunda.getRuntimeService().messageEventReceived("bookingCancellation", executionId);
 		return "";
 	}
   
   @RequestMapping(value="/CustomerRecommendationFeedback", method=RequestMethod.POST)
-	public String receiveRecommendationFeedback(String Bookingrequest) {
+	public String receiveRecommendationFeedback(String Bookingrequest, String executionId) {
 		camunda.getRuntimeService().messageEventReceived("customerRecommendationFeedback", executionId);
 		return "";
 	}
   
   @RequestMapping(value="/CustomerPayment", method=RequestMethod.POST)
-	public String receivePayment(String payment) {
+	public String receivePayment(String payment, String executionId) {
 		camunda.getRuntimeService().messageEventReceived("customerPayment", executionId);
 		return "";
 	}
   
   @RequestMapping(value="/CustomerIncorrectPayment", method=RequestMethod.POST)
-	public String receiveIncorrectPayment(String payment) {
+	public String receiveIncorrectPayment(String payment, String executionId) {
 		camunda.getRuntimeService().messageEventReceived("customerIncorrectPayment", executionId);
 		return "";
 	}
@@ -99,7 +98,6 @@ public class CustomerController implements ExecutionListener{
   @Override
   public void notify(DelegateExecution execution) throws Exception {
 	System.out.println("activated Listener!!!!!!!!!!!!!!!!!!");
-	this.executionId = execution.getId();
 		
   }
 }

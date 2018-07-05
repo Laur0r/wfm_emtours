@@ -34,6 +34,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
+			// TODO updated object
 			int requestId = (Integer) execution.getVariable("requestId");
 			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
 			CustomerRequest custrequest = custrequesto.get();
@@ -43,6 +44,8 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
 			postElement.setRecommendationId((Integer) execution.getVariable("recommendationId"));
+			postElement.setExecutionId(execution.getId());
+			postElement.setCustomer(custrequest.getCustomer());
 			postElement.setDestination(recommendation.getDestination());
 			postElement.setStart(recommendation.getArrival());
 			postElement.setEnd(recommendation.getDeparture());
