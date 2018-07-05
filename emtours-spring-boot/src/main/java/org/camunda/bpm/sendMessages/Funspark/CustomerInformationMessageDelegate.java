@@ -42,6 +42,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
 			postElement.setRecommendationId((Integer) execution.getVariable("recommendationId"));
 			postElement.setExecutionId(execution.getId());
+			postElement.setCustomer(custrequest.getCustomer());
 			postElement.setDestination(recommendation.getDestination());
 			postElement.setStart(recommendation.getArrival());
 			postElement.setEnd(recommendation.getDeparture());
