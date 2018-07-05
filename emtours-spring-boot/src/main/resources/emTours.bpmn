@@ -308,6 +308,10 @@
         <signavio:signavioLabel bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="31.0" y="-8.0" />
       </extensionElements>
     </dataStoreReference>
+    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
+      <incoming>sid-0259508E-9C63-4488-9F84-11453102A3EA</incoming>
+      <outgoing>SequenceFlow_0sokcmm</outgoing>
+    </userTask>
     <exclusiveGateway id="sid-54F42652-DE4C-4CF7-B272-C215E0284BEE" name="What type of feedback?" gatewayDirection="Diverging">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
@@ -938,7 +942,7 @@
       <incoming>SequenceFlow_1ws6vpg</incoming>
       <outgoing>SequenceFlow_1326izm</outgoing>
     </serviceTask>
-    <serviceTask id="Task_0lso30v" name="GenerateÂ " camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
+    <serviceTask id="Task_0lso30v" name="Generate " camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
       <incoming>SequenceFlow_0x7b0c4</incoming>
       <outgoing>SequenceFlow_1mdb7fh</outgoing>
     </serviceTask>

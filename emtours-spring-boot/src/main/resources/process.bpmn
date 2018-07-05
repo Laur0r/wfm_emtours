@@ -10,7 +10,7 @@
       <bpmn:outgoing>SequenceFlow_14yw1qo</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="EndEvent_10dyw6k" name="End Process">
-      <bpmn:incoming>SequenceFlow_1nqrbg0</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_155v4g2</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_14yw1qo" sourceRef="Task_0yqal0b" targetRef="ExclusiveGateway_02ef6hr" />
     <bpmn:sequenceFlow id="SequenceFlow_0tewkgc" sourceRef="Task_1u1k4le" targetRef="Task_059y935" />
@@ -50,13 +50,19 @@
       <bpmn:incoming>SequenceFlow_00n87d9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ejmt3r</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1nqrbg0" sourceRef="Task_07fxmtr" targetRef="EndEvent_10dyw6k" />
+    <bpmn:sequenceFlow id="SequenceFlow_1nqrbg0" sourceRef="Task_07fxmtr" targetRef="IntermediateThrowEvent_1aniokc" />
     <bpmn:sequenceFlow id="SequenceFlow_1ejmt3r" sourceRef="Task_0o9q7ay" targetRef="Task_19xdw5s" />
     <bpmn:sendTask id="Task_19xdw5s" name="BookingConfirmation" camunda:class="org.camunda.bpm.sendMessages.Customer.BookingConfirmationMessageDelegate">
       <bpmn:incoming>SequenceFlow_1ejmt3r</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0vpep7d</bpmn:outgoing>
     </bpmn:sendTask>
     <bpmn:sequenceFlow id="SequenceFlow_0vpep7d" sourceRef="Task_19xdw5s" targetRef="Task_07fxmtr" />
+    <bpmn:sequenceFlow id="SequenceFlow_155v4g2" sourceRef="IntermediateThrowEvent_1aniokc" targetRef="EndEvent_10dyw6k" />
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1aniokc" name="Feedback received">
+      <bpmn:incoming>SequenceFlow_1nqrbg0</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_155v4g2</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_1otb6m7" />
+    </bpmn:intermediateCatchEvent>
   </bpmn:process>
   <bpmn:message id="Message_1otb6m7" name="feedback" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -130,7 +136,7 @@
         <dc:Bounds x="523" y="257" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SendTask_1galm3w_di" bpmnElement="Task_07fxmtr">
-        <dc:Bounds x="1098" y="80" width="100" height="80" />
+        <dc:Bounds x="993" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BusinessRuleTask_0q8uu8u_di" bpmnElement="Task_059y935">
         <dc:Bounds x="608" y="80" width="100" height="80" />
@@ -139,8 +145,8 @@
         <dc:Bounds x="732" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1nqrbg0_di" bpmnElement="SequenceFlow_1nqrbg0">
-        <di:waypoint x="1198" y="120" />
-        <di:waypoint x="1221" y="120" />
+        <di:waypoint x="1093" y="120" />
+        <di:waypoint x="1139" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1ejmt3r_di" bpmnElement="SequenceFlow_1ejmt3r">
         <di:waypoint x="832" y="120" />
@@ -151,8 +157,15 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0vpep7d_di" bpmnElement="SequenceFlow_0vpep7d">
         <di:waypoint x="950" y="120" />
-        <di:waypoint x="1098" y="120" />
+        <di:waypoint x="993" y="120" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_155v4g2_di" bpmnElement="SequenceFlow_155v4g2">
+        <di:waypoint x="1175" y="120" />
+        <di:waypoint x="1221" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_11d64lg_di" bpmnElement="IntermediateThrowEvent_1aniokc">
+        <dc:Bounds x="1139" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
