@@ -1,0 +1,57 @@
+<form role="form" name="form">
+  <h2> Customer Prefenrences </h2>
+  <div class="form-group">
+    <label for="climate">Climate Preference</label>
+    <input cam-variable-name="climate"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="experience">Experience Preference</label>
+    <input cam-variable-name="experience"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="budget">Budget</label>
+    <input cam-variable-name="budget"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <h2> Generated Recommendation </h2>
+  <div class="form-group">
+    <label for="destination">Destination</label>
+    <input cam-variable-name="destination"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="hotel">Hotel</label>
+    <input cam-variable-name="hotel"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="flight">Flight</label>
+    <input cam-variable-name="flight"
+           cam-variable-type="String"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="cost">Cost</label>
+    <input cam-variable-name="cost"
+           cam-variable-type="double"
+           class="form-control"
+           readonly="true"/>
+  </div>
+  <div class="form-group">
+    <label for="approved">Is the Recommendation valid?</label>
+    <input type="checkbox" cam-variable-name="approved" cam-variable-type="Boolean" class="form-control" />
+  </div>
+</form>
