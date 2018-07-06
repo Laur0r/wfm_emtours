@@ -182,7 +182,7 @@
         <flowNodeRef>Task_0lso30v</flowNodeRef>
       </lane>
     </laneSet>
-    <startEvent id="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" name="Basic information&#10;received" camunda:formKey="embedded:app:forms/Test_1.html">
+    <startEvent id="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" name="Basic information&#10;received" camunda:formKey="embedded:app:forms/Incoming_Request.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -191,7 +191,7 @@
       <outgoing>sid-DD386AF0-AABD-4015-804D-3FFC2D4555A9</outgoing>
       <messageEventDefinition id="sid-63b90d7b-bd7f-4503-a5dc-06d38c18127a" messageRef="Message_0n59nmp" />
     </startEvent>
-    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService" camunda:formKey="embedded:app:forms/Test_2.html">
+    <userTask id="sid-60FB0B31-3405-4F0A-920E-57479A58AD83" name="Validate information" implementation="##WebService" camunda:formKey="embedded:app:forms/Validate_Information.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -308,7 +308,7 @@
         <signavio:signavioLabel bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="31.0" y="-8.0" />
       </extensionElements>
     </dataStoreReference>
-    <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
+    <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Review_Recommendation.html">
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
     <exclusiveGateway id="sid-54F42652-DE4C-4CF7-B272-C215E0284BEE" name="What type of feedback?" gatewayDirection="Diverging">
@@ -738,7 +738,7 @@
     <sequenceFlow id="SequenceFlow_1wfpa26" sourceRef="IntermediateThrowEvent_10w7ls3" targetRef="ExclusiveGateway_1idz85h" />
     <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg" />
     <sequenceFlow id="SequenceFlow_0pr328a" sourceRef="Task_0vih4zg" targetRef="ExclusiveGateway_09vp1w4" />
-    <userTask id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" name="Book holiday" implementation="##WebService" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" name="Book holiday" implementation="##WebService" camunda:formKey="embedded:app:forms/Book_Holiday.html">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -787,7 +787,7 @@
       <incoming>SequenceFlow_1wfpa26</incoming>
       <outgoing>SequenceFlow_09rrwss</outgoing>
     </exclusiveGateway>
-    <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/Invoke_Legal_Action.html">
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
