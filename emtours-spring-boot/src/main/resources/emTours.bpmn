@@ -174,7 +174,7 @@
         <flowNodeRef>sid-51FE67A7-268F-4EF3-9BF4-FE1E70706A9E</flowNodeRef>
         <flowNodeRef>sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2</flowNodeRef>
         <flowNodeRef>sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D</flowNodeRef>
-        <flowNodeRef>Task_0qnh7sl</flowNodeRef>
+        <flowNodeRef>Review_recommendation</flowNodeRef>
         <flowNodeRef>ExclusiveGateway_0mqughd</flowNodeRef>
         <flowNodeRef>sid-43255A06-4863-4570-B9E9-9CA5DF933891</flowNodeRef>
         <flowNodeRef>sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A</flowNodeRef>
@@ -300,7 +300,7 @@
     <sequenceFlow id="SequenceFlow_13hampo" sourceRef="ExclusiveGateway_0mqughd" targetRef="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2">
       <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_0sokcmm" sourceRef="Task_0qnh7sl" targetRef="ExclusiveGateway_0mqughd" />
+    <sequenceFlow id="SequenceFlow_0sokcmm" sourceRef="Review_recommendation" targetRef="ExclusiveGateway_0mqughd" />
     <dataStoreReference id="sid-8EFA5E71-D00D-471E-A4E6-FA1B0537549E" name="Customer DB" dataStoreRef="sid-6b06e96d-ec81-4cdf-8e95-6284999f159d">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
@@ -308,8 +308,7 @@
         <signavio:signavioLabel bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="31.0" y="-8.0" />
       </extensionElements>
     </dataStoreReference>
-    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
-      <incoming>sid-0259508E-9C63-4488-9F84-11453102A3EA</incoming>
+    <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
     <exclusiveGateway id="sid-54F42652-DE4C-4CF7-B272-C215E0284BEE" name="What type of feedback?" gatewayDirection="Diverging">
@@ -860,7 +859,7 @@
       </extensionElements>
     </dataStoreReference>
     <sequenceFlow id="SequenceFlow_0x7b0c4" sourceRef="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" targetRef="Task_0lso30v" />
-    <sequenceFlow id="SequenceFlow_1mdb7fh" sourceRef="Task_0lso30v" targetRef="Task_0qnh7sl" />
+    <sequenceFlow id="SequenceFlow_1mdb7fh" sourceRef="Task_0lso30v" targetRef="Review_recommendation" />
     <exclusiveGateway id="sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2" name="" gatewayDirection="Converging">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
@@ -890,10 +889,6 @@
         <targetRef>Property_1kms3n4</targetRef>
       </dataInputAssociation>
     </businessRuleTask>
-    <userTask id="Task_0qnh7sl" name="Review recommendations" camunda:formKey="embedded:app:forms/validateInformation.html">
-      <incoming>SequenceFlow_1mdb7fh</incoming>
-      <outgoing>SequenceFlow_0sokcmm</outgoing>
-    </userTask>
     <exclusiveGateway id="ExclusiveGateway_0mqughd">
       <incoming>SequenceFlow_0sokcmm</incoming>
       <outgoing>SequenceFlow_1ws6vpg</outgoing>
@@ -942,7 +937,7 @@
       <incoming>SequenceFlow_1ws6vpg</incoming>
       <outgoing>SequenceFlow_1326izm</outgoing>
     </serviceTask>
-    <serviceTask id="Task_0lso30v" name="Generate " camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
+    <serviceTask id="Task_0lso30v" name="Generateï¿½" camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
       <incoming>SequenceFlow_0x7b0c4</incoming>
       <outgoing>SequenceFlow_1mdb7fh</outgoing>
     </serviceTask>
@@ -1515,7 +1510,7 @@
         <omgdi:waypoint x="1885" y="510" />
         <omgdi:waypoint x="1931" y="510" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="UserTask_0toxxeh_di" bpmnElement="Task_0qnh7sl">
+      <bpmndi:BPMNShape id="UserTask_0toxxeh_di" bpmnElement="Review_recommendation">
         <omgdc:Bounds x="837" y="470" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_0mqughd_di" bpmnElement="ExclusiveGateway_0mqughd" isMarkerVisible="true">

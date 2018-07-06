@@ -9,6 +9,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.ExecutionListener;
 import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Recommendation;
+import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class FunsparkController implements ExecutionListener{
+public class FunsparkController {
 	
 	@Autowired
 	private ProcessEngine camunda;
-	private String executionId;
 	
 	@Autowired(required = true)
 	public ActivityRepository activityRepository;
@@ -41,7 +41,7 @@ public class FunsparkController implements ExecutionListener{
 	}
 	 
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST)
-	public String receiveFeedback(String feedback, String executionId) {
+	public String receiveFeedback(@RequestBody String feedback, String executionId) {
 		System.out.println("received Feedback: "+feedback);
 		if(feedback.equals("yes")) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);
@@ -55,7 +55,7 @@ public class FunsparkController implements ExecutionListener{
 	
 	
 	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST)
-	public String receiveActivityRecos(Collection<Activity> activityRecos) {
+	public String receiveActivityRecos(@RequestBody Collection<Activity> activityRecos, String executionId) {
 		System.out.println("received Activity Recommendations: "+ activityRecos);
 		for (Iterator<Activity> iterator = activityRecos.iterator(); iterator.hasNext();) {
 			Activity a = iterator.next();
@@ -67,7 +67,7 @@ public class FunsparkController implements ExecutionListener{
 	}
 	
 	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST)
-	public String receiveUnavailability(String unavailable) {
+	public String receiveUnavailability(@RequestBody String unavailable, String executionId) {
 		System.out.println("received unavailibility notification");
 		
 		camunda.getRuntimeService().messageEventReceived("unavailable", executionId);
@@ -76,7 +76,7 @@ public class FunsparkController implements ExecutionListener{
 	}
 	
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
-	public String receiveBookingAndBill(Collection<Activity> activityBooking, double costs) {
+	public String receiveBookingAndBill(@RequestBody Collection<ActivityDate> activityBooking, double costs, String executionId) {
 		System.out.println("received booking confirmation and bill from FunSpark");
 		
 		//TODO activities date update
@@ -89,12 +89,5 @@ public class FunsparkController implements ExecutionListener{
 		camunda.getRuntimeService().messageEventReceived("bookingandbill", executionId);
 		
 		return "";
-	}
-	
-
-	@Override
-	public void notify(DelegateExecution execution) throws Exception {
-		System.out.println("activated Listener!!!!!!!!!!!!!!!!!!");
-		this.executionId = execution.getId();	
 	}
 }
