@@ -1,0 +1,212 @@
+/* ************************************************************************************************************ */
+/* GENERAL HTML TAGS LIKE BODY, H1 ETC. */
+body, html {
+	background-color: #e2e1e1 !important;
+	font-family: "Lato";
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Oswald";
+}
+
+.custom-height {
+    height: 200px;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+    .custom-height {
+        height: 100px;
+    }
+}
+
+/* ************************************************************************************************************ */
+/* FOOTER */
+footer {
+    color: #525252 !important;
+    background-color: #e6e6e6 !important;
+}
+.footer-copyright {
+    background-color: #e6e6e6 !important;
+    text-align: right;
+}
+
+.footer-text {
+    color: #525252;
+}
+
+/* ************************************************************************************************************ */
+/* Preloader */
+.no-js #loader { 
+    display: none;
+}
+
+.js #loader {
+    display: block; 
+    position: absolute; 
+    left: 100px; 
+    top: 0;
+}
+
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../images/Preloader.gif) center no-repeat #fff;
+}
+
+/* ************************************************************************************************************ */
+/* MODAL WINDOW */
+.modal-row {
+    margin: 0 0 0 0 !important;
+    padding: 0 0 0 0 !important;
+}
+
+.modal {
+    overflow: visible;
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+    .modal {
+        width: 40%;
+        padding: 0 0 0 0;
+    }
+}
+
+/* ************************************************************************************************************ */
+/* GENERAL LAYOUT/STRUCTURE + COLORED BOXES */
+.header {
+    height: 50%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightcoral;
+    color:white;
+}
+
+.row {
+    text-align: center;
+    vertical-align: middle;
+}
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+    .row {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+.slider {
+    height: 1000px;
+}
+
+
+
+/* ************************************************************************************************************ */
+/* BUTTON + ICON COLORS */
+.icon-orange {
+    color: #d58600;
+}
+
+.icon-blue {
+    color: #056478;
+}
+.orange {
+    background-color: #d58600 !important;
+}
+
+.blue {
+    background-color: #056478 !important;
+}
+
+.btn-blue {
+    background-color: #056478 !important;
+}
+
+.btn-orange {
+    background-color: #d58600 !important;
+}
+
+
+.picker__date-display{
+    background-color: lightcoral;
+  }
+
+/* ************************************************************************************************************ */
+/* TEXT INPUT FIELDS */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: lightcoral !important;
+}
+
+.input-field input[type=email]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: lightcoral !important;
+}
+
+.input-field input[type=tel]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: lightcoral !important;
+}
+
+
+
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid lightcoral !important;
+    box-shadow: 0 1px 0 0 lightcoral !important;
+}
+
+.input-field input[type=email]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid lightcoral !important;
+    box-shadow: 0 1px 0 0 lightcoral !important;
+}
+
+.input-field input[type=tel]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid lightcoral !important;
+    box-shadow: 0 1px 0 0 lightcoral !important;
+}
+
+
+
+.input-field input[type=text].valid {
+    border-bottom: 1px solid lightcoral;
+    box-shadow: 0 1px 0 0 lightcoral;
+}
+
+.input-field input[type=email].valid {
+    border-bottom: 1px solid lightcoral;
+    box-shadow: 0 1px 0 0 lightcoral;
+}
+
+.input-field input[type=tel].valid {
+    border-bottom: 1px solid lightcoral;
+    box-shadow: 0 1px 0 0 lightcoral;
+}
+    
+
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid #b9161f;
+    box-shadow: 0 1px 0 0 #b9161f;
+}
+
+.input-field input[type=email].invalid {
+    border-bottom: 1px solid #b9161f;
+    box-shadow: 0 1px 0 0 #b9161f;
+}
+
+.input-field input[type=tel].invalid {
+    border-bottom: 1px solid #b9161f;
+    box-shadow: 0 1px 0 0 #b9161f;
+}
+
+.input-field .prefix.active {
+    color: lightcoral;
+}

@@ -737,7 +737,7 @@
       </extensionElements>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg">
-      <conditionExpression xsi:type="tFormalExpression">${!sufficient}</conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_0pr328a" sourceRef="Task_0vih4zg" targetRef="ExclusiveGateway_09vp1w4" />
     <sequenceFlow id="SequenceFlow_06fn8yg" sourceRef="ExclusiveGateway_09vp1w4" targetRef="sid-EA1F7DC1-6795-4401-925B-8FEB3CBDB5C6" />
@@ -848,7 +848,7 @@
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
     <sequenceFlow id="SequenceFlow_1p3nedn" sourceRef="ExclusiveGateway_1idz85h" targetRef="ExclusiveGateway_09vp1w4">
-      <conditionExpression xsi:type="tFormalExpression">${sufficient}</conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression">${approved}</conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="ExclusiveGateway_1idz85h">
       <incoming>SequenceFlow_1u7m5sk</incoming>
