@@ -1,5 +1,5 @@
 <form role="form" name="form">
-  <h2> Infringing Customer Information </h2>
+  <h2> Customer Information </h2>
   <div class="form-group">
     <label for="name"> First Name</label>
     <input cam-variable-name="name"
@@ -67,12 +67,10 @@
   <h2> Has the payment for this booking been received? </h2>
   <h3> Please make sure to check external bank accounts </h3>
   <div class="form-row">
+    <label for="approved">Yes, I checked the bank accounts and can confirm that the payment has been received </label>
     <input type="checkbox"
-           name="double"
-           value="yes"/>
-    <label>Yes, I checked the bank accounts and can confirm that the payment has been received </label>
-
-
-  </div>
+           cam-variable-name="approved"
+           cam-variable-type="approved"/>
+    </div>
 
 </form>
