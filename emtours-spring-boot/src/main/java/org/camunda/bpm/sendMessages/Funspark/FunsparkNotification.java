@@ -1,8 +1,9 @@
 package org.camunda.bpm.sendMessages.Funspark;
 
-public class CancellationNotification {
+public class FunsparkNotification {
 	
 	private int recommendationId;
+	private String executionId;
 	private boolean bookingNotification;
 	private boolean cancellationNotification;
 	private boolean refinementNotification;
@@ -31,6 +32,12 @@ public class CancellationNotification {
 	}
 	public void setRecommendationId(int recommendationId) {
 		this.recommendationId = recommendationId;
+	}
+	public String getExecutionId() {
+		return executionId;
+	}
+	public void setExecutionId(String executionId) {
+		this.executionId = executionId;
 	}
 
 }
