@@ -51,18 +51,33 @@ public class SaveInfosDelegate implements JavaDelegate {
 
 		//	validate customer already exist via email
 
+		List<Customer> customers = custrepository.find(name, birthday);
+		System.out.println("Abfrage 1:  " + customers.toString());
+		
+		Customer cust;
+		
+		if(customers.isEmpty() == true){			
+			cust = new Customer();
+			cust.setName(name);
+			cust.setGender(gender);
+			cust.setAddress(address);
+			cust.setZip (zip);
+			cust.setCity (city);
+			cust.setCountry (country);
+			cust.setBirthday (birthday);
+			cust.setEmail(email);
+			cust = custrepository.save(cust);
+		}
+		else{
+			cust = customers.get(0);
+		}
 
-		Customer cust = new Customer();
-		cust.setName(name);
-		cust.setGender(gender);
-		cust.setAddress(address);
-		cust.setZip (zip);
-		cust.setCity (city);
-		cust.setCountry (country);
-		cust.setBirthday (birthday);
-		cust.setEmail(email);
-		cust = custrepository.save(cust);
-
+		
+		List<Customer> customers2 = custrepository.find(name, birthday);
+		System.out.println("Abfrage 2:  " + customers2.toString());
+		
+		System.out.println("Test: " + cust.toString());
+		
 		CustomerRequest custrequest = new CustomerRequest();
 		custrequest.setArrival(arrival);
 		custrequest.setDeparture(departure);
