@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="css/materialize-stepper.min.css" rel="stylesheet" type="text/css">
   <link href="css/materialize.css" rel="stylesheet" type="text/css" />
   <link href="css/style.css" type="text/css" rel="stylesheet"/>
 </head>
@@ -37,45 +38,44 @@
         <!-- Slider for Travel Images -->
 
         <div class="slider">
-      <ul class="slides">
-          <li>
-              <img src="images/ocean.png"> <!-- random image -->
-              <div class="caption center-align">
-                  <h3>Sun, sea, golden sand.</h3>
-                  <h5 class="light grey-text text-lighten-3">Give your mind some break!</h5>
-              </div>
-          </li>
-          <li>
-              <img src="images/Familie.jpg"> <!-- random image -->
-              <div class="caption left-align">
-                  <h3>Just a smile away.</h3>
-                  <h5 class="light grey-text text-lighten-3">Where family fun begins!</h5>
-              </div>
-              </li>
-          <li>
-          <img src="images/Skydive.jpg"> <!-- random image -->
-          <div class="caption center-align">
-              <h3>The Thrill.</h3>
-              <h5 class="light grey-text text-lighten-3">No matter how fast, deep or high. We get you there!</h5>
-          </div>
-          </li>
-          <li>
-          <img src="images/Meer2.jpg"> <!-- random image -->
-          <div class="caption center-align">
-              <h3>Liberate your inner Indiana Jones.</h3>
-              <h5 class="light grey-text text-lighten-3">Start the discovery of your lifetime!</h5>
-          </div>
-          </li>
-          <li>
-          <img src="images/Paris.jpg"> <!-- random image -->
-          <div class="caption left-align">
-              <h3>Love matters!</h3>
-              <h5 class="light grey-text text-lighten-3">Fancy hotels, thousand roses and candlelight awaits you.</h5>
-          </div>
-          </li>
-      </ul>
-  </div>
-
+            <ul class="slides">
+                <li>
+                    <img src="images/ocean.png">
+                    <div class="caption center-align">
+                        <h3>Sun, sea, golden sand.</h3>
+                        <h5 class="light grey-text text-lighten-3">Give your mind some break!</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="images/romance.jpg">
+                    <div class="caption left-align">
+                        <h3>Love matters!</h3>
+                        <h5 class="light grey-text text-lighten-3">Fancy hotels, thousand roses and candlelight awaits you.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="images/mountain.jpg">
+                    <div class="caption center-align">
+                        <h3>Liberate your inner Indiana Jones.</h3>
+                        <h5 class="light grey-text text-lighten-3">Start the discovery of your lifetime!</h5>
+                    </div>
+                </li> 
+                <li>
+                    <img src="images/family.jpg">
+                    <div class="caption right-align">
+                        <h3>Just a smile away.</h3>
+                        <h5 class="light grey-text text-lighten-3">Where family fun begins!</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="images/action.jpg">
+                    <div class="caption left-align">
+                        <h3>The Thrill.</h3>
+                        <h5 class="light grey-text text-lighten-3">No matter how fast, deep or high. We get you there!</h5>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         <!-- ######################################################################################################################################################### -->
         <!-- Test Section for potential customers -->
@@ -84,153 +84,245 @@
             <br/>
             <br/>
             <br/>
-            <br/>
+            <br/>   
         </div>
 
         <!-- ######################################################################################################################################################### -->
         <!-- Customer details -->
         <div id="customer_information" class="container">
-            <ul class="collapsible">
-                <li>
-                  <div class="collapsible-header active"><i class="material-icons">filter_drama</i>Customer Details</div>
-                  <div class="collapsible-body">
-                        <div class="container">
-                                <div id="form_registration" class="row">
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="first_name" type="text" class="validate" required/>
-                                        <label for="first_name">First name</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="last_name" type="text" class="validate" required/>
-                                        <label for="last_name">Last name</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">today</i>
-                                        <input id="birthday" type="date" class="datepicker">
-                                        <label for="birthday" data-error="Not a valid date">Birthday</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">gender</i>
-                                        <select id="gender">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                        </select>
-                                        <label>Gender</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">email</i>
-                                        <input id="register_email" type="email" class="validate" required/>
-                                        <label for="register_email" data-error="Not a valid email">Email</label>
-                                    </div>
-                                    <div class="input-field col s8">
-                                        <i class="material-icons prefix">room</i>
-                                        <input id="address" type="text" class="validate" required/>
-                                        <label for="address">Home address</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                        <i class="material-icons prefix">room</i>
-                                        <input id="zip_code" type="text" class="validate" required/>
-                                        <label for="zip_code">Zip code</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">location_city</i>
-                                        <input id="city" type="text" class="validate" required/>
-                                        <label for="city">City</label>
-                                    </div>
-                                    <div class="input-field col s12 m6">
-                                        <i class="material-icons prefix">language</i>
-                                        <input id="country" type="text" class="validate" required/>
-                                        <label for="country">Country</label>
-                                    </div>
+            <ul class="stepper linear">
+                <!-- ############################################################################################################################################# -->
+                <!-- Step 1 -->
+                <li class="step active">
+                    <div data-step-label="What do you have mind?" class="step-title waves-effect waves-dark">Travel Information</div>
+                    <div class="step-content">
+                        <div id="form_registration_2">
+
+                            <!-- WHO -->
+                            <div  class="row">
+                                <h4>Who is travelling?</h4>
+                                <div class="input-field col s12 m2 offset-m3">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="num_adults" type="number" min="0" class="validate" required/>
+                                    <label for="num_adults">Number of Adults</label>
+                                </div>
+                                <div class="input-field col s12 m2">
+                                    <i class="material-icons prefix">child_care</i>
+                                    <input id="num_child" type="number" min="0" class="validate" required/>
+                                    <label for="num_child">Number of Children</label>
+                                </div>
+                                <div class="input-field col s12 m2">
+                                    <i class="material-icons prefix">pets</i>
+                                    <input id="num_animals" type="number" min="0" class="validate" required>
+                                    <label for="num_animals">Number of Animals</label>
+                                </div>
+                            </div>
+                            <!-- CLIMATE -->
+                            <br/><br/><br/><br/>
+                            <div class="row">
+                                <h4>What are your climate preferences?</h4>
+
+                                <div class="col s6 m2 offset-m1">
+                                    <input name="activity" type="radio" id="rad_action"/>
+                                    <label for="rad_action">Action</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="activity" type="radio" id="rad_adventure"/>
+                                    <label for="rad_adventure">Adventure</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="activity" type="radio" id="rad_calming"/>
+                                    <label for="rad_calming">Calming</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="activity" type="radio" id="rad_family"/>
+                                    <label for="rad_family">Family</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="activity" type="radio" id="rad_romance"/>
+                                    <label for="rad_romance">Romance</label>
+                                </div>
+                            </div>
+                            
+                            <!-- ACTIVITIES -->
+                            <br/><br/><br/><br/>
+                            <div class="row">
+                                <h4>How many activities do you want to do?</h4>
+                                <p style="text-align: center">Activities are provided by our trusted partner FunSpark</p>
+                                <div class="input-field col s12 m2 offset-m5">
+                                    <i class="material-icons prefix">motorcycle</i>
+                                    <input id="num_activities" type="number" min="0" class="validate" required/>
+                                    <label for="num_activities">Number of Activities</label>
+                                </div>
+                            </div>
+
+                            <!-- BUDGET -->
+                            <br/><br/><br/><br/>
+                            <div class="row">
+                                <h4>My budget for this travel is:</h4>
+                                <div class="col s6 m2 offset-m3">
+                                    <input name="budget" type="radio" id="rad_budget_low"/>
+                                    <label for="rad_budget_low">Smaller than 500€ p.P.</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="budget" type="radio" id="rad_budget_mid"/>
+                                    <label for="rad_budget_mid">Between 500€ and 2000€ p.P.</label>
+                                </div>
+                                <div class="col s6 m2">
+                                    <input name="budget" type="radio" id="rad_budget_high"/>
+                                    <label for="rad_budget_high">Greater than 2000€ p.P.</label>
+                                </div>
+                            </div>
+
+                            <!-- DATE OF TRAVEL -->
+                            <br/><br/><br/><br/>
+                            <div class="row">
+                                <h4>When do you want to travel?</h4>
+                                <div class="input-field col s12 m3 offset-m3">
+                                    <i class="material-icons prefix">today</i>
+                                    <input id="departure_date" type="date" class="datepicker" required>
+                                    <label for="departure_date" data-error="Not a valid date">Departure Date</label>
+                                </div>
+                                <div class="input-field col s12 m3">
+                                    <i class="material-icons prefix">today</i>
+                                    <input id="return_date" type="date" class="datepicker" required>
+                                    <label for="return_date" data-error="Not a valid date">Return Date</label>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header active"><i class="material-icons">place</i>Travel Preferences</div>
-                        <div class="collapsible-body">
-                          <div class="container">
-                                  <div id="form_registration" class="row">
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">face</i>
-                                          <input id="adults" type="number" class="validate" min="1" max="4" required/>
-                                          <label for="adults">Number of Adults</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">child_care</i>
-                                          <input id="children" type="number" class="validate" min="0" max="4" required/>
-                                          <label for="adults">Number of Children</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">animal</i>
-                                          <input id="animals" type="number" class="validate" min="0" max="3" required/>
-                                          <label for="adults">Number of Animals</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <select id="climate">
-                                              <option value="cold">Cold</option>
-                                              <option value="moderate" selected>Moderate</option>
-                                              <option value="hot">Hot</option>
-                                          </select>
-                                          <label>Climate Preference</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">experience</i>
-                                          <select id="experience">
-                                              <option value="" disabled selected>Choose your option</option>
-                                              <option value="action">I want Action</option>
-                                              <option value="adventure">I want Adventure</option>
-                                              <option value="romance">I want Romance</option>
-                                              <option value="family">I want Family</option>
-                                              <option value="chilling">I want Chilling</option>
-                                          </select>
-                                          <label>Experience Preference</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <input id="activities" type="number" class="validate" min="0" max="20" required/>
-                                          <label for="activities">Number of Activities</label>
-                                      </div>
-                                      <br>
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">today</i>
-                                          <input id="departure" type="date" class="datepicker">
-                                          <label for="departure">Departure Date</label>
-                                      </div>
-                                      <div class="input-field col s12 m6">
-                                          <i class="material-icons prefix">today</i>
-                                          <input id="arrival" type="date" class="datepicker">
-                                          <label for="arrival">Arrival Date</label>
-                                      </div>
-                                      <div class="input-field col s8">
-                                          <i class="material-icons prefix">climate</i>
-                                          <select id="budget">
-                                              <option value="low">Low (< 500€ per Person)</option>
-                                              <option value="medium" selected>Medium (500€ - 2.000€ per Person)</option>
-                                              <option value="high">High (> 2.000€ per Person)</option>
-                                          </select>
-                                          <label for="budget">Budget</label>
-                                      </div>
-                                  </div>
-                              </div>
+                        <div class="step-actions">
+                            <button class="waves-effect waves-dark btn btn-lightcoral next-step">Next</button>
                         </div>
-                    </li>
-                </ul>
-              </div>
+                    </div>
+                </li>
+                <!-- ############################################################################################################################################# -->
+                <!-- Step 2 -->
+                <li class="step">
+                    <div data-step-label="Please enter your contact details." class="step-title waves-effect waves-dark">Customer Details</div>
+                    <div class="step-content">
+                        <div id="form_registration_1" class="row">
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="first_name" type="text" class="validate" required/>
+                                <label for="first_name">First name</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="last_name" type="text" class="validate" required/>
+                                <label for="last_name">Last name</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">today</i>
+                                <input id="birthday" type="date" class="datepicker" required>
+                                <label for="birthday" data-error="Not a valid date">Birthday</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">gender</i>
+                                <select id="gender">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                                <label>Gender</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="register_email" type="email" class="validate" required/>
+                                <label for="register_email" data-error="Not a valid email">Email</label>
+                            </div>
+                            <div class="input-field col s8">
+                                <i class="material-icons prefix">room</i>
+                                <input id="address" type="text" class="validate" required/>
+                                <label for="address">Home address</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <i class="material-icons prefix">room</i>
+                                <input id="zip_code" type="text" class="validate" required/>
+                                <label for="zip_code">Zip code</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">location_city</i>
+                                <input id="city" type="text" class="validate" required/>
+                                <label for="city">City</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">language</i>
+                                <input id="country" type="text" class="validate" required/>
+                                <label for="country">Country</label>
+                            </div>                 
+                        </div>
+                        <div class="step-actions">
+                            <button class="waves-effect waves-dark btn-flat previous-step">Back</button>
+                            <button class="waves-effect waves-dark btn btn-lightcoral next-step">Next</button>
+                        </div>
+                    </div>
+                    
+                </li>
+                <!-- ############################################################################################################################################# -->
+                <!-- Step 3 -->
+                <li class="step">
+                    <div class="step-title waves-effect waves-dark">Review your Information</div>
+                    <div class="step-content">
+                        Finish!
+                        <div class="step-actions">
+                            <button class="waves-effect waves-dark btn-flat previous-step">Back</button>
+                            <button class="waves-effect waves-dark btn btn-lightcoral" id="btn_submit">Submit</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+       
 
-
-
+    
         <!-- ######################################################################################################################################################### -->
         <!-- Pricing Variant - Pay per use. -->
-
-
-
+<!--
+        <ul class="stepper linear">
+                <li class="step active">
+                        <div data-step-label="Just add a data-step-label!" class="step-title waves-effect waves-dark">Step 1</div>
+                        <div class="step-content">
+                           <div class="row">
+                              <div class="input-field col s12">
+                                 <input name="email" type="email" class="validate" required>
+                                 <label for="email">Your e-mail</label>
+                              </div>
+                           </div>
+                           <div class="step-actions">
+                              <button class="waves-effect waves-dark btn blue next-step">CONTINUE</button>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="step">
+                        <div class="step-title waves-effect waves-dark">Step 2</div>
+                        <div class="step-content">
+                           <div class="row">
+                              <div class="input-field col s12">
+                                 <input id name="password" type="password" class="validate" required>
+                                 <label for="password">Your password</label>
+                              </div>
+                           </div>
+                           <div class="step-actions">
+                              <button class="waves-effect waves-dark btn blue next-step">CONTINUE</button>
+                              <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+                           </div>
+                        </div>
+                     </li>
+                     <li class="step">
+                        <div class="step-title waves-effect waves-dark">Step 3</div>
+                        <div class="step-content">
+                           Finish!
+                           <div class="step-actions">
+                              <button class="waves-effect waves-dark btn blue" type="submit">SUBMIT</button>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+                -->
         <!-- ######################################################################################################################################################### -->
         <!-- Pricing Variant - Bundles -->
 
-
+        
         <!-- ######################################################################################################################################################### -->
         <!-- Subscribe to Newsletter section -->
 
@@ -242,15 +334,7 @@
     <!-- ######################################################################################################################################################### -->
     <!-- Footer -->
     <footer class="page-footer">
-        <div class="container">
-            <div class="row center">
-                <div class="col s6 offset-s3">
-                        <a class="footer-text" href="">About us</a></li>  -
-                        <a class="footer-text" href="">Imprint</a></li>  -
-                        <a class="footer-text" href="">Privacy Policy</a></li>
-                </div>
-            </div>
-        </div>
+
         <div class="container">
             <div class="row center">
                 <div class="col s6 offset-s3">
@@ -264,37 +348,6 @@
 
     <!-- ######################################################################################################################################################### -->
     <!-- All Modal Popups -->
-
-    <!-- Registration Modal -->
-    <div id="modal_registration" class="modal grey-text">
-            <div class="modal-content">
-                <div class="header">
-                    <br/>
-                    <img src="images/logo.png"/>
-                    <br/>
-                    <br/>
-                </div>
-                <div id="form_registration" class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="register_name" type="text" class="validate" required/>
-                        <label for="register_name">Name</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">email</i>
-                        <input id="register_email" type="email" class="validate" required/>
-                        <label for="register_email" data-error="Not a valid email">Email</label>
-                    </div>
-                </div>
-            </div>
-
-        <div class="modal-footer">
-            <div class="center">
-                <a id="btn_submit_registration" class="btn btn-blue waves-effect waves-light">Submit</a>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Modal for Success Messages -->
     <div id="success" class="modal">
@@ -327,10 +380,11 @@
             <p id="errormessage"></p>
         </div>
     </div>
-
+     
     <!-- External javascript files -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize-stepper.min.js"></script>
     <script type="text/javascript" src="js/em.js"></script>
 </body>
 </html>
