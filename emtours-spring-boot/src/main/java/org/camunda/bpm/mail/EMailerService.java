@@ -2,6 +2,7 @@ package org.camunda.bpm.mail;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.mail.internet.AddressException;
@@ -125,11 +126,13 @@ public class EMailerService {
 
 			String msg = "";
 			if (subject.equals("Booking confirmation")) {
+				String activitiesFormat = formatActivitiesWithDate(activities);
 				msg = String.format(CONFIRMATION_MSG, salutation, name, destination, startDate, endDate, flight, hotel,
-						price, numberPeople, activities, currentDate);
+						price, numberPeople, activitiesFormat, currentDate);
 			} else if (subject.equals("Travel recommendation")) {
+				String activitiesFormat = formatActivities(activities);
 				msg = String.format(RECOMMENDATION_MSG, salutation, name, startDate, endDate, flight, destination,
-						hotel, price, numberPeople, activities, currentDate);
+						hotel, price, numberPeople, activitiesFormat, currentDate);
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -148,6 +151,29 @@ public class EMailerService {
 		emailSender.send(message);
 		System.out.println("E-Mail send");
 	}
+	
+	public String formatActivities(Collection<Activity> activities) {
+		List<Activity> as = (List<Activity>) activities;
+		String result = "";
+		for(int i=0; i<activities.size(); i++) {
+			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
+					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
+					"\nPrice: "+as.get(i).getPrice() + "\n";
+		}
+		return "";
+	}
+	
+	public String formatActivitiesWithDate(Collection<Activity> activities) {
+		List<Activity> as = (List<Activity>) activities;
+		String result = "";
+		for(int i=0; i<as.size(); i++) {
+			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
+					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
+					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "/n";
+		}
+		return "";
+	}
+
 
 	public static String INVALID_MSG = "Dear %s %s, " + "\nyour travel request can not be processed! "
 			+ "\nThe data you have entered is invalid." + "\n" + "\nWe are looking forward to your next request!" + "\n"
