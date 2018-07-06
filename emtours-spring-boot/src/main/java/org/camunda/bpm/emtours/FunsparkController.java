@@ -1,7 +1,9 @@
 package org.camunda.bpm.emtours;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 import org.camunda.bpm.engine.ProcessEngine;
@@ -17,6 +19,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 
 
 @RestController
@@ -40,53 +47,89 @@ public class FunsparkController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	 
-	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST)
-	public String receiveFeedback(@RequestBody String feedback, String executionId) {
-		System.out.println("received Feedback: "+feedback);
+	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
+	public String receiveFeedback(@RequestBody String json) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode node = mapper.readTree(json);
+		JsonNode executionNode = node.at("/executionId");
+		String executionId = executionNode.asText();
+		JsonNode funsparkNode = node.at("/funsparkExecutionId");
+		String funsparkExecutionId = funsparkNode.asText();
+		JsonNode feedbackNode = node.at("/feedback");
+		String feedback = feedbackNode.asText();
 		if(feedback.equals("yes")) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);
 		} else {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", false);
 		}
-		camunda.getRuntimeService().messageEventReceived("feedback", executionId);
+		camunda.getRuntimeService().setVariable(executionId, "funsparkExecutionId", funsparkExecutionId);
+		camunda.getRuntimeService().createMessageCorrelation("feedback")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
 	
 	
-	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST)
-	public String receiveActivityRecos(@RequestBody Collection<Activity> activityRecos, String executionId) {
-		System.out.println("received Activity Recommendations: "+ activityRecos);
+	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST, consumes="application/json")
+	public String receiveActivityRecos(@RequestBody String json) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode node = mapper.readTree(json);
+		JsonNode executionNode = node.at("/executionId");
+		String executionId = executionNode.asText();
+		JsonNode activitiesNode = node.at("/activities");
+		ObjectReader reader = mapper.readerFor(new TypeReference<List<Activity>>() {
+		});
+		Collection<Activity> activityRecos = reader.readValue(activitiesNode);
 		for (Iterator<Activity> iterator = activityRecos.iterator(); iterator.hasNext();) {
 			Activity a = iterator.next();
 			a = activityRepository.save(a);
 		}
-		camunda.getRuntimeService().messageEventReceived("activityRecos", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("activityRecos")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
 	
-	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST)
-	public String receiveUnavailability(@RequestBody String unavailable, String executionId) {
+	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST, consumes="application/json")
+	public String receiveUnavailability(@RequestBody String json) throws IOException {
 		System.out.println("received unavailibility notification");
-		
-		camunda.getRuntimeService().messageEventReceived("unavailable", executionId);
+		ObjectMapper mapper = new ObjectMapper();
+		  JsonNode node = mapper.readTree(json);
+		  JsonNode executionNode = node.at("/executionId");
+		  String executionId = executionNode.asText();
+		camunda.getRuntimeService().createMessageCorrelation("unavailable")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
 	
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
-	public String receiveBookingAndBill(@RequestBody Collection<ActivityDate> activityBooking, double costs, String executionId) {
+	public String receiveBookingAndBill(@RequestBody String json) throws IOException {
 		System.out.println("received booking confirmation and bill from FunSpark");
 		
-		//TODO activities date update
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode node = mapper.readTree(json);
+		JsonNode executionNode = node.at("/executionId");
+		String executionId = executionNode.asText();
+		JsonNode costNode = node.at("/costs");
+		Double costs = costNode.asDouble();
+		JsonNode activitiesNode = node.at("/activities");
+		ObjectReader reader = mapper.readerFor(new TypeReference<List<ActivityDate>>() {
+		});
+		Collection<ActivityDate> activityBooking = reader.readValue(activitiesNode);
+		
+		String activityJson = mapper.writeValueAsString(activityBooking);
+		camunda.getRuntimeService().setVariable(executionId, "activityBooking", activityJson);
+		
 		int recommendationId = (Integer)camunda.getRuntimeService().getVariable(executionId, "recommendationId");
 		Optional<Recommendation> recommendationo = recoRepository.findById(recommendationId);
 		Recommendation recommendation = recommendationo.get();
 		recommendation.setActivityCost(costs);
 		recommendation = recoRepository.save(recommendation);
 		
-		camunda.getRuntimeService().messageEventReceived("bookingandbill", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("bookingandbill")
+		.processInstanceId(executionId).correlate();
+		
 		
 		return "";
 	}

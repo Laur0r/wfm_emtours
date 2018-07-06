@@ -44,7 +44,8 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
 			postElement.setRecommendationId((Integer) execution.getVariable("recommendationId"));
-			postElement.setExecutionId(execution.getId());
+			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
+			postElement.setEmtoursExecutionId(execution.getId());
 			postElement.setCustomer(custrequest.getCustomer());
 			postElement.setDestination(recommendation.getDestination());
 			postElement.setStart(recommendation.getArrival());
@@ -53,7 +54,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			postElement.setNumberPeople(custrequest.getNumberPeople());
 			postElement.setExperienceType(custrequest.getExperienceType());
 			doPost(postElement);
-			System.out.println("feedback!!! "+(Boolean)execution.getVariable("feedback"));
 		} catch(NoSuchElementException e) {
 		}	
 	}
@@ -64,7 +64,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
-//		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://10.68.8.236:8080/funspark/orderRecommendations");
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		

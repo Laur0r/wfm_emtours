@@ -19,8 +19,9 @@ public class RefinementNotificationMessageDelegate implements JavaDelegate {
 
 		try {
 			
-			RefinementNotification postElement = new RefinementNotification();
+			FunsparkNotification postElement = new FunsparkNotification();
 			postElement.setRecommendationId((int) execution.getVariable("recommendationId"));
+			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
 			postElement.setBookingNotification((false));
 			postElement.setCancellationNotification((false));
 			postElement.setRefinementNotification((true));
@@ -29,15 +30,15 @@ public class RefinementNotificationMessageDelegate implements JavaDelegate {
 		}
 	}
 
-	private String doPost(RefinementNotification string) {
+	private String doPost(FunsparkNotification string) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-		HttpEntity<RefinementNotification> request = new HttpEntity<>(string, headers);
+		HttpEntity<FunsparkNotification> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
-	    ResponseEntity<RefinementNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, RefinementNotification.class);
+	    ResponseEntity<FunsparkNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkNotification.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	}
