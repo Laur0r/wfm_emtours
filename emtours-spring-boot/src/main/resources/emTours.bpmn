@@ -736,7 +736,9 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg" />
+    <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg">
+      <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_0pr328a" sourceRef="Task_0vih4zg" targetRef="ExclusiveGateway_09vp1w4" />
     <sequenceFlow id="SequenceFlow_06fn8yg" sourceRef="ExclusiveGateway_09vp1w4" targetRef="sid-EA1F7DC1-6795-4401-925B-8FEB3CBDB5C6" />
     <sequenceFlow id="sid-55A891A8-1D52-402D-93DF-D4C8497CC9BF" name="" sourceRef="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" targetRef="sid-43255A06-4863-4570-B9E9-9CA5DF933891">
@@ -850,7 +852,9 @@
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
-    <sequenceFlow id="SequenceFlow_1p3nedn" sourceRef="ExclusiveGateway_1idz85h" targetRef="ExclusiveGateway_09vp1w4" />
+    <sequenceFlow id="SequenceFlow_1p3nedn" sourceRef="ExclusiveGateway_1idz85h" targetRef="ExclusiveGateway_09vp1w4">
+      <conditionExpression xsi:type="tFormalExpression">${approved}</conditionExpression>
+    </sequenceFlow>
     <exclusiveGateway id="ExclusiveGateway_1idz85h">
       <incoming>SequenceFlow_1u7m5sk</incoming>
       <outgoing>SequenceFlow_09rrwss</outgoing>
