@@ -19,8 +19,9 @@ public class RequestBookingMessageDelegate implements JavaDelegate {
 
 try {
 			
-			RequestBookingNotification postElement = new RequestBookingNotification();
+			FunsparkNotification postElement = new FunsparkNotification();
 			postElement.setRecommendationId((int) execution.getVariable("recommendationId"));
+			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
 			postElement.setBookingNotification((true));
 			postElement.setCancellationNotification((false));
 			postElement.setRefinementNotification((false));
@@ -31,15 +32,15 @@ try {
 	}
 
 
-	private String doPost(RequestBookingNotification string) {
+	private String doPost(FunsparkNotification string) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-		HttpEntity<RequestBookingNotification> request = new HttpEntity<>(string, headers);
+		HttpEntity<FunsparkNotification> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
-	    ResponseEntity<RequestBookingNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, RequestBookingNotification.class);
+	    ResponseEntity<FunsparkNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkNotification.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	

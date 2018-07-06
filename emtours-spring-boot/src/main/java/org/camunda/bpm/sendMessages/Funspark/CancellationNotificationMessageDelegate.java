@@ -20,11 +20,12 @@ public class CancellationNotificationMessageDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
 			
-			CancellationNotification postElement = new CancellationNotification();
+			FunsparkNotification postElement = new FunsparkNotification();
 			postElement.setRecommendationId((int) execution.getVariable("recommendationId"));
 			postElement.setBookingNotification((false));
 			postElement.setCancellationNotification((true));
 			postElement.setRefinementNotification((false));
+			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
 			String test = doPost(postElement);
 		} catch(NoSuchElementException e) {
 		}	
@@ -32,15 +33,15 @@ public class CancellationNotificationMessageDelegate implements JavaDelegate {
 	}
 
 
-	private String doPost(CancellationNotification string) {
+	private String doPost(FunsparkNotification string) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-		HttpEntity<CancellationNotification> request = new HttpEntity<>(string, headers);
+		HttpEntity<FunsparkNotification> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
-	    ResponseEntity<CancellationNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, CancellationNotification.class);
+	    ResponseEntity<FunsparkNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkNotification.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	}
