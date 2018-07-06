@@ -750,7 +750,7 @@
       <incoming>SequenceFlow_1ws6vpg</incoming>
       <outgoing>SequenceFlow_1326izm</outgoing>
     </serviceTask>
-    <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Test_2.html">
+    <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Review_Recommendation.html">
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
     <businessRuleTask id="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" name="Generate recommendations" implementation="##WebService" camunda:resultVariable="dmn_result" camunda:decisionRef="decision_recommendation">
@@ -843,7 +843,7 @@
       <incoming>SequenceFlow_106ziz9</incoming>
       <outgoing>SequenceFlow_1u7m5sk</outgoing>
     </userTask>
-    <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/Invoke_Legal_Action.html">
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
