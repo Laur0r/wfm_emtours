@@ -91,7 +91,8 @@ public class CustomerController {
 			request.setNumberActivities(numberActivities);
 			request.setExperienceType(experienceType);
 			repository.save(request);
-			camunda.getRuntimeService().messageEventReceived("furtherCustomerInformation", executionId);
+			camunda.getRuntimeService().createMessageCorrelation("furtherCustomerInformation")
+			.processInstanceId(executionId).correlate();
 		} catch(Exception e) {
 			System.out.println("receive further Customer failed");
 		}
@@ -106,7 +107,8 @@ public class CustomerController {
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-		camunda.getRuntimeService().messageEventReceived("bookingRequest", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("bookingRequest")
+		.processInstanceId(executionId).correlate();
 		return "";
 	}
   
@@ -116,7 +118,8 @@ public class CustomerController {
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().messageEventReceived("bookingCancellation", executionId);
+	  camunda.getRuntimeService().createMessageCorrelation("bookingCancellation")
+		.processInstanceId(executionId).correlate();
 		return "";
 	}
   
@@ -126,7 +129,8 @@ public class CustomerController {
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().messageEventReceived("customerRecommendationFeedback", executionId);
+	  camunda.getRuntimeService().createMessageCorrelation("customerRecommendationFeedback")
+		.processInstanceId(executionId).correlate();
 		return "";
 	}
   
@@ -136,7 +140,8 @@ public class CustomerController {
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().messageEventReceived("customerPayment", executionId);
+	  camunda.getRuntimeService().createMessageCorrelation("customerPayment")
+		.processInstanceId(executionId).correlate();
 		return "";
 	}
   
@@ -146,7 +151,8 @@ public class CustomerController {
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().messageEventReceived("customerIncorrectPayment", executionId);
+	  camunda.getRuntimeService().createMessageCorrelation("customerIncorrectPayment")
+		.processInstanceId(executionId).correlate();
 		return "";
 	}
 }

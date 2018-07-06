@@ -63,7 +63,8 @@ public class FunsparkController {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", false);
 		}
 		camunda.getRuntimeService().setVariable(executionId, "funsparkExecutionId", funsparkExecutionId);
-		camunda.getRuntimeService().messageEventReceived("feedback", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("feedback")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
@@ -83,7 +84,8 @@ public class FunsparkController {
 			Activity a = iterator.next();
 			a = activityRepository.save(a);
 		}
-		camunda.getRuntimeService().messageEventReceived("activityRecos", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("activityRecos")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
@@ -95,7 +97,8 @@ public class FunsparkController {
 		  JsonNode node = mapper.readTree(json);
 		  JsonNode executionNode = node.at("/executionId");
 		  String executionId = executionNode.asText();
-		camunda.getRuntimeService().messageEventReceived("unavailable", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("unavailable")
+		.processInstanceId(executionId).correlate();
 		
 		return "";
 	}
@@ -115,7 +118,6 @@ public class FunsparkController {
 		});
 		Collection<ActivityDate> activityBooking = reader.readValue(activitiesNode);
 		
-		//TODO activities date update
 		String activityJson = mapper.writeValueAsString(activityBooking);
 		camunda.getRuntimeService().setVariable(executionId, "activityBooking", activityJson);
 		
@@ -125,7 +127,9 @@ public class FunsparkController {
 		recommendation.setActivityCost(costs);
 		recommendation = recoRepository.save(recommendation);
 		
-		camunda.getRuntimeService().messageEventReceived("bookingandbill", executionId);
+		camunda.getRuntimeService().createMessageCorrelation("bookingandbill")
+		.processInstanceId(executionId).correlate();
+		
 		
 		return "";
 	}
