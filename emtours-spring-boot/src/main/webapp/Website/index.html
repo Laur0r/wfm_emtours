@@ -65,7 +65,7 @@
                     <h3>Liberate your inner Indiana Jones.</h3>
                     <h5 class="light grey-text text-lighten-3">Start the discovery of your lifetime!</h5>
                 </div>
-                </li>  
+                </li>
                 <li>
                 <img src="images/Romance.jpeg"> <!-- random image -->
                 <div class="caption left-align">
@@ -83,7 +83,7 @@
             <br/>
             <br/>
             <br/>
-            <br/>   
+            <br/>
         </div>
 
         <!-- ######################################################################################################################################################### -->
@@ -143,20 +143,77 @@
                                         <i class="material-icons prefix">language</i>
                                         <input id="country" type="text" class="validate" required/>
                                         <label for="country">Country</label>
-                                    </div>                 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="collapsible-header active"><i class="material-icons">place</i>Travel Preferences</div>
-                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                        <div class="collapsible-body">
+                          <div class="container">
+                                  <div id="form_registration" class="row">
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">account_circle</i>
+                                          <input id="adults" type="number" class="validate" min="1" max="4" required/>
+                                          <label for="adults">Number of Adults</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">account_circle</i>
+                                          <input id="children" type="number" class="validate" min="0" max="4" required/>
+                                          <label for="adults">Number of Children</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">account_circle</i>
+                                          <input id="animals" type="number" class="validate" min="0" max="3" required/>
+                                          <label for="adults">Number of Animals</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">climate</i>
+                                          <select id="climate">
+                                              <option value="cold">Cold</option>
+                                              <option value="moderate" selected>Moderate</option>
+                                              <option value="hot">Hot</option>
+                                          </select>
+                                          <label>Climate Preference</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">experience</i>
+                                          <select id="experience">
+                                              <option value="" disabled selected>Choose your option</option>
+                                              <option value="action">I want Action</option>
+                                              <option value="adventure">I want Adventure</option>
+                                              <option value="romance">I want Romance</option>
+                                              <option value="family">I want Family</option>
+                                              <option value="chilling">I want Chilling</option>
+                                          </select>
+                                          <label>Climate Preference</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">account_circle</i>
+                                          <input id="activities" type="number" class="validate" min="0" max="20" required/>
+                                          <label for="activities">Number of Activities</label>
+                                      </div>
+                                      <br>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">today</i>
+                                          <input id="departure" type="date" class="datepicker">
+                                          <label for="departure" data-error="Not a valid date">Departure Date</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">today</i>
+                                          <input id="arrival" type="date" class="datepicker">
+                                          <label for="arrival" data-error="Not a valid date">Arrival Date</label>
+                                      </div>
+                                  </div>
+                              </div>
+                        </div>
                     </li>
                 </ul>
               </div>
-       
 
-    
+
+
         <!-- ######################################################################################################################################################### -->
         <!-- Pricing Variant - Pay per use. -->
 
@@ -165,7 +222,7 @@
         <!-- ######################################################################################################################################################### -->
         <!-- Pricing Variant - Bundles -->
 
-        
+
         <!-- ######################################################################################################################################################### -->
         <!-- Subscribe to Newsletter section -->
 
@@ -180,8 +237,8 @@
         <div class="container">
             <div class="row center">
                 <div class="col s6 offset-s3">
-                        <a class="footer-text" href="">About us</a></li>  -  
-                        <a class="footer-text" href="">Imprint</a></li>  -  
+                        <a class="footer-text" href="">About us</a></li>  -
+                        <a class="footer-text" href="">Imprint</a></li>  -
                         <a class="footer-text" href="">Privacy Policy</a></li>
                 </div>
             </div>
@@ -219,7 +276,7 @@
                         <i class="material-icons prefix">email</i>
                         <input id="register_email" type="email" class="validate" required/>
                         <label for="register_email" data-error="Not a valid email">Email</label>
-                    </div>                                
+                    </div>
                 </div>
             </div>
 
@@ -262,7 +319,7 @@
             <p id="errormessage"></p>
         </div>
     </div>
-     
+
     <!-- External javascript files -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

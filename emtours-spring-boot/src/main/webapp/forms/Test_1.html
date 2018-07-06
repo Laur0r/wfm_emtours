@@ -1,9 +1,25 @@
 <script cam-script type="text/form-script">
-  $scope.open = function($event) {
+  $scope.open = function($event1) {
     $event.preventDefault();
     $event.stopPropagation();
 
-    $scope.dateFieldOpened = true;
+    $scope.dateField1Opened = true;
+  };
+</script>
+<script cam-script type="text/form-script">
+  $scope.open = function($event2) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.dateField2Opened = true;
+  };
+</script>
+<script cam-script type="text/form-script">
+  $scope.open = function($event3) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.dateField3Opened = true;
   };
 </script>
 <form role="form" name="form">
