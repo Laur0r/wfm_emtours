@@ -10,7 +10,6 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.entities.Recommendation;
-import org.camunda.bpm.properties.EmToursConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -71,8 +70,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
-	}
-	
+	}	
 //	private String createUrlForIncomingInformation() {
 //		return config.getService().getFunspark().getLocation();
 //	}
