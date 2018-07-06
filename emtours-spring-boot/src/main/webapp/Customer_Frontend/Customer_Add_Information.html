@@ -12,13 +12,29 @@
       </p>
     </div>
     <div class="form-basic">
-    <h2> Please let us know how you would like to proceed </h2>
+      <p style="color: #555;", align="center"> In order to provide you with perfectly suitable holiday recommendation, we need further information. Please complete the following form!
+      </p>
     <br>
-    <form id="form1" method="post">
-      <p align="left" style="margin-left: 25px;"><input type="radio" name="feedback" value="confirm" checked><span> I would like to book this holiday </span></p>
-      <p align="left" style="margin-left: 25px;"><input type="radio" name="feedback" value="cancel"><span> I would like to cancel my booking request </span></p>
-      <p align="left" style="margin-left: 25px;"><input type="radio" name="feedback" value="refine"><span> I would like a reworked version of this holiday</span><p>
-      <input type="submit" value="Submit">
+    <form id="form2" method="post">
+      <h2> What do you want to experience? </h2>
+        <div class="form-row">
+          <input type="radio" name="preference" value="chilling" checked><span> Chilling </span>
+          <input type="radio" name="preference" value="adventure"><span> Adventure</span>
+          <input type="radio" name="preference" value="romance"><span> Romance </span>
+          <input type="radio" name="preference" value="action"><span> Action </span>
+          <input type="radio" name="preference" value="family"><span> Family </span>
+        </div>
+        <br><br>
+        <h2> How many activities do you want to do? </h2>
+
+        <div class="form-row-multiple">
+          <label>
+            <span> Number of activities </span>
+            <input type="number" min="1" max="100" name="activities" required value="1">
+            <label>Activities are provided by our trusted partner FunSpark</label>
+          </label>
+        </div>
+        <input type="submit" value="Submit"/>
     </form>
   </div>
   </body>
