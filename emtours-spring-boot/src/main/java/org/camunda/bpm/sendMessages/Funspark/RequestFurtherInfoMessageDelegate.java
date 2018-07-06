@@ -34,16 +34,9 @@ public class RequestFurtherInfoMessageDelegate implements JavaDelegate {
 			Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
 			CustomerRequest custrequest = custrequesto.get();
 			
-			int recommendationId = (Integer) execution.getVariable("recommendationId");
-			Recommendation recommendation = recommendationrepository.findById(recommendationId).get();
-			
 			RequestFurtherInfo postElement = new RequestFurtherInfo();
-			postElement.setCustomerId((Integer) execution.getVariable("customerId"));
-			postElement.setDestination(recommendation.getDestination());
-			postElement.setStart(recommendation.getArrival());
-			postElement.setEnd(recommendation.getDeparture());
+			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
 			postElement.setNumberActivities(custrequest.getNumberActivities());
-			postElement.setNumberPeople(custrequest.getNumberPeople());
 			postElement.setExperienceType(custrequest.getExperienceType());
 			String test = doPost(postElement);
 		} catch(NoSuchElementException e) {

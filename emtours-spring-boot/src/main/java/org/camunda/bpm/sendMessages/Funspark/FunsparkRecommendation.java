@@ -8,6 +8,7 @@ public class FunsparkRecommendation {
 
 	private int recommendationId;
 	private String executionId;
+	private String emtoursExecutionId;
 	private Customer customer;
 	private Date start;
 	private Date end;
@@ -69,5 +70,11 @@ public class FunsparkRecommendation {
 	}
 	public void setExecutionId(String executionId) {
 		this.executionId = executionId;
+	}
+	public String getEmtoursExecutionId() {
+		return emtoursExecutionId;
+	}
+	public void setEmtoursExecutionId(String emtoursExecutionId) {
+		this.emtoursExecutionId = emtoursExecutionId;
 	}
 }
