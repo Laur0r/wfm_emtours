@@ -37,44 +37,45 @@
         <!-- Slider for Travel Images -->
 
         <div class="slider">
-            <ul class="slides">
-                <li>
-                    <img src="images/ocean.png"> <!-- random image -->
-                    <div class="caption center-align">
-                        <h3>Sun, sea, golden sand.</h3>
-                        <h5 class="light grey-text text-lighten-3">Give your mind some break!</h5>
-                    </div>
-                </li>
-                <li>
-                    <img src="images/Family.jpeg"> <!-- random image -->
-                    <div class="caption left-align">
-                        <h3>Just a smile away.</h3>
-                        <h5 class="light grey-text text-lighten-3">Where family fun begins!</h5>
-                    </div>
-                    </li>
-                <li>
-                <img src="images/Action.jpeg"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>The Thrill.</h3>
-                    <h5 class="light grey-text text-lighten-3">No matter how fast, deep or high. We get you there!</h5>
-                </div>
-                </li>
-                <li>
-                <img src="images/Meer2.jpg"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>Liberate your inner Indiana Jones.</h3>
-                    <h5 class="light grey-text text-lighten-3">Start the discovery of your lifetime!</h5>
-                </div>
-                </li>
-                <li>
-                <img src="images/Romance.jpeg"> <!-- random image -->
-                <div class="caption left-align">
-                    <h3>Love matters!</h3>
-                    <h5 class="light grey-text text-lighten-3">Fancy hotels, thousand roses and candlelight awaits you.</h5>
-                </div>
-                </li>
-            </ul>
-        </div>
+      <ul class="slides">
+          <li>
+              <img src="images/ocean.png"> <!-- random image -->
+              <div class="caption center-align">
+                  <h3>Sun, sea, golden sand.</h3>
+                  <h5 class="light grey-text text-lighten-3">Give your mind some break!</h5>
+              </div>
+          </li>
+          <li>
+              <img src="images/Familie.jpg"> <!-- random image -->
+              <div class="caption left-align">
+                  <h3>Just a smile away.</h3>
+                  <h5 class="light grey-text text-lighten-3">Where family fun begins!</h5>
+              </div>
+              </li>
+          <li>
+          <img src="images/Skydive.jpg"> <!-- random image -->
+          <div class="caption center-align">
+              <h3>The Thrill.</h3>
+              <h5 class="light grey-text text-lighten-3">No matter how fast, deep or high. We get you there!</h5>
+          </div>
+          </li>
+          <li>
+          <img src="images/Meer2.jpg"> <!-- random image -->
+          <div class="caption center-align">
+              <h3>Liberate your inner Indiana Jones.</h3>
+              <h5 class="light grey-text text-lighten-3">Start the discovery of your lifetime!</h5>
+          </div>
+          </li>
+          <li>
+          <img src="images/Paris.jpg"> <!-- random image -->
+          <div class="caption left-align">
+              <h3>Love matters!</h3>
+              <h5 class="light grey-text text-lighten-3">Fancy hotels, thousand roses and candlelight awaits you.</h5>
+          </div>
+          </li>
+      </ul>
+  </div>
+
 
         <!-- ######################################################################################################################################################### -->
         <!-- Test Section for potential customers -->
@@ -198,12 +199,19 @@
                                       <div class="input-field col s12 m6">
                                           <i class="material-icons prefix">today</i>
                                           <input id="departure" type="date" class="datepicker">
-                                          <label for="departure" data-error="Not a valid date">Departure Date</label>
                                       </div>
                                       <div class="input-field col s12 m6">
                                           <i class="material-icons prefix">today</i>
                                           <input id="arrival" type="date" class="datepicker">
-                                          <label for="arrival" data-error="Not a valid date">Arrival Date</label>
+                                      </div>
+                                      <div class="input-field col s12 m6">
+                                          <i class="material-icons prefix">climate</i>
+                                          <select id="budget">
+                                              <option value="low">Low (< 500€ per Person)</option>
+                                              <option value="medium" selected>Medium (500€ - 2.000€ per Person)</option>
+                                              <option value="high">High (> 2.000€ per Person)</option>
+                                          </select>
+                                          <label for="budget">Budget</label>
                                       </div>
                                   </div>
                               </div>
