@@ -3,7 +3,9 @@ package org.camunda.bpm.sendMessages.Customer;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RecommendationsMessageDelegate implements JavaDelegate {
 	
 	private EMailerService eMailerService;
