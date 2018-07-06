@@ -1,6 +1,7 @@
 package org.camunda.bpm.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.camunda.bpm.emtours.CustomerRepository;
 import org.camunda.bpm.emtours.CustomerRequestRepository;
@@ -8,8 +9,12 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.CustomerRequest;
+import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class SaveInfosDelegate implements JavaDelegate {
@@ -69,6 +74,7 @@ public class SaveInfosDelegate implements JavaDelegate {
 		custrequest = requestrepository.save(custrequest);
 		execution.setVariable("customerId", cust.getId());
 		execution.setVariable("requestId", custrequest.getId());
+	
 	}
 
 }

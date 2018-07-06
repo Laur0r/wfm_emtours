@@ -162,7 +162,6 @@
         <flowNodeRef>Task_1pejib7</flowNodeRef>
         <flowNodeRef>Review_recommendation</flowNodeRef>
         <flowNodeRef>sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D</flowNodeRef>
-        <flowNodeRef>ExclusiveGateway_0mqughd</flowNodeRef>
         <flowNodeRef>Task_0lso30v</flowNodeRef>
         <flowNodeRef>sid-E05485D6-87B1-4196-9CFF-4B2A1B090CA2</flowNodeRef>
         <flowNodeRef>sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A</flowNodeRef>
@@ -175,6 +174,7 @@
         <flowNodeRef>ExclusiveGateway_09vp1w4</flowNodeRef>
         <flowNodeRef>sid-EA1F7DC1-6795-4401-925B-8FEB3CBDB5C6</flowNodeRef>
         <flowNodeRef>sid-46704E89-4453-44F5-9937-2CF34BCE6440</flowNodeRef>
+        <flowNodeRef>ExclusiveGateway_0mqughd</flowNodeRef>
       </lane>
     </laneSet>
     <startEvent id="sid-F1C4C157-A638-4CD7-BF10-BEDEE671A142" name="Basic information&#10;received" camunda:formKey="embedded:app:forms/Test_1.html">
@@ -736,7 +736,9 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg" />
+    <sequenceFlow id="SequenceFlow_09rrwss" sourceRef="ExclusiveGateway_1idz85h" targetRef="Task_0vih4zg">
+      <conditionExpression xsi:type="tFormalExpression">${!approved}</conditionExpression>
+    </sequenceFlow>
     <sequenceFlow id="SequenceFlow_0pr328a" sourceRef="Task_0vih4zg" targetRef="ExclusiveGateway_09vp1w4" />
     <sequenceFlow id="SequenceFlow_06fn8yg" sourceRef="ExclusiveGateway_09vp1w4" targetRef="sid-EA1F7DC1-6795-4401-925B-8FEB3CBDB5C6" />
     <sequenceFlow id="sid-55A891A8-1D52-402D-93DF-D4C8497CC9BF" name="" sourceRef="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" targetRef="sid-43255A06-4863-4570-B9E9-9CA5DF933891">
@@ -770,11 +772,6 @@
         <targetRef>Property_1kms3n4</targetRef>
       </dataInputAssociation>
     </businessRuleTask>
-    <exclusiveGateway id="ExclusiveGateway_0mqughd">
-      <incoming>SequenceFlow_0sokcmm</incoming>
-      <outgoing>SequenceFlow_1ws6vpg</outgoing>
-      <outgoing>SequenceFlow_13hampo</outgoing>
-    </exclusiveGateway>
     <serviceTask id="Task_0lso30v" name="Complete recommendation" camunda:class="org.camunda.bpm.services.GenerateRecommendationDelegate">
       <incoming>SequenceFlow_0x7b0c4</incoming>
       <outgoing>SequenceFlow_1mdb7fh</outgoing>
@@ -842,7 +839,7 @@
     </intermediateCatchEvent>
     <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="Task_13ez5q1" />
     <sequenceFlow id="SequenceFlow_1u7m5sk" sourceRef="Task_13ez5q1" targetRef="ExclusiveGateway_1idz85h" />
-    <userTask id="Task_13ez5q1" name="Check payment">
+    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/validateInformation.html">
       <incoming>SequenceFlow_106ziz9</incoming>
       <outgoing>SequenceFlow_1u7m5sk</outgoing>
     </userTask>
@@ -850,7 +847,9 @@
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
-    <sequenceFlow id="SequenceFlow_1p3nedn" sourceRef="ExclusiveGateway_1idz85h" targetRef="ExclusiveGateway_09vp1w4" />
+    <sequenceFlow id="SequenceFlow_1p3nedn" sourceRef="ExclusiveGateway_1idz85h" targetRef="ExclusiveGateway_09vp1w4">
+      <conditionExpression xsi:type="tFormalExpression">${approved}</conditionExpression>
+    </sequenceFlow>
     <exclusiveGateway id="ExclusiveGateway_1idz85h">
       <incoming>SequenceFlow_1u7m5sk</incoming>
       <outgoing>SequenceFlow_09rrwss</outgoing>
@@ -900,6 +899,11 @@
       <incoming>sid-651924B2-DF7A-4505-86FD-EE5C3887FFDC</incoming>
       <incoming>sid-C9F05E12-9C76-4B90-977B-AFCFD0708610</incoming>
       <outgoing>sid-AA17C9D1-9359-4E63-9A3B-F6CEA9896A54</outgoing>
+    </exclusiveGateway>
+    <exclusiveGateway id="ExclusiveGateway_0mqughd">
+      <incoming>SequenceFlow_0sokcmm</incoming>
+      <outgoing>SequenceFlow_1ws6vpg</outgoing>
+      <outgoing>SequenceFlow_13hampo</outgoing>
     </exclusiveGateway>
   </process>
   <process id="sid-807E9EA7-33A4-4F7A-B8DD-96C08E3BD5C2" name="FunSpark" processType="None" isClosed="false" isExecutable="false">
