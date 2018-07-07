@@ -69,7 +69,7 @@ public class EMailerService {
 		}
 	}
 
-	public void sendSimpleMessage(int customerId, String subject) {
+	public void sendSimpleMessage(int customerId, String subject, String executionId) {
 
 		Optional<Customer> customer = custRepository.findById(customerId);
 
@@ -88,7 +88,7 @@ public class EMailerService {
 			if (subject.equals("Invalid Information")) {
 				msg = String.format(INVALID_MSG, salutation, name);
 			} else if (subject.equals("Request for further information")) {
-				msg = String.format(FURTHERINFO_MSG, salutation, name);
+				msg = String.format(FURTHERINFO_MSG, salutation, name, executionId);
 			} else if (subject.equals("No offer available")) {
 				msg = String.format(UNAVAILABLE_MSG, salutation, name);
 			}
@@ -99,7 +99,7 @@ public class EMailerService {
 		}
 	}
 
-	public void sendComplexMessage(int customerId, int recommendationId, String subject) {
+	public void sendComplexMessage(int customerId, int recommendationId, String subject, String executionId) {
 		Optional<Customer> customer = custRepository.findById(customerId);
 
 		String eMail = customer.get().getEmail();
@@ -132,7 +132,7 @@ public class EMailerService {
 			} else if (subject.equals("Travel recommendation")) {
 				String activitiesFormat = formatActivities(activities);
 				msg = String.format(RECOMMENDATION_MSG, salutation, name, startDate, endDate, flight, destination,
-						hotel, price, numberPeople, activitiesFormat, currentDate);
+						hotel, price, numberPeople, activitiesFormat, executionId, currentDate);
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -193,13 +193,15 @@ public class EMailerService {
 			+ "\nThe dates of our offer are as follows:" + "\n" + "\nFrom: %s To: %s" + "\nFlight: %s"
 			+ "\nDestination: %s" + "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
 			+ "\nYour journey will include the following activities:" + "\n%s" + "\n"
-			+ "\nFeel free to contact us, if you would like to refine our recommendation offer." + "\n"
+			+ "\nFeel free to contact us, if you would like to refine our recommendation offer."
+			+ "\n localhost:8081/feedback.html?executionId=%s"
 			+ "\nWe are looking forward to your reply!" + "\n" + "\nYours sincerely," + "\nemTours TravelAgency";
 
 	public static String FURTHERINFO_MSG = "Dear %s %s, "
 			+ "\nto generate a proper travel recommendation, we need to get to know you and your attitudes better!\n"
 			+ "\nWould you like to take part in activities during your journey" + "\n"
 			+ "\nPlease choose your preferred type of activities and a number of how many activities you plan to experience!"
+			+ "\n http://localhost:8081/additionalInformation.html?executionId=%s"
 			+ "\nYours sincerely," + "\nemTours TravelAgency";
 
 	public static String UNAVAILABLE_MSG = "Dear %s %s, "
