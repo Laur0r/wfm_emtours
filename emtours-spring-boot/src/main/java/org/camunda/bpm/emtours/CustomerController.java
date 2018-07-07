@@ -15,6 +15,7 @@ import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,7 @@ public class CustomerController {
   @Autowired(required = true)
   public CustomerRequestRepository repository;
 
+  @CrossOrigin(origins="*")
   @RequestMapping(value="/basicCustomerInformation", method=RequestMethod.POST, consumes="application/json")
   public void incomingCustomerInformation(@RequestBody String json) throws IOException, ParseException {
 	  ObjectMapper mapper = new ObjectMapper();
