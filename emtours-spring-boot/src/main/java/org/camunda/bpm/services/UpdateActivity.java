@@ -11,10 +11,12 @@ import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component
 public class UpdateActivity implements JavaDelegate {
 
 	@Autowired(required = true)

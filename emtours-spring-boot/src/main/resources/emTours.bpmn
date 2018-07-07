@@ -845,7 +845,7 @@
     </intermediateCatchEvent>
     <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="bookingsendtask12345" targetRef="Task_13ez5q1" />
     <sequenceFlow id="SequenceFlow_1u7m5sk" sourceRef="Task_13ez5q1" targetRef="ExclusiveGateway_1idz85h" />
-    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/PaymentReceived.html">
       <extensionElements>
         <camunda:taskListener class="org.camunda.bpm.roles.CheckPaymentRole" event="create" />
       </extensionElements>
