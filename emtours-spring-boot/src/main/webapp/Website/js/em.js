@@ -33,7 +33,9 @@ $(document).ready(function(){
 		}
 	});
 });
-  
+
+
+// Function for submitting first customer information
 function submit() {
 
   var customer_information = {
@@ -51,7 +53,7 @@ function submit() {
     "climate": document.getElementById('climate').value,
     "numberPeople": document.getElementById('num_adults').value,
     "numberActivities": document.getElementById('num_activities').value,
-    "experienceType": document.getElementById('activity').value,
+    "experienceType": document.getElementById('activity').value
   }
   var json_customer_information = JSON.stringify(customer_information);
   console.log("Post Request:" + json_customer_information)
@@ -61,7 +63,6 @@ function submit() {
     headers: {
       "content-type" : "application/json"
     },
-    crossOrigin: false,
     type: 'POST',
     async: true,
     processData: false,
@@ -83,5 +84,52 @@ function submit() {
     }
   })
 	
+};
+
+// Function for sending Response for Recommendations
+function sendResponse() {
+  var urlParams = new URLSearchParams(window.location.search);
+  console.log(urlParams.has('executionId'));
+  console.log(urlParams.get('executionId'));
+
+  if (feedback != undefined && feedback != null && feedback.value != "") {
+      var customer_information = {
+          "executionId": executionId,
+          "customerResponse": feedback.value 
+      }
+      var json_customer_information = JSON.stringify(customer_information);
+      console.log("Post Request:" + json_customer_information);
+      $.ajax({
+          url: 'http://localhost:8080/customerRecommendationFeedback',
+          data: json_customer_information,
+          headers: {
+              "content-type" : "application/json"
+          },
+          crossOrigin: false,
+          type: 'POST',
+          async: true,
+          processData: false,
+          success: function(data) {
+              console.log("success");
+              $('#success').modal('open');     
+              console.log(data);
+          },
+          error: function (jqxhr) {
+              if(jqxhr.responseText != undefined && jqxhr.responseText != null) {
+                  document.getElementById("errormessage").innerHTML = jqxhr.responseText;
+              } else {
+                  document.getElementById("errormessage").innerHTML = "Please try again in a few seconds.";
+              }
+              $('#fail').modal('open');   
+              if (jqxhr !== undefined) {
+                  console.log(jqxhr);
+              }
+          }
+      })
+  } else {
+      console.log("Empty or invalid input fields");
+      document.getElementById("errormessage").innerHTML = "Please fill select your response.";
+      $('#fail').modal('open'); 
+  }
 };
 
