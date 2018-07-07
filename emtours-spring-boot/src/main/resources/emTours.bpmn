@@ -11,7 +11,7 @@
       <signavio:signavioDiagramMetaData metaKey="meta-prozessverantwortlicher" metaValue="" />
       <signavio:signavioDiagramMetaData metaKey="revisionid" metaValue="09d8f8c2679d43459753d58c70f0c2d6" />
     </extensionElements>
-    <participant id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" name="emTours" processRef="sid-D8CB8470-0604-4B41-A465-D408FCB086DC">
+    <participant id="emTours" name="emTours" processRef="sid-D8CB8470-0604-4B41-A465-D408FCB086DC">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -931,7 +931,7 @@
   <message id="Message_0n59nmp" name="Incoming Information" />
   <bpmndi:BPMNDiagram id="sid-769d257a-ce0d-4392-abf1-8b9d1a51aaf3">
     <bpmndi:BPMNPlane id="sid-765b626c-5191-4a76-a88b-5d7761cc890f" bpmnElement="sid-bcdb2896-a27a-4820-b24d-dd70a0e362ab">
-      <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53" isHorizontal="true">
+      <bpmndi:BPMNShape id="sid-B8EA7D50-6554-404B-8A32-04E8F2D44D53_gui" bpmnElement="emTours" isHorizontal="true">
         <omgdc:Bounds x="60" y="264" width="4612" height="504" />
         <bpmndi:BPMNLabel labelStyle="sid-f1b1cea5-dad5-40cc-be98-ffd890bf11d8">
           <omgdc:Bounds x="65.00050204495744" y="490.1742168118541" width="12" height="47.82857131958008" />
