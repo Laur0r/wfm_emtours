@@ -3,6 +3,7 @@ $(window).on('load', function () {
 });
 $(document).ready(function(){
   $('.modal').modal();
+  $('.tooltipped').tooltip();
   $('.slider').slider('init', {'height' : 500, 'indicators' : false});
   $('select').material_select();
   $('.stepper').activateStepper();
@@ -26,7 +27,9 @@ $(document).ready(function(){
 		&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false) {
 			submit();
 		} else {
-			console.log("Empty or invalid input fields")
+      console.log("Empty or invalid input fields")
+      document.getElementById("errormessage").innerHTML = "Please fill out every fields with valid values.";
+      $('#fail').modal('open');   
 		}
 	});
 });
@@ -43,12 +46,12 @@ function submit() {
     "country":  document.getElementById('country').value,
     "birthday": document.getElementById('birthday').value,
     "arrival": document.getElementById('departure_date').value,
-    "departure": document.getElementById('return_date').value,  //YYYY-MM-dd,
-    "budget": document.querySelector('input[name = "budget"]:checked').value,
-    "climate": document.querySelector('input[name = "climate"]:checked').value,
+    "departure": document.getElementById('return_date').value,
+    "budget": document.getElementById('budget').value,
+    "climate": document.getElementById('climate').value,
     "numberPeople": document.getElementById('num_adults').value,
-    "numberActivites": document.getElementById('num_activities').value,
-    "experienceType": document.querySelector('input[name = "activity"]:checked').value
+    "numberActivities": document.getElementById('num_activities').value,
+    "experienceType": document.getElementById('activity').value,
   }
   var json_customer_information = JSON.stringify(customer_information);
   console.log("Post Request:" + json_customer_information)
