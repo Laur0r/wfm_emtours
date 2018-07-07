@@ -2,10 +2,12 @@ $(window).on('load', function () {
 	$(".se-pre-con").fadeOut("slow");;
 });
 $(document).ready(function(){
+  $('.modal').modal();
   $('.slider').slider('init', {'height' : 500, 'indicators' : false});
   $('select').material_select();
   $('.stepper').activateStepper();
   $('.datepicker').pickadate({
+    format: 'yyyy-mm-dd',
     selectMonths: true,
     selectYears: 200
   });
@@ -22,7 +24,7 @@ $(document).ready(function(){
     if (first_name.value != null && first_name.value != undefined && first_name.value != "" && first_name.validity.valid != false
     && last_name.value != undefined && last_name.value != null && last_name.value != "" && last_name.validity.valid != false
 		&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false) {
-			register();
+			submit();
 		} else {
 			console.log("Empty or invalid input fields")
 		}
@@ -31,18 +33,32 @@ $(document).ready(function(){
   
 function submit() {
 
-  var user = {
-    "user-name": document.getElementById('first_name').value + " " + document.getElementById('last_name').value,
-    "user-mail" : document.getElementById('email').value
+  var customer_information = {
+    "name": document.getElementById('first_name').value + " " + document.getElementById('last_name').value,
+    "email" : document.getElementById('email').value,
+    "gender": document.getElementById('gender').value,
+    "address": document.getElementById('address').value,
+    "zip": document.getElementById('zip_code').value,
+    "city": document.getElementById('city').value,
+    "country":  document.getElementById('country').value,
+    "birthday": document.getElementById('birthday').value,
+    "arrival": document.getElementById('departure_date').value,
+    "departure": document.getElementById('return_date').value,  //YYYY-MM-dd,
+    "budget": document.querySelector('input[name = "budget"]:checked').value,
+    "climate": document.querySelector('input[name = "climate"]:checked').value,
+    "numberPeople": document.getElementById('num_adults').value,
+    "numberActivites": document.getElementById('num_activities').value,
+    "experienceType": document.querySelector('input[name = "activity"]:checked').value
   }
-  var json_user = JSON.stringify(user);
-  console.log("Post Request:" + json_user)
+  var json_customer_information = JSON.stringify(customer_information);
+  console.log("Post Request:" + json_customer_information)
   $.ajax({
-    url: 'https://',
-    data: json_user,
+    url: 'http://localhost:8080/basicCustomerInformation',
+    data: json_customer_information,
     headers: {
       "content-type" : "application/json"
     },
+    crossOrigin: false,
     type: 'POST',
     async: true,
     processData: false,
