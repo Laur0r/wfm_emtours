@@ -62,4 +62,11 @@ public Activity() {
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
+	
+	public Recommendation getRecommendation() {
+		return recommendation;
+	}
+	public void setRecommendation(Recommendation recommendation) {
+		this.recommendation = recommendation;
+	}
 }
