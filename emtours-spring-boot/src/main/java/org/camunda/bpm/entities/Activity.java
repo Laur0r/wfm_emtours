@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,6 +16,7 @@ public class Activity {
     private Integer id;
 	
 	@ManyToOne
+	@JoinColumn(name="recommendationId")
 	private Recommendation recommendation;
 	private String name;
 	private String location;
@@ -61,5 +63,12 @@ public Activity() {
 	}
 	public void setProvider(String provider) {
 		this.provider = provider;
+	}
+	
+	public Recommendation getRecommendation() {
+		return recommendation;
+	}
+	public void setRecommendation(Recommendation recommendation) {
+		this.recommendation = recommendation;
 	}
 }

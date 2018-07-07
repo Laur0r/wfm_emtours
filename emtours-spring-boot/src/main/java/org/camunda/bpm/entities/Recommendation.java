@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -14,7 +15,7 @@ import javax.persistence.OneToMany;
 public class Recommendation {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Integer recommendationId;
 	
 	@ManyToOne
 	private CustomerRequest request;
@@ -26,7 +27,7 @@ public class Recommendation {
 	private String flight;
 	private int numberPeople;
 	
-	@OneToMany
+	@OneToMany(mappedBy="recommendation")
 	private Collection<Activity> activities;
 	
 	private double cost;
@@ -90,7 +91,7 @@ public class Recommendation {
 		return request;
 	}
 	public Integer getId() {
-		return id;
+		return recommendationId;
 	}
 	public double getActivityCost() {
 		return activityCost;

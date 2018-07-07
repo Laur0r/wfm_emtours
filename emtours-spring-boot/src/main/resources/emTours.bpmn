@@ -39,12 +39,12 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </messageFlow>
-    <messageFlow id="sid-5CCE0824-7D98-4D43-83F7-4215AD807D30" name="" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="Participant_1l66cs8">
+    <messageFlow id="sid-5CCE0824-7D98-4D43-83F7-4215AD807D30" name="" sourceRef="bookingsendtask12345" targetRef="Participant_1l66cs8">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </messageFlow>
-    <messageFlow id="sid-A920DA08-2240-4B21-A763-A7E7DCDE9E8F" name="" sourceRef="sid-411CF1E3-C01C-4C27-A524-B3E8E715673D" targetRef="sid-369B1C60-1900-4FF2-954B-5990F3EE000D">
+    <messageFlow id="sid-A920DA08-2240-4B21-A763-A7E7DCDE9E8F" name="" sourceRef="sid-411CF1E3-C01C-4C27-A524-B3E8E715673D" targetRef="bookingbillconfirmation1234">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
@@ -172,9 +172,9 @@
         <flowNodeRef>sid-EA1F7DC1-6795-4401-925B-8FEB3CBDB5C6</flowNodeRef>
         <flowNodeRef>sid-46704E89-4453-44F5-9937-2CF34BCE6440</flowNodeRef>
         <flowNodeRef>ExclusiveGateway_0mqughd</flowNodeRef>
-        <flowNodeRef>sid-369B1C60-1900-4FF2-954B-5990F3EE000D</flowNodeRef>
-        <flowNodeRef>sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153</flowNodeRef>
-        <flowNodeRef>sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49</flowNodeRef>
+        <flowNodeRef>bookingbillconfirmation1234</flowNodeRef>
+        <flowNodeRef>bookingsendtask12345</flowNodeRef>
+        <flowNodeRef>bookholidayusertask12344</flowNodeRef>
         <flowNodeRef>Task_14bpbcg</flowNodeRef>
       </lane>
     </laneSet>
@@ -196,6 +196,7 @@
         <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
         <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
         <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
+        <camunda:taskListener class="org.camunda.bpm.roles.ValidateInformationRole" event="create" />
       </extensionElements>
       <incoming>sid-DD386AF0-AABD-4015-804D-3FFC2D4555A9</incoming>
       <outgoing>sid-F15B52C4-CAB9-4469-8453-1D3ABE64B6BC</outgoing>
@@ -554,6 +555,43 @@
       <outgoing>sid-0F92390E-E945-48F4-A643-5EB8B71763E2</outgoing>
       <outgoing>sid-662FC740-398D-401B-B0A5-44BFA0388FF5</outgoing>
     </eventBasedGateway>
+    <intermediateCatchEvent id="bookingbillconfirmation1234" name="Booking&#10;confirmation &#10;and bill received">
+      <extensionElements>
+        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
+        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+        <signavio:signavioLabel align="left" bottom="false" left="false" ref="text_name" right="true" top="false" valign="middle" x="35.0" y="15.0" />
+      </extensionElements>
+      <incoming>sid-662FC740-398D-401B-B0A5-44BFA0388FF5</incoming>
+      <outgoing>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</outgoing>
+      <messageEventDefinition id="sid-ce45fe63-a7fb-4b0f-a5c5-5fa81caa86e2" messageRef="Message_1ue6wq4" />
+    </intermediateCatchEvent>
+    <userTask id="bookholidayusertask12344" name="Book holiday" implementation="##WebService" camunda:formKey="embedded:app:forms/Book_Holiday.html">
+      <extensionElements>
+        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+        <signavio:signavioMetaData metaKey="risikenundkontrollen" metaValue="" />
+        <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue="" />
+        <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
+        <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+        <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
+        <camunda:taskListener class="org.camunda.bpm.roles.BookHolidayRole" event="create" />
+      </extensionElements>
+      <incoming>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</incoming>
+      <outgoing>sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1</outgoing>
+    </userTask>
+    <sendTask id="bookingsendtask12345" name="Send booking confirmation and bill" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Customer.BookingConfirmationMessageDelegate">
+      <extensionElements>
+        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
+        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
+        <signavio:signavioMetaData metaKey="risikenundkontrollen" metaValue="" />
+        <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue="" />
+        <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
+        <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
+        <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
+      </extensionElements>
+      <incoming>sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1</incoming>
+      <outgoing>SequenceFlow_106ziz9</outgoing>
+    </sendTask>
     <dataStoreReference id="sid-EF94DAEF-A518-4173-A0C4-6DA9F6A9F337" name="Recommendations DB" dataStoreRef="sid-97b17f29-c896-4be3-b82c-544eda2aa58b">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
@@ -686,17 +724,17 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="sid-662FC740-398D-401B-B0A5-44BFA0388FF5" name="" sourceRef="sid-8414F868-D021-4B65-8328-CBAA2A1456B0" targetRef="sid-369B1C60-1900-4FF2-954B-5990F3EE000D">
+    <sequenceFlow id="sid-662FC740-398D-401B-B0A5-44BFA0388FF5" name="" sourceRef="sid-8414F868-D021-4B65-8328-CBAA2A1456B0" targetRef="bookingbillconfirmation1234">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="sid-C437860D-63A4-4EA8-9F7E-58F186975AC1" name="" sourceRef="sid-369B1C60-1900-4FF2-954B-5990F3EE000D" targetRef="Task_14bpbcg">
+    <sequenceFlow id="sid-C437860D-63A4-4EA8-9F7E-58F186975AC1" name="" sourceRef="bookingbillconfirmation1234" targetRef="Task_14bpbcg">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </sequenceFlow>
-    <sequenceFlow id="sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1" name="" sourceRef="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" targetRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153">
+    <sequenceFlow id="sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1" name="" sourceRef="bookholidayusertask12344" targetRef="bookingsendtask12345">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
@@ -716,6 +754,9 @@
       <outgoing>SequenceFlow_1326izm</outgoing>
     </serviceTask>
     <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Review_Recommendation.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.ReviewRecommendationsRole" event="create" />
+      </extensionElements>
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
     <businessRuleTask id="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" name="Generate recommendations" implementation="##WebService" camunda:resultVariable="dmn_result" camunda:decisionRef="decision_recommendation">
@@ -802,13 +843,19 @@
       <outgoing>sid-6AD3FACD-B436-4EBC-A76A-61A4D80A6CD6</outgoing>
       <messageEventDefinition id="sid-f16cf61a-bcfe-4f44-8b9e-69d870255330" messageRef="Message_1pvh9nb" />
     </intermediateCatchEvent>
-    <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="Task_13ez5q1" />
+    <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="bookingsendtask12345" targetRef="Task_13ez5q1" />
     <sequenceFlow id="SequenceFlow_1u7m5sk" sourceRef="Task_13ez5q1" targetRef="ExclusiveGateway_1idz85h" />
-    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/PaymentReceived.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.CheckPaymentRole" event="create" />
+      </extensionElements>
       <incoming>SequenceFlow_106ziz9</incoming>
       <outgoing>SequenceFlow_1u7m5sk</outgoing>
     </userTask>
     <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/Invoke_Legal_Action.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.InvokeLegalActionRole" event="create" />
+      </extensionElements>
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
@@ -870,43 +917,7 @@
       <outgoing>SequenceFlow_1ws6vpg</outgoing>
       <outgoing>SequenceFlow_13hampo</outgoing>
     </exclusiveGateway>
-    <intermediateCatchEvent id="sid-369B1C60-1900-4FF2-954B-5990F3EE000D" name="Booking&#10;confirmation &#10;and bill received">
-      <extensionElements>
-        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
-        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
-        <signavio:signavioLabel align="left" bottom="false" left="false" ref="text_name" right="true" top="false" valign="middle" x="35.0" y="15.0" />
-      </extensionElements>
-      <incoming>sid-662FC740-398D-401B-B0A5-44BFA0388FF5</incoming>
-      <outgoing>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</outgoing>
-      <messageEventDefinition id="sid-ce45fe63-a7fb-4b0f-a5c5-5fa81caa86e2" messageRef="Message_1ue6wq4" />
-    </intermediateCatchEvent>
-    <sendTask id="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" name="Send booking confirmation and bill" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Customer.BookingConfirmationMessageDelegate">
-      <extensionElements>
-        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
-        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
-        <signavio:signavioMetaData metaKey="risikenundkontrollen" metaValue="" />
-        <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue="" />
-        <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
-        <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
-        <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
-      </extensionElements>
-      <incoming>sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1</incoming>
-      <outgoing>SequenceFlow_106ziz9</outgoing>
-    </sendTask>
-    <userTask id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" name="Book holiday" implementation="##WebService" camunda:formKey="embedded:app:forms/Book_Holiday.html">
-      <extensionElements>
-        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
-        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
-        <signavio:signavioMetaData metaKey="risikenundkontrollen" metaValue="" />
-        <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue="" />
-        <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
-        <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
-        <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
-      </extensionElements>
-      <incoming>SequenceFlow_03nm8dc</incoming>
-      <outgoing>sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1</outgoing>
-    </userTask>
-    <sequenceFlow id="SequenceFlow_03nm8dc" sourceRef="Task_14bpbcg" targetRef="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49" />
+    <sequenceFlow id="SequenceFlow_03nm8dc" sourceRef="Task_14bpbcg" targetRef="bookholidayusertask12344" />
     <serviceTask id="Task_14bpbcg" name="Update Activities" camunda:class="org.camunda.bpm.services.UpdateActivity">
       <incoming>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</incoming>
       <outgoing>SequenceFlow_03nm8dc</outgoing>
@@ -1033,7 +1044,7 @@
           <omgdc:Bounds x="2638" y="422" width="81" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49_gui" bpmnElement="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49">
+      <bpmndi:BPMNShape id="sid-E1BECD7F-43CD-47BF-98AE-55B76A224C49_gui" bpmnElement="bookholidayusertask12344">
         <omgdc:Bounds x="3499" y="431" width="100" height="80" />
         <bpmndi:BPMNLabel labelStyle="sid-f1b1cea5-dad5-40cc-be98-ffd890bf11d8">
           <omgdc:Bounds x="2859.2856266498598" y="377" width="69.42857360839844" height="12" />
@@ -1045,13 +1056,13 @@
           <omgdc:Bounds x="2527.235645835104" y="371" width="74.82857513427734" height="24" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="sid-369B1C60-1900-4FF2-954B-5990F3EE000D_gui" bpmnElement="sid-369B1C60-1900-4FF2-954B-5990F3EE000D">
+      <bpmndi:BPMNShape id="sid-369B1C60-1900-4FF2-954B-5990F3EE000D_gui" bpmnElement="bookingbillconfirmation1234">
         <omgdc:Bounds x="3320" y="456" width="30" height="30" />
         <bpmndi:BPMNLabel labelStyle="sid-717e0566-9046-4d94-881e-3fa5b7c4b07c">
           <omgdc:Bounds x="3282" y="413" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153_gui" bpmnElement="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153">
+      <bpmndi:BPMNShape id="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153_gui" bpmnElement="bookingsendtask12345">
         <omgdc:Bounds x="3638" y="431" width="100" height="80" />
         <bpmndi:BPMNLabel labelStyle="sid-f1b1cea5-dad5-40cc-be98-ffd890bf11d8">
           <omgdc:Bounds x="2993.4856312274965" y="365" width="91.028564453125" height="36" />
