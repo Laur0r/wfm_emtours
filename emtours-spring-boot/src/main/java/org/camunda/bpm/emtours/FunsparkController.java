@@ -10,6 +10,7 @@ import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.ExecutionListener;
 import org.camunda.bpm.entities.Activity;
+import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +77,17 @@ public class FunsparkController {
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
 		String executionId = executionNode.asText();
+		JsonNode recommendationNode = node.at("/recommendation");
+		Integer recommendationId = recommendationNode.asInt();
 		JsonNode activitiesNode = node.at("/activities");
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<Activity>>() {
 		});
 		Collection<Activity> activityRecos = reader.readValue(activitiesNode);
+		Optional<Recommendation> recommendationo = recoRepository.findById(recommendationId);
+		Recommendation recommendation = recommendationo.get();
 		for (Iterator<Activity> iterator = activityRecos.iterator(); iterator.hasNext();) {
 			Activity a = iterator.next();
+			a.setRecommendation(recommendation);
 			a = activityRepository.save(a);
 		}
 		camunda.getRuntimeService().createMessageCorrelation("activityRecos")

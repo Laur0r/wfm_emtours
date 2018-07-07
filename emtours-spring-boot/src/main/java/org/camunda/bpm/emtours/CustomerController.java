@@ -111,6 +111,7 @@ public class CustomerController {
 		          .putValue("customer", customerJson));*/
   }
   
+  @CrossOrigin(origins="*")
   @RequestMapping(value="/furtherCustomerInformation", method=RequestMethod.POST, consumes="application/json")
 	public String receiveFurtherInformation(@RequestBody String json) throws IOException {
 	  ObjectMapper mapper = new ObjectMapper();
@@ -138,58 +139,26 @@ public class CustomerController {
 		return "";
   }
   
-  @RequestMapping(value="/CustomerBookingRequest", method=RequestMethod.POST, consumes="application/json")
-	public String receiveBookingRequest(@RequestBody String json) throws IOException {
-	  ObjectMapper mapper = new ObjectMapper();
-	  JsonNode node = mapper.readTree(json);
-	  JsonNode executionNode = node.at("/executionId");
-	  String executionId = executionNode.asText();
-		camunda.getRuntimeService().createMessageCorrelation("bookingRequest")
-		.processInstanceId(executionId).correlate();
-		return "";
-	}
-  
-  @RequestMapping(value="/CustomerBookingCancellation", method=RequestMethod.POST, consumes="application/json")
-	public String receiveCancellation(@RequestBody String json) throws IOException {
-	  ObjectMapper mapper = new ObjectMapper();
-	  JsonNode node = mapper.readTree(json);
-	  JsonNode executionNode = node.at("/executionId");
-	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().createMessageCorrelation("bookingCancellation")
-		.processInstanceId(executionId).correlate();
-		return "";
-	}
-  
-  @RequestMapping(value="/CustomerRecommendationFeedback", method=RequestMethod.POST, consumes="application/json")
+  @CrossOrigin(origins="*")
+  @RequestMapping(value="/customerRecommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public String receiveRecommendationFeedback(@RequestBody String json) throws IOException {
 	  ObjectMapper mapper = new ObjectMapper();
 	  JsonNode node = mapper.readTree(json);
 	  JsonNode executionNode = node.at("/executionId");
 	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().createMessageCorrelation("customerRecommendationFeedback")
-		.processInstanceId(executionId).correlate();
-		return "";
-	}
-  
-  @RequestMapping(value="/CustomerPayment", method=RequestMethod.POST, consumes="application/json")
-	public String receivePayment(@RequestBody String json) throws IOException {
-	  ObjectMapper mapper = new ObjectMapper();
-	  JsonNode node = mapper.readTree(json);
-	  JsonNode executionNode = node.at("/executionId");
-	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().createMessageCorrelation("customerPayment")
-		.processInstanceId(executionId).correlate();
-		return "";
-	}
-  
-  @RequestMapping(value="/CustomerIncorrectPayment", method=RequestMethod.POST, consumes="application/json")
-	public String receiveIncorrectPayment(@RequestBody String json) throws IOException {
-	  ObjectMapper mapper = new ObjectMapper();
-	  JsonNode node = mapper.readTree(json);
-	  JsonNode executionNode = node.at("/executionId");
-	  String executionId = executionNode.asText();
-	  camunda.getRuntimeService().createMessageCorrelation("customerIncorrectPayment")
-		.processInstanceId(executionId).correlate();
+	  JsonNode responseNode = node.at("/customerResponse");
+	  String customerResponse = responseNode.asText();
+	  if(customerResponse.equals("confirm")) {
+		  camunda.getRuntimeService().createMessageCorrelation("bookingRequest")
+			.processInstanceId(executionId).correlate();
+	  } else if(customerResponse.equals("cancel")) {
+		  camunda.getRuntimeService().createMessageCorrelation("bookingCancellation")
+			.processInstanceId(executionId).correlate();
+	  }	else if(customerResponse.equals("refine")){
+		  camunda.getRuntimeService().createMessageCorrelation("customerRecommendationFeedback")
+			.processInstanceId(executionId).correlate();
+	  }
+	  
 		return "";
 	}
 }
