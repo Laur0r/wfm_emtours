@@ -195,6 +195,7 @@
         <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
         <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
         <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
+        <camunda:taskListener class="org.camunda.bpm.roles.ValidateInformationRole" event="create" />
       </extensionElements>
       <incoming>sid-DD386AF0-AABD-4015-804D-3FFC2D4555A9</incoming>
       <outgoing>sid-F15B52C4-CAB9-4469-8453-1D3ABE64B6BC</outgoing>
@@ -572,6 +573,7 @@
         <signavio:signavioMetaData metaKey="wirdkonsultiert" metaValue="[]" />
         <signavio:signavioMetaData metaKey="externaldocuments" metaValue="[]" />
         <signavio:signavioMetaData metaKey="wirdinformiert" metaValue="[]" />
+        <camunda:taskListener class="org.camunda.bpm.roles.BookHolidayRole" event="create" />
       </extensionElements>
       <incoming>sid-C437860D-63A4-4EA8-9F7E-58F186975AC1</incoming>
       <outgoing>sid-B891C65F-DB43-4508-BB0D-D65ACA3810C1</outgoing>
@@ -751,6 +753,9 @@
       <outgoing>SequenceFlow_1326izm</outgoing>
     </serviceTask>
     <userTask id="Review_recommendation" name="Review recommendations" camunda:formKey="embedded:app:forms/Review_Recommendation.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.ReviewRecommendationsRole" event="create" />
+      </extensionElements>
       <outgoing>SequenceFlow_0sokcmm</outgoing>
     </userTask>
     <businessRuleTask id="sid-4933011F-5ED9-4BAF-98BB-1918A0001A3D" name="Generate recommendations" implementation="##WebService" camunda:resultVariable="dmn_result" camunda:decisionRef="decision_recommendation">
@@ -840,10 +845,16 @@
     <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="Task_13ez5q1" />
     <sequenceFlow id="SequenceFlow_1u7m5sk" sourceRef="Task_13ez5q1" targetRef="ExclusiveGateway_1idz85h" />
     <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/validateInformation.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.CheckPaymentRole" event="create" />
+      </extensionElements>
       <incoming>SequenceFlow_106ziz9</incoming>
       <outgoing>SequenceFlow_1u7m5sk</outgoing>
     </userTask>
     <userTask id="Task_0vih4zg" name="Invoke legal action" camunda:formKey="embedded:app:forms/Invoke_Legal_Action.html">
+      <extensionElements>
+        <camunda:taskListener class="org.camunda.bpm.roles.InvokeLegalActionRole" event="create" />
+      </extensionElements>
       <incoming>SequenceFlow_09rrwss</incoming>
       <outgoing>SequenceFlow_0pr328a</outgoing>
     </userTask>
