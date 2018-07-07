@@ -23,7 +23,7 @@ public class BookingConfirmationMessageDelegate implements JavaDelegate {
 			
 			String mailSubject = "Booking confirmation";
 			
-			eMailerService.sendComplexMessage(customerId, recommendationId, mailSubject);
+			eMailerService.sendComplexMessage(customerId, recommendationId, mailSubject, execution.getId());
 			System.out.println("E-Mail:BookingConfirmation sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (BookingConfirmation): "+ex);
