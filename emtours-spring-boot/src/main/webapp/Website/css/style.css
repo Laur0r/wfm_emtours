@@ -17,6 +17,11 @@ h1, h2, h3, h4, h5 {
     font-family: "Oswald";
 }
 
+h4 {
+    text-align: center;
+    vertical-align: middle;
+}
+
 .custom-height {
     height: 200px;
 }
@@ -103,10 +108,7 @@ footer {
     width: 20%;
 }
 
-.row {
-    text-align: center;
-    vertical-align: middle;
-}
+
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
     .row {
@@ -114,6 +116,20 @@ footer {
         margin-right: 20%;
     }
 }
+
+/* *********************************************************************************************************** */
+/* FANCY MINOR ADJUSTMENTS */
+
+.card-action {
+    text-align: center; 
+    vertical-align: middle;
+}
+
+.prefix ~ .select-wrapper {
+    margin-left: 3rem !important;
+    width: 92% !important;
+    width: calc(100% - 3rem) !important;
+  }
 
 .slider {
     height: 1000px;
@@ -123,17 +139,9 @@ ul.stepper .step.active:before, ul.stepper .step.done:before {
     background-color: lightcoral !important;
 }
  
-
-/* ************************************************************************************************************ */
-/* BUTTON + ICON COLORS */
-.icon-orange {
-    color: #d58600;
-}
-
 .icon-grey {
     color: #616161;
 }
-
 
 .btn-lightcoral {
     background-color: lightcoral !important;
