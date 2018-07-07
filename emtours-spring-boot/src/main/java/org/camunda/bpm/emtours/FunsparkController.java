@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.ExecutionListener;
 import org.camunda.bpm.entities.Activity;
-import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;

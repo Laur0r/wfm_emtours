@@ -9,12 +9,8 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.CustomerRequest;
-import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class SaveInfosDelegate implements JavaDelegate {

@@ -188,7 +188,7 @@ public class EMailerService {
 		for(int i=0; i<as.size(); i++) {
 			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
 					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
-					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "/n";
+					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "\n";
 		}
 		return result;
 	}
@@ -212,15 +212,15 @@ public class EMailerService {
 			+ "\nThe dates of our offer are as follows:" + "\n" + "\nFrom: %s To: %s" + "\nFlight: %s"
 			+ "\nDestination: %s" + "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
 			+ "\nYour journey will include the following activities:" + "\n%s" + "\n"
-			+ "\nFeel free to contact us, if you would like to refine our recommendation offer."
-			+ "\n localhost:8081/feedback.html?executionId=%s"
+			+ "\nUse this link to give us feedback on this recommendation:"
+			+ "\n http://localhost:8081/feedback.html?executionId=%s" + "\n"
 			+ "\nWe are looking forward to your reply!" + "\n" + "\nYours sincerely," + "\nemTours TravelAgency";
 
 	public static String FURTHERINFO_MSG = "Dear %s %s, "
 			+ "\nto generate a proper travel recommendation, we need to get to know you and your attitudes better!\n"
 			+ "\nWould you like to take part in activities during your journey" + "\n"
-			+ "\nPlease choose your preferred type of activities and a number of how many activities you plan to experience!"
-			+ "\n http://localhost:8081/additionalInformation.html?executionId=%s"
+			+ "\nPlease choose your preferred type of activities and a number of how many activities you plan to experience by using this link:"
+			+ "\n http://localhost:8081/additionalInformation.html?executionId=%s"  + "\n"
 			+ "\nYours sincerely," + "\nemTours TravelAgency";
 
 	public static String UNAVAILABLE_MSG = "Dear %s %s, "

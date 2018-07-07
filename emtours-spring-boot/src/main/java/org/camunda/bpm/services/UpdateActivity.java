@@ -38,8 +38,9 @@ public class UpdateActivity implements JavaDelegate {
 		List<Activity> oldrecos = (List<Activity>)recommendation.getActivities();
 		
 		for(ActivityDate booked: activityBooking) {
+			System.out.println("BookedDate: "+booked.getBookingDate().toString());
 			for(Activity old: oldrecos) {
-				if (booked.getActivity().getName() == old.getName()) {
+				if (booked.getActivity().getName().equals(old.getName())) {
 					old.setDate(booked.getBookingDate());
 					actrepository.save(old);
 				}
