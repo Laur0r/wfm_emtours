@@ -48,6 +48,7 @@
                                     <div class="input-field col s12 m6 offset-m3">
                                         <i class="material-icons prefix icon-grey"><!--work--></i>
                                         <select id="experience">
+                                            <option value="" selected disabled>Choose your option</option>
                                             <option value="chilling">I want Chilling</option>
                                             <option value="action">I want Action</option>
                                             <option value="adventure">I want Adventure</option>
@@ -67,7 +68,7 @@
                             </div>
                         </div>
                         <div class="card-action">
-                            <a class="waves-effect waves-dark btn btn-lightcoral" id="btn_submit">Submit</a>
+                            <a class="waves-effect waves-dark btn btn-lightcoral" id="btn_sendAddInformation">Submit</a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
                     <br/>
                 </div>
             <br/>
-            <h4>Something went wrong.</h4>
+            <h4 id="errorheader">Something went wrong.</h4>
             <p id="errormessage"></p>
         </div>
     </div>
@@ -126,6 +127,6 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/materialize-stepper.min.js"></script>
-    <script type="text/javascript" src="js/em.js"></script>
+    <script type="text/javascript" src="js/em_feedback.js"></script>
 </body>
 </html>
