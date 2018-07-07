@@ -169,7 +169,7 @@ public class EMailerService {
 		for(int i=0; i<as.size(); i++) {
 			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
 					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
-					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "/n";
+					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "\n";
 		}
 		return result;
 	}
@@ -194,7 +194,7 @@ public class EMailerService {
 			+ "\nDestination: %s" + "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
 			+ "\nYour journey will include the following activities:" + "\n%s" + "\n"
 			+ "\nFeel free to contact us, if you would like to refine our recommendation offer."
-			+ "\n localhost:8081/feedback.html?executionId=%s"
+			+ "\n http://localhost:8081/feedback.html?executionId=%s"
 			+ "\nWe are looking forward to your reply!" + "\n" + "\nYours sincerely," + "\nemTours TravelAgency";
 
 	public static String FURTHERINFO_MSG = "Dear %s %s, "
