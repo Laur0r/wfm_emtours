@@ -91,6 +91,18 @@ footer {
     color:white;
 }
 
+.header-small {
+    height: 10%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightcoral;
+    color:white;
+}
+
+.logo-small {
+    width: 20%;
+}
+
 .row {
     text-align: center;
     vertical-align: middle;
@@ -107,7 +119,10 @@ footer {
     height: 1000px;
 }
 
-
+ul.stepper .step.active:before, ul.stepper .step.done:before {
+    background-color: lightcoral !important;
+}
+ 
 
 /* ************************************************************************************************************ */
 /* BUTTON + ICON COLORS */
@@ -115,24 +130,10 @@ footer {
     color: #d58600;
 }
 
-.icon-blue {
-    color: #056478;
-}
-.orange {
-    background-color: #d58600 !important;
+.icon-grey {
+    color: #616161;
 }
 
-.blue {
-    background-color: #056478 !important;
-}
-
-.btn-blue {
-    background-color: #056478 !important;
-}
-
-.btn-orange {
-    background-color: #d58600 !important;
-}
 
 .btn-lightcoral {
     background-color: lightcoral !important;
@@ -140,7 +141,11 @@ footer {
 
 .picker__date-display{
     background-color: lightcoral;
-  }
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: lightcoral !important;
+}
 
 /* ************************************************************************************************************ */
 /* TEXT INPUT FIELDS */
