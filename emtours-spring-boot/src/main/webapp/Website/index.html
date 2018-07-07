@@ -96,115 +96,84 @@
                 <li class="step active">
                     <div data-step-label="What do you have mind?" class="step-title waves-effect waves-dark">Travel Information</div>
                     <div class="step-content">
-                        <div id="form_registration_2">
+                        <div id="form_registration_1">
+                            <!-- Row 1 -->
+                            <div class="row">
 
-                            <!-- WHO -->
-                            <div  class="row">
-                                <h4>Who is travelling?</h4>
-                                <div class="input-field col s12 m2 offset-m3">
-                                    <i class="material-icons prefix">account_circle</i>
+                            <!-- Number of People -->
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey">people</i>
                                     <input id="num_adults" type="number" min="0" class="validate" required/>
-                                    <label for="num_adults">Number of Adults</label>
+                                    <label for="num_adults">Number of People</label>
                                 </div>
-                                <div class="input-field col s12 m2">
-                                    <i class="material-icons prefix">child_care</i>
-                                    <input id="num_child" type="number" min="0" class="validate" required/>
-                                    <label for="num_child">Number of Children</label>
-                                </div>
-                                <div class="input-field col s12 m2">
-                                    <i class="material-icons prefix">pets</i>
-                                    <input id="num_animals" type="number" min="0" class="validate" required>
-                                    <label for="num_animals">Number of Animals</label>
+
+                            <!-- Climate Preferences -->
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey"><!--wb_sunny--></i>
+                                    <select id="climate">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="cold">Cold</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="hot">Warm</option>
+                                    </select>
+                                    <label>Climate Preferences</label>
                                 </div>
                             </div>
 
-                            <!-- CLIMATE -->
-                            <br/><br/><br/><br/>
+                            <!-- Row 2 -->
                             <div class="row">
-                                <h4>What are your climate preferences?</h4>
 
-                                <div class="col s12 m2 offset-m3">
-                                    <input name="climate" type="radio" id="rad_cold"/>
-                                    <label for="rad_cold">Cold</label>
+                            <!-- Holiday Type-->
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey"><!--work--></i>
+                                    <select id="activity">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="action">Action</option>
+                                        <option value="adventure">Adventure</option>
+                                        <option value="family">Family</option>
+                                        <option value="chilling">Relaxing</option>
+                                        <option value="romance">Romance</option>
+                                    </select>
+                                    <label>Holiday Type</label>
                                 </div>
-                                <div class="col s12 m2">
-                                    <input name="climate" type="radio" id="rad_moderate"/>
-                                    <label for="rad_moderate">Moderate</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="climate" type="radio" id="rad_hot"/>
-                                    <label for="rad_hot">Warm</label>
-                                </div>
-                            </div>
-                            
-                            <!-- TYPE OF HOLIDAY -->
-                            <br/><br/><br/><br/>
-                            <div class="row">
-                                <h4>What do you want to experience?</h4>
 
-                                <div class="col s12 m2 offset-m1">
-                                    <input name="activity" type="radio" id="rad_action"/>
-                                    <label for="rad_action">Action</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="activity" type="radio" id="rad_adventure"/>
-                                    <label for="rad_adventure">Adventure</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="activity" type="radio" id="rad_calming"/>
-                                    <label for="rad_calming">Calming</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="activity" type="radio" id="rad_family"/>
-                                    <label for="rad_family">Family</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="activity" type="radio" id="rad_romance"/>
-                                    <label for="rad_romance">Romance</label>
-                                </div>
-                            </div>
-
-                            <!-- ACTIVITIES -->
-                            <br/><br/><br/><br/>
-                            <div class="row">
-                                <h4>How many activities do you want to do?</h4>
-                                <p style="text-align: center">Activities are provided by our trusted partner FunSpark</p>
-                                <div class="input-field col s12 m2 offset-m5">
-                                    <i class="material-icons prefix">motorcycle</i>
-                                    <input id="num_activities" type="number" min="0" class="validate" required/>
+                            <!-- Number of Activities -->
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey">rowing</i>
+                                    <input id="num_activities" type="number" min="0" class="validate tooltipped" data-position="top" data-tooltip="Activities are provided by our trusted partner FunSpark" required/>
                                     <label for="num_activities">Number of Activities</label>
                                 </div>
                             </div>
 
-                            <!-- BUDGET -->
-                            <br/><br/><br/><br/>
+                            <!-- Row 3 -->
                             <div class="row">
-                                <h4>My budget for this travel is:</h4>
-                                <div class="col s12 m2 offset-m3">
-                                    <input name="budget" type="radio" value="low" id="rad_budget_low"/>
-                                    <label for="rad_budget_low">Smaller than 500€ p.P.</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="budget" type="radio" value="medium" id="rad_budget_mid"/>
-                                    <label for="rad_budget_mid">Between 500€ and 2000€ p.P.</label>
-                                </div>
-                                <div class="col s12 m2">
-                                    <input name="budget" type="radio" value="high" id="rad_budget_high"/>
-                                    <label for="rad_budget_high">Greater than 2000€ p.P.</label>
+                            
+                            <!-- Budget -->
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix icon-grey"><!--euro_symbol--></i>
+                                    <select id="budget" required>
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="low">Smaller than 500€ p.P.</option>
+                                        <option value="medium">Between 500€ and 2000€ p.P.</option>
+                                        <option value="high">Greater than 2000€ p.P.</option>
+                                    </select>
+                                    <label>Budget</label>
                                 </div>
                             </div>
 
-                            <!-- DATE OF TRAVEL -->
-                            <br/><br/><br/><br/>
+                            <!-- Row 4 -->
                             <div class="row">
-                                <h4>When do you want to travel?</h4>
-                                <div class="input-field col s12 m3 offset-m3">
-                                    <i class="material-icons prefix">today</i>
+                            
+                            <!-- Departure Date -->
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey">today</i> <!--flight_takeoff -->
                                     <input id="departure_date" type="date" class="datepicker" required>
                                     <label for="departure_date" data-error="Not a valid date">Departure Date</label>
                                 </div>
-                                <div class="input-field col s12 m3">
-                                    <i class="material-icons prefix">today</i>
+
+                            <!-- Return Date --> 
+                                <div class="input-field col s12 m6 l3">
+                                    <i class="material-icons prefix icon-grey">today</i> <!--flight_land -->
                                     <input id="return_date" type="date" class="datepicker" required>
                                     <label for="return_date" data-error="Not a valid date">Return Date</label>
                                 </div>
@@ -220,24 +189,24 @@
                 <li class="step">
                     <div data-step-label="Please enter your contact details." class="step-title waves-effect waves-dark">Customer Details</div>
                     <div class="step-content">
-                        <div id="form_registration_1" class="row">
+                        <div id="form_registration_2" class="row">
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix icon-grey">account_circle</i>
                                 <input id="first_name" type="text" class="validate" required/>
                                 <label for="first_name">First name</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix icon-grey">account_circle</i>
                                 <input id="last_name" type="text" class="validate" required/>
                                 <label for="last_name">Last name</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">today</i>
+                                <i class="material-icons prefix icon-grey">today</i>
                                 <input id="birthday" type="date" class="datepicker" required>
                                 <label for="birthday" data-error="Not a valid date">Birthday</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">gender</i>
+                                <i class="material-icons prefix icon-grey">gender</i>
                                 <select id="gender">
                                     <option value="" disabled selected>Choose your option</option>
                                     <option value="male">Male</option>
@@ -246,109 +215,167 @@
                                 <label>Gender</label>
                             </div>
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">email</i>
+                                <i class="material-icons prefix icon-grey">email</i>
                                 <input id="email" type="email" class="validate" required/>
                                 <label for="email" data-error="Not a valid email">Email</label>
                             </div>
                             <div class="input-field col s12 m8">
-                                <i class="material-icons prefix">room</i>
+                                <i class="material-icons prefix icon-grey">room</i>
                                 <input id="address" type="text" class="validate" required/>
                                 <label for="address">Home address</label>
                             </div>
                             <div class="input-field col s12 m4">
-                                <i class="material-icons prefix">room</i>
+                                <i class="material-icons prefix icon-grey">room</i>
                                 <input id="zip_code" type="text" class="validate" required/>
                                 <label for="zip_code">Zip code</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">location_city</i>
+                                <i class="material-icons prefix icon-grey">location_city</i>
                                 <input id="city" type="text" class="validate" required/>
                                 <label for="city">City</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">language</i>
+                                <i class="material-icons prefix icon-grey">language</i>
                                 <input id="country" type="text" class="validate" required/>
                                 <label for="country">Country</label>
                             </div>                 
                         </div>
                         <div class="step-actions">
                             <button class="waves-effect waves-dark btn-flat previous-step">Back</button>
-                            <button class="waves-effect waves-dark btn btn-lightcoral next-step">Next</button>
+                            <a class="waves-effect waves-dark btn btn-lightcoral" id="btn_submit">Submit</a>
                         </div>
                     </div>
                     
                 </li>
-                <!-- ############################################################################################################################################# -->
-                <!-- Step 3 -->
-                <li class="step">
-                    <div class="step-title waves-effect waves-dark">Review your Information</div>
-                    <div class="step-content">
-                        Finish!
-                        <div class="step-actions">
-                            <button class="waves-effect waves-dark btn-flat previous-step">Back</button>
-                            <a class="waves-effect waves-dark btn btn-lightcoral" id="btn_submit">Submit</a>
-                        </div>
-                    </div>
-                </li>
+
             </ul>
         </div>
-       
 
-    
-        <!-- ######################################################################################################################################################### -->
-        <!-- Pricing Variant - Pay per use. -->
-<!--
-        <ul class="stepper linear">
-                <li class="step active">
-                        <div data-step-label="Just add a data-step-label!" class="step-title waves-effect waves-dark">Step 1</div>
-                        <div class="step-content">
-                           <div class="row">
-                              <div class="input-field col s12">
-                                 <input name="email" type="email" class="validate" required>
-                                 <label for="email">Your e-mail</label>
-                              </div>
-                           </div>
-                           <div class="step-actions">
-                              <button class="waves-effect waves-dark btn blue next-step">CONTINUE</button>
-                           </div>
-                        </div>
-                     </li>
-                     <li class="step">
-                        <div class="step-title waves-effect waves-dark">Step 2</div>
-                        <div class="step-content">
-                           <div class="row">
-                              <div class="input-field col s12">
-                                 <input id name="password" type="password" class="validate" required>
-                                 <label for="password">Your password</label>
-                              </div>
-                           </div>
-                           <div class="step-actions">
-                              <button class="waves-effect waves-dark btn blue next-step">CONTINUE</button>
-                              <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
-                           </div>
-                        </div>
-                     </li>
-                     <li class="step">
-                        <div class="step-title waves-effect waves-dark">Step 3</div>
-                        <div class="step-content">
-                           Finish!
-                           <div class="step-actions">
-                              <button class="waves-effect waves-dark btn blue" type="submit">SUBMIT</button>
-                           </div>
-                        </div>
-                     </li>
-                  </ul>
-                -->
-        <!-- ######################################################################################################################################################### -->
-        <!-- Pricing Variant - Bundles -->
+<!-- 
+<li class="step active">
+    <div data-step-label="What do you have mind?" class="step-title waves-effect waves-dark">Travel Information</div>
+    <div class="step-content">
+        <div id="form_registration_2">
 
+
+            <div  class="row">
+                <h4>Who is travelling?</h4>
+                <div class="input-field col s12 m2 offset-m3">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="num_adults" type="number" min="0" class="validate" required/>
+                    <label for="num_adults">Number of Adults</label>
+                </div>
+                <div class="input-field col s12 m2">
+                    <i class="material-icons prefix">child_care</i>
+                    <input id="num_child" type="number" min="0" class="validate" required/>
+                    <label for="num_child">Number of Children</label>
+                </div>
+                <div class="input-field col s12 m2">
+                    <i class="material-icons prefix">pets</i>
+                    <input id="num_animals" type="number" min="0" class="validate" required>
+                    <label for="num_animals">Number of Animals</label>
+                </div>
+            </div>
+
+            <!-- CLIMATE 
+            <br/><br/><br/><br/>
+            <div class="row">
+                <h4>What are your climate preferences?</h4>
+
+                <div class="col s12 m2 offset-m3">
+                    <input name="climate" type="radio" id="rad_cold"/>
+                    <label for="rad_cold">Cold</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="climate" type="radio" id="rad_moderate"/>
+                    <label for="rad_moderate">Moderate</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="climate" type="radio" id="rad_hot"/>
+                    <label for="rad_hot">Warm</label>
+                </div>
+            </div>
+            
+            <!-- TYPE OF HOLIDAY 
+            <br/><br/><br/><br/>
+            <div class="row">
+                <h4>What do you want to experience?</h4>
+
+                <div class="col s12 m2 offset-m1">
+                    <input name="activity" type="radio" id="rad_action"/>
+                    <label for="rad_action">Action</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="activity" type="radio" id="rad_adventure"/>
+                    <label for="rad_adventure">Adventure</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="activity" type="radio" id="rad_calming"/>
+                    <label for="rad_calming">Calming</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="activity" type="radio" id="rad_family"/>
+                    <label for="rad_family">Family</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="activity" type="radio" id="rad_romance"/>
+                    <label for="rad_romance">Romance</label>
+                </div>
+            </div>
+
+            <!-- ACTIVITIES 
+            <br/><br/><br/><br/>
+            <div class="row">
+                <h4>How many activities do you want to do?</h4>
+                <p style="text-align: center">Activities are provided by our trusted partner FunSpark</p>
+                <div class="input-field col s12 m2 offset-m5">
+                    <i class="material-icons prefix">motorcycle</i>
+                    <input id="num_activities" type="number" min="0" class="validate" required/>
+                    <label for="num_activities">Number of Activities</label>
+                </div>
+            </div>
+
+            <!-- BUDGET --
+            <br/><br/><br/><br/>
+            <div class="row">
+                <h4>My budget for this travel is:</h4>
+                <div class="col s12 m2 offset-m3">
+                    <input name="budget" type="radio" value="low" id="rad_budget_low"/>
+                    <label for="rad_budget_low">Smaller than 500€ p.P.</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="budget" type="radio" value="medium" id="rad_budget_mid"/>
+                    <label for="rad_budget_mid">Between 500€ and 2000€ p.P.</label>
+                </div>
+                <div class="col s12 m2">
+                    <input name="budget" type="radio" value="high" id="rad_budget_high"/>
+                    <label for="rad_budget_high">Greater than 2000€ p.P.</label>
+                </div>
+            </div>
+
+            <!-- DATE OF TRAVEL --
+            <br/><br/><br/><br/>
+            <div class="row">
+                <h4>When do you want to travel?</h4>
+                <div class="input-field col s12 m3 offset-m3">
+                    <i class="material-icons prefix">today</i>
+                    <input id="departure_date" type="date" class="datepicker" required>
+                    <label for="departure_date" data-error="Not a valid date">Departure Date</label>
+                </div>
+                <div class="input-field col s12 m3">
+                    <i class="material-icons prefix">today</i>
+                    <input id="return_date" type="date" class="datepicker" required>
+                    <label for="return_date" data-error="Not a valid date">Return Date</label>
+                </div>
+            </div>
+        </div>
+        <div class="step-actions">
+            <button class="waves-effect waves-dark btn btn-lightcoral next-step">Next</button>
+        </div>
+    </div>
+</li>
+-->
         
-        <!-- ######################################################################################################################################################### -->
-        <!-- Subscribe to Newsletter section -->
-
-
-        <!-- ######################################################################################################################################################### -->
-        <!-- Qualification/Validation of EEA by customers-->
 
     </main>
     <!-- ######################################################################################################################################################### -->
@@ -373,11 +400,10 @@
         <div class="modal-content center">
             <div class="header-small">
                     <br/>
-                    <img src="images/logo.png"/>
+                    <img class="logo-small" src="images/logo.png"/>
                     <br/>
                     <br/>
                 </div>
-            <br/>
             <br/>
             <h4>Thank you!</h4>
             <p>We received your request and we will<br/>contact you soon.</p>
@@ -389,11 +415,10 @@
         <div class="modal-content center">
             <div class="header-small">
                     <br/>
-                    <img src="images/logo.png"/>
+                    <img class="logo-small" src="images/logo.png"/>
                     <br/>
                     <br/>
                 </div>
-            <br/>
             <br/>
             <h4>Something went wrong.</h4>
             <p id="errormessage"></p>

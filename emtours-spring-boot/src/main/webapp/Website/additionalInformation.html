@@ -18,7 +18,7 @@
 
     <main>
         <!-- ######################################################################################################################################################### -->
-        <!-- Title + Try It Out Button -->
+        <!-- Title -->
         <div class="header" >
             <div class="container">
                 <br><br>
@@ -26,7 +26,6 @@
                 <div class="row center">
                     <h5 class="header col s12 light">Travelling has never been easier.</h5>
                 </div>
-
                 <br><br>
             </div>
         </div>
@@ -42,14 +41,29 @@
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <h4>How would you like to proceed?</h4>
+                            <h4>Please complete the following information.</h4>
                             <br/>
-                            <div class="input-field col s12 m6 offset-m3">
-                                <select id="feedback">
-                                    <option value="confirm">I would like to book this holiday</option>
-                                    <option value="cancel">I would like to cancel my booking request</option>
-                                    <option value="refine">I would like a reworked version of this holiday</option>
-                                </select>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="input-field col s12 m6 offset-m3">
+                                        <i class="material-icons prefix icon-grey"><!--work--></i>
+                                        <select id="experience">
+                                            <option value="chilling">I want Chilling</option>
+                                            <option value="action">I want Action</option>
+                                            <option value="adventure">I want Adventure</option>
+                                            <option value="romance">I want Romance</option>
+                                            <option value="family">I want Family</option>
+                                        </select>
+                                        <label>Preference</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m6 offset-m3">
+                                        <i class="material-icons prefix icon-grey">directions_run</i>
+                                        <input id="activities" type="number" class="validate" min="1" max="20" required/>
+                                        <label for="activities">Number of Activities</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-action">
@@ -59,24 +73,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- ######################################################################################################################################################### -->
-        <!-- Pricing Variant - Pay per use. -->
-
-
-
-        <!-- ######################################################################################################################################################### -->
-        <!-- Pricing Variant - Bundles -->
-
-
-        <!-- ######################################################################################################################################################### -->
-        <!-- Subscribe to Newsletter section -->
-
-
-        <!-- ######################################################################################################################################################### -->
-        <!-- Qualification/Validation of EEA by customers-->
 
     </main>
     <!-- ######################################################################################################################################################### -->
