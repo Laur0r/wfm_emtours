@@ -78,7 +78,7 @@
         </div>
 
         <!-- ######################################################################################################################################################### -->
-        <!-- Test Section for potential customers -->
+        <!-- Empty Section -->
         <div class="header">
             <br/>
             <br/>
@@ -88,7 +88,7 @@
         </div>
 
         <!-- ######################################################################################################################################################### -->
-        <!-- Customer details -->
+        <!-- Customer details and preferences -->
         <div id="customer_information" class="container">
             <ul class="stepper linear">
                 <!-- ############################################################################################################################################# -->
@@ -109,7 +109,7 @@
 
                             <!-- Climate Preferences -->
                                 <div class="input-field col s12 m6 l3">
-                                    <i class="material-icons prefix icon-grey"><!--wb_sunny--></i>
+                                    <i class="material-icons prefix icon-grey">wb_sunny</i>
                                     <select id="climate">
                                         <option value="" disabled selected>Choose your option</option>
                                         <option value="cold">Cold</option>
@@ -125,7 +125,7 @@
 
                             <!-- Holiday Type-->
                                 <div class="input-field col s12 m6 l3">
-                                    <i class="material-icons prefix icon-grey"><!--work--></i>
+                                    <i class="material-icons prefix icon-grey">work</i>
                                     <select id="activity">
                                         <option value="" disabled selected>Choose your option</option>
                                         <option value="action">Action</option>
@@ -150,7 +150,7 @@
                             
                             <!-- Budget -->
                                 <div class="input-field col s12 m6">
-                                    <i class="material-icons prefix icon-grey"><!--euro_symbol--></i>
+                                    <i class="material-icons prefix icon-grey">euro_symbol</i>
                                     <select id="budget" required>
                                         <option value="" disabled selected>Choose your option</option>
                                         <option value="low">Smaller than 500€ p.P.</option>
@@ -166,14 +166,14 @@
                             
                             <!-- Departure Date -->
                                 <div class="input-field col s12 m6 l3">
-                                    <i class="material-icons prefix icon-grey">today</i> <!--flight_takeoff -->
+                                    <i class="material-icons prefix icon-grey">date_range</i> <!--flight_takeoff -->
                                     <input id="departure_date" type="date" class="datepicker" required>
                                     <label for="departure_date" data-error="Not a valid date">Departure Date</label>
                                 </div>
 
                             <!-- Return Date --> 
                                 <div class="input-field col s12 m6 l3">
-                                    <i class="material-icons prefix icon-grey">today</i> <!--flight_land -->
+                                    <i class="material-icons prefix icon-grey">date_range</i> <!--flight_land -->
                                     <input id="return_date" type="date" class="datepicker" required>
                                     <label for="return_date" data-error="Not a valid date">Return Date</label>
                                 </div>
@@ -206,7 +206,7 @@
                                 <label for="birthday" data-error="Not a valid date">Birthday</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix icon-grey">gender</i>
+                                <i class="material-icons prefix icon-grey">category</i>
                                 <select id="gender">
                                     <option value="" disabled selected>Choose your option</option>
                                     <option value="male">Male</option>
@@ -250,132 +250,6 @@
 
             </ul>
         </div>
-
-<!-- 
-<li class="step active">
-    <div data-step-label="What do you have mind?" class="step-title waves-effect waves-dark">Travel Information</div>
-    <div class="step-content">
-        <div id="form_registration_2">
-
-
-            <div  class="row">
-                <h4>Who is travelling?</h4>
-                <div class="input-field col s12 m2 offset-m3">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="num_adults" type="number" min="0" class="validate" required/>
-                    <label for="num_adults">Number of Adults</label>
-                </div>
-                <div class="input-field col s12 m2">
-                    <i class="material-icons prefix">child_care</i>
-                    <input id="num_child" type="number" min="0" class="validate" required/>
-                    <label for="num_child">Number of Children</label>
-                </div>
-                <div class="input-field col s12 m2">
-                    <i class="material-icons prefix">pets</i>
-                    <input id="num_animals" type="number" min="0" class="validate" required>
-                    <label for="num_animals">Number of Animals</label>
-                </div>
-            </div>
-
-            <!-- CLIMATE 
-            <br/><br/><br/><br/>
-            <div class="row">
-                <h4>What are your climate preferences?</h4>
-
-                <div class="col s12 m2 offset-m3">
-                    <input name="climate" type="radio" id="rad_cold"/>
-                    <label for="rad_cold">Cold</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="climate" type="radio" id="rad_moderate"/>
-                    <label for="rad_moderate">Moderate</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="climate" type="radio" id="rad_hot"/>
-                    <label for="rad_hot">Warm</label>
-                </div>
-            </div>
-            
-            <!-- TYPE OF HOLIDAY 
-            <br/><br/><br/><br/>
-            <div class="row">
-                <h4>What do you want to experience?</h4>
-
-                <div class="col s12 m2 offset-m1">
-                    <input name="activity" type="radio" id="rad_action"/>
-                    <label for="rad_action">Action</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="activity" type="radio" id="rad_adventure"/>
-                    <label for="rad_adventure">Adventure</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="activity" type="radio" id="rad_calming"/>
-                    <label for="rad_calming">Calming</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="activity" type="radio" id="rad_family"/>
-                    <label for="rad_family">Family</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="activity" type="radio" id="rad_romance"/>
-                    <label for="rad_romance">Romance</label>
-                </div>
-            </div>
-
-            <!-- ACTIVITIES 
-            <br/><br/><br/><br/>
-            <div class="row">
-                <h4>How many activities do you want to do?</h4>
-                <p style="text-align: center">Activities are provided by our trusted partner FunSpark</p>
-                <div class="input-field col s12 m2 offset-m5">
-                    <i class="material-icons prefix">motorcycle</i>
-                    <input id="num_activities" type="number" min="0" class="validate" required/>
-                    <label for="num_activities">Number of Activities</label>
-                </div>
-            </div>
-
-            <!-- BUDGET --
-            <br/><br/><br/><br/>
-            <div class="row">
-                <h4>My budget for this travel is:</h4>
-                <div class="col s12 m2 offset-m3">
-                    <input name="budget" type="radio" value="low" id="rad_budget_low"/>
-                    <label for="rad_budget_low">Smaller than 500€ p.P.</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="budget" type="radio" value="medium" id="rad_budget_mid"/>
-                    <label for="rad_budget_mid">Between 500€ and 2000€ p.P.</label>
-                </div>
-                <div class="col s12 m2">
-                    <input name="budget" type="radio" value="high" id="rad_budget_high"/>
-                    <label for="rad_budget_high">Greater than 2000€ p.P.</label>
-                </div>
-            </div>
-
-            <!-- DATE OF TRAVEL --
-            <br/><br/><br/><br/>
-            <div class="row">
-                <h4>When do you want to travel?</h4>
-                <div class="input-field col s12 m3 offset-m3">
-                    <i class="material-icons prefix">today</i>
-                    <input id="departure_date" type="date" class="datepicker" required>
-                    <label for="departure_date" data-error="Not a valid date">Departure Date</label>
-                </div>
-                <div class="input-field col s12 m3">
-                    <i class="material-icons prefix">today</i>
-                    <input id="return_date" type="date" class="datepicker" required>
-                    <label for="return_date" data-error="Not a valid date">Return Date</label>
-                </div>
-            </div>
-        </div>
-        <div class="step-actions">
-            <button class="waves-effect waves-dark btn btn-lightcoral next-step">Next</button>
-        </div>
-    </div>
-</li>
--->
-        
 
     </main>
     <!-- ######################################################################################################################################################### -->
