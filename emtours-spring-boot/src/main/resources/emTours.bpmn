@@ -804,7 +804,7 @@
     </intermediateCatchEvent>
     <sequenceFlow id="SequenceFlow_106ziz9" sourceRef="sid-AC94DA8E-EFAC-4BF6-9C6D-2C53AE833153" targetRef="Task_13ez5q1" />
     <sequenceFlow id="SequenceFlow_1u7m5sk" sourceRef="Task_13ez5q1" targetRef="ExclusiveGateway_1idz85h" />
-    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/validateInformation.html">
+    <userTask id="Task_13ez5q1" name="Check payment" camunda:formKey="embedded:app:forms/PaymentReceived.html">
       <incoming>SequenceFlow_106ziz9</incoming>
       <outgoing>SequenceFlow_1u7m5sk</outgoing>
     </userTask>
