@@ -160,7 +160,7 @@ public class EMailerService {
 					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
 					"\nPrice: "+as.get(i).getPrice() + "\n";
 		}
-		return "";
+		return result;
 	}
 	
 	public String formatActivitiesWithDate(Collection<Activity> activities) {
@@ -171,7 +171,7 @@ public class EMailerService {
 					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
 					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "/n";
 		}
-		return "";
+		return result;
 	}
 
 
