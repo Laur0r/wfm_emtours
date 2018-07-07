@@ -9,7 +9,6 @@ import org.camunda.bpm.emtours.RecommendationRepository;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.CustomerRequest;
-import org.camunda.bpm.entities.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -38,7 +37,7 @@ public class RequestFurtherInfoMessageDelegate implements JavaDelegate {
 			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
 			postElement.setNumberActivities(custrequest.getNumberActivities());
 			postElement.setExperienceType(custrequest.getExperienceType());
-			String test = doPost(postElement);
+			doPost(postElement);
 		} catch(NoSuchElementException e) {
 		}	
 	}

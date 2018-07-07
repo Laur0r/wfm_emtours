@@ -25,7 +25,7 @@ try {
 			postElement.setBookingNotification((true));
 			postElement.setCancellationNotification((false));
 			postElement.setRefinementNotification((false));
-			String test = doPost(postElement);
+			doPost(postElement);
 		} catch(NoSuchElementException e) {
 		}	
 	

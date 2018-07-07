@@ -26,7 +26,7 @@ public class CancellationNotificationMessageDelegate implements JavaDelegate {
 			postElement.setCancellationNotification((true));
 			postElement.setRefinementNotification((false));
 			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
-			String test = doPost(postElement);
+			doPost(postElement);
 		} catch(NoSuchElementException e) {
 		}	
 	

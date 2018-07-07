@@ -1,6 +1,5 @@
 package org.camunda.bpm.services;
 
-import java.util.Date;
 import java.util.Optional;
 
 import org.camunda.bpm.emtours.CustomerRequestRepository;
@@ -30,8 +29,7 @@ public class SaveRecommendation implements JavaDelegate {
 		String destination = (String) execution.getVariable("destination");
 		String hotel = (String) execution.getVariable("hotel");
 		String flight = (String) execution.getVariable("flight");
-		double cost = (double) execution.getVariable("cost");
-	
+		double cost = (Double) execution.getVariable("cost");	
 		
 	    Recommendation recommendation = new Recommendation();
 	    recommendation.setDestination(destination);

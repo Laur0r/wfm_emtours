@@ -25,7 +25,7 @@ public class RefinementNotificationMessageDelegate implements JavaDelegate {
 			postElement.setBookingNotification((false));
 			postElement.setCancellationNotification((false));
 			postElement.setRefinementNotification((true));
-			String test = doPost(postElement);
+			doPost(postElement);
 		} catch(NoSuchElementException e) {
 		}
 	}
