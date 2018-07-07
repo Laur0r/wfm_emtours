@@ -32,15 +32,11 @@ h1, h2, h3, h4, h5 {
 /* FOOTER */
 footer {
     color: #525252 !important;
-    background-color: #e6e6e6 !important;
-}
-.footer-copyright {
-    background-color: #e6e6e6 !important;
-    text-align: right;
+    background-color: #525252 !important;
 }
 
 .footer-text {
-    color: #525252;
+    color: lightcoral;
 }
 
 /* ************************************************************************************************************ */
@@ -138,6 +134,9 @@ footer {
     background-color: #d58600 !important;
 }
 
+.btn-lightcoral {
+    background-color: lightcoral !important;
+}
 
 .picker__date-display{
     background-color: lightcoral;
@@ -149,6 +148,10 @@ footer {
     color: lightcoral !important;
 }
 
+.input-field input[type=date]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: lightcoral !important;
+}
+
 .input-field input[type=email]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
     color: lightcoral !important;
 }
@@ -157,9 +160,18 @@ footer {
     color: lightcoral !important;
 }
 
+.input-field input[type=number]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+    color: lightcoral !important;
+}
 
+/* */
 
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid lightcoral !important;
+    box-shadow: 0 1px 0 0 lightcoral !important;
+}
+
+.input-field input[type=date]:focus, .materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid lightcoral !important;
     box-shadow: 0 1px 0 0 lightcoral !important;
 }
@@ -174,38 +186,66 @@ footer {
     box-shadow: 0 1px 0 0 lightcoral !important;
 }
 
+.input-field input[type=number]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid lightcoral !important;
+    box-shadow: 0 1px 0 0 lightcoral !important;
+}
 
+/* */
 
 .input-field input[type=text].valid {
-    border-bottom: 1px solid lightcoral;
-    box-shadow: 0 1px 0 0 lightcoral;
+    border-bottom: 1px solid lightseagreen;
+    box-shadow: 0 1px 0 0 lightseagreen;
+}
+
+.input-field input[type=date].valid {
+    border-bottom: 1px solid lightseagreen;
+    box-shadow: 0 1px 0 0 lightseagreen;
 }
 
 .input-field input[type=email].valid {
-    border-bottom: 1px solid lightcoral;
-    box-shadow: 0 1px 0 0 lightcoral;
+    border-bottom: 1px solid lightseagreen;
+    box-shadow: 0 1px 0 0 lightseagreen;
 }
 
 .input-field input[type=tel].valid {
-    border-bottom: 1px solid lightcoral;
-    box-shadow: 0 1px 0 0 lightcoral;
+    border-bottom: 1px solid lightseagreen;
+    box-shadow: 0 1px 0 0 lightseagreen;
 }
-    
+
+.input-field input[type=number].valid {
+    border-bottom: 1px solid lightseagreen;
+    box-shadow: 0 1px 0 0 lightseagreen;
+}
+
+/* */
 
 .input-field input[type=text].invalid {
-    border-bottom: 1px solid #b9161f;
-    box-shadow: 0 1px 0 0 #b9161f;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
 
 .input-field input[type=email].invalid {
-    border-bottom: 1px solid #b9161f;
-    box-shadow: 0 1px 0 0 #b9161f;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
 
 .input-field input[type=tel].invalid {
-    border-bottom: 1px solid #b9161f;
-    box-shadow: 0 1px 0 0 #b9161f;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
+
+.input-field input[type=number].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+
+.input-field input[type=date].invalid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+
+/* */
 
 .input-field .prefix.active {
     color: lightcoral;
