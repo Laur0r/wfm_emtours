@@ -29,11 +29,14 @@ public class SaveRecommendation implements JavaDelegate {
 		
 		String destination = (String) execution.getVariable("destination");
 		String hotel = (String) execution.getVariable("hotel");
+		String flight = (String) execution.getVariable("flight");
 		double cost = (double) execution.getVariable("cost");
+	
 		
 	    Recommendation recommendation = new Recommendation();
 	    recommendation.setDestination(destination);
 	    recommendation.setHotel(hotel);
+	    recommendation.setFlight(flight);
 	    recommendation.setArrival(custrequest.getArrival());
 	    recommendation.setDeparture(custrequest.getDeparture());
 	    recommendation.setNumberPeople(custrequest.getNumberPeople());
