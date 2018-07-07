@@ -1,6 +1,9 @@
 package org.camunda.bpm.emtours;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
@@ -30,12 +33,44 @@ public class CustomerController {
   @Autowired(required = true)
   public CustomerRequestRepository repository;
 
-  @RequestMapping(value="/basicCustomerInformation", method=RequestMethod.POST)
-  public void incomingInformationPOST(String name, String gender, String address, String zip, String city, 
-		  String country, Date birthday,  String email, Date arrival, Date departure, String budget, String climate,
-		  Integer numberPeople, Integer numberActivities, String experienceType) {
+  @RequestMapping(value="/basicCustomerInformation", method=RequestMethod.POST, consumes="application/json")
+  public void incomingCustomerInformation(@RequestBody String json) throws IOException, ParseException {
+	  ObjectMapper mapper = new ObjectMapper();
+	  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	  JsonNode node = mapper.readTree(json);
+	  JsonNode nameNode = node.at("/name");
+	  String name = nameNode.asText();
+	  JsonNode genderNode = node.at("/gender");
+	  String gender = genderNode.asText();
+	  JsonNode emailNode = node.at("/email");
+	  String email = emailNode.asText();
+	  JsonNode addressNode = node.at("/address");
+	  String address = addressNode.asText();
+	  JsonNode zipNode = node.at("/zip");
+	  String zip = zipNode.asText();
+	  JsonNode budgetNode = node.at("/budget");
+	  String budget = budgetNode.asText();
+	  JsonNode cityNode = node.at("/city");
+	  String city = cityNode.asText();
+	  JsonNode countryNode = node.at("/country");
+	  String country = countryNode.asText();
+	  JsonNode birthdayNode = node.at("/birthday");
+	  Date birthday = dateFormat.parse(birthdayNode.asText());
+	  JsonNode arrivalNode = node.at("/arrival");
+	  Date arrival = dateFormat.parse(arrivalNode.asText());
+	  JsonNode departureNode = node.at("/departure");
+	  Date departure = dateFormat.parse(departureNode.asText());
+	  JsonNode climateNode = node.at("/climate");
+	  String climate = climateNode.asText();
+	  JsonNode peopleNode = node.at("/numberPeople");
+	  int numberPeople = peopleNode.asInt();
+	  JsonNode activitiesNode = node.at("/numberActivities");
+	  int numberActivities = activitiesNode.asInt();
+	  JsonNode experienceNode = node.at("/experienceType");
+	  String experienceType = experienceNode.asText();
+	  
 	  camunda.getRuntimeService().startProcessInstanceByKey(//
-		        "SampleProcess", //
+		        "emTours", //
 		        Variables //
 		          .putValue("name", name)
 		          .putValue("gender", gender)
