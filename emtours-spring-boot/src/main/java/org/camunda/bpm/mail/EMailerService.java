@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.camunda.bpm.emtours.ActivityRepository;
 import org.camunda.bpm.emtours.CustomerRepository;
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.mail.javamail.MimeMessageHelper;
 
 @Service
 public class EMailerService {
@@ -144,14 +147,30 @@ public class EMailerService {
 	}
 
 	private void sendMessage(String eMail, String subject, String msg) {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setTo(eMail);
-		message.setSubject(subject);
-		message.setText(msg);
-		emailSender.send(message);
-		System.out.println("E-Mail send");
+
+		try {
+			MimeMessage mimeMessage = emailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
+			String htmlMsg = buildHTML(msg);
+			mimeMessage.setContent(htmlMsg, "text/html");
+			helper.setTo(eMail);
+			helper.setSubject(subject);
+			helper.setFrom("book.emtours@gmail.com");
+			emailSender.send(mimeMessage);
+			
+//			SimpleMailMessage message = new SimpleMailMessage();
+//			message.setTo(eMail);
+//			message.setSubject(subject);
+//			message.setText(msg);
+//			emailSender.send(message);
+			
+			System.out.println("E-Mail send");
+		} catch (MessagingException e) {
+			
+		}
 	}
 	
+
 	public String formatActivities(Collection<Activity> activities) {
 		List<Activity> as = (List<Activity>) activities;
 		String result = "";
@@ -173,7 +192,7 @@ public class EMailerService {
 		}
 		return result;
 	}
-
+	
 
 	public static String INVALID_MSG = "Dear %s %s, " + "\nyour travel request can not be processed! "
 			+ "\nThe data you have entered is invalid." + "\n" + "\nWe are looking forward to your next request!" + "\n"
@@ -208,4 +227,93 @@ public class EMailerService {
 			+ "\nwe are sorry to inform you that your requested booking can not be completed: Our partner informed us, that at least one of the proposed activities is already booked out."
 			+ "\nWe hope that you are still interested in travelling with us! - You will receive a new offer soon!"
 			+ "\nYours sincerely," + "\nemTours TravelAgency";
+
+	private String buildHTML(String msg) {
+		String html = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">                                           "+
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\">                                                                                                                           "+
+				"  <head>                                                                                                                                                                "+
+				"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />                                                                                           "+
+				"    <title>[em] Tours</title>                                                                                                                                           "+
+				"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>                                                                                         "+
+				"  </head>                                                                                                                                                               "+
+				"  <body style=\"margin: 0; padding: 10px 0px 10px 0px;\">                                                                                                               "+
+				"    <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border-collapse: collapse; border: 1px solid #cccccc;\">             "+
+				"      <tr>                                                                                                                                                              "+
+				"        <td align=\"center\" bgcolor=\"#F08080\" style=\"color: white; font-family: Arial, sans-serif; font-size: 24px; line-height: 20px; padding: 40px 0 30px 30px;\">"+
+				"                                                                                                                                                                        "+
+				"          <img src=\"images/logo.png\" alt=\"[em] Tours\" width=\"150px\" style=\"display: block;\" />                                                                  "+
+				"          <br/>                                                                                                                                                         "+
+				"        </td>                                                                                                                                                           "+
+				"                                                                                                                                                                        "+
+				"      </tr>                                                                                                                                                             "+
+				"      <tr>                                                                                                                                                              "+
+				"        <td bgcolor=\"white\" style=\"padding: 40px 30px 40px 30px;\">                                                                                                  "+
+				"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
+				"            <tr>                                                                                                                                                        "+
+				"              <td style=\"color: #212121; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; padding: 20px 0 30px 0;\">                                "+	msg +                                                                                                                                                         
+				"              </td>                                                                                                                                                     "+
+				"            </tr>                                                                                                                                                       "+
+				"          </table>                                                                                                                                                      "+
+				"        </td>                                                                                                                                                           "+
+				"      </tr>                                                                                                                                                             "+
+				"      <tr>                                                                                                                                                              "+
+				"        <td bgcolor=\"#F08080\" style=\"padding: 30px 30px 30px 30px;\">                                                                                                "+
+				"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
+				"            <tr>                                                                                                                                                        "+
+				"              <td align=\"right\" width=\"75%\" style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 12px; \">                                            "+
+				"                <b>&copy; [em] Tours</b>                                                                                                                                "+
+				"              </td>                                                                                                                                                     "+
+				"            </tr>                                                                                                                                                       "+
+				"          </table>                                                                                                                                                      "+
+				"        </td>                                                                                                                                                           "+
+				"      </tr>                                                                                                                                                             "+
+				"    </table>                                                                                                                                                            "+
+				"  </body>                                                                                                                                                               "+
+				"</html>                                                                                                                                                                 ";
+
+		return html;
+	}
+	
+//	public static String HTML_TEMPLATE = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">                                           "+
+//			"<html xmlns=\"http://www.w3.org/1999/xhtml\">                                                                                                                           "+
+//			"  <head>                                                                                                                                                                "+
+//			"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />                                                                                           "+
+//			"    <title>[em] Tours</title>                                                                                                                                           "+
+//			"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>                                                                                         "+
+//			"  </head>                                                                                                                                                               "+
+//			"  <body style=\"margin: 0; padding: 10px 0px 10px 0px;\">                                                                                                               "+
+//			"    <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border-collapse: collapse; border: 1px solid #cccccc;\">             "+
+//			"      <tr>                                                                                                                                                              "+
+//			"        <td align=\"center\" bgcolor=\"#F08080\" style=\"color: white; font-family: Arial, sans-serif; font-size: 24px; line-height: 20px; padding: 40px 0 30px 30px;\">"+
+//			"                                                                                                                                                                        "+
+//			"          <img src=\"images/logo.png\" alt=\"[em] Tours\" width=\"150px\" style=\"display: block;\" />                                                                  "+
+//			"          <br/>                                                                                                                                                         "+
+//			"        </td>                                                                                                                                                           "+
+//			"                                                                                                                                                                        "+
+//			"      </tr>                                                                                                                                                             "+
+//			"      <tr>                                                                                                                                                              "+
+//			"        <td bgcolor=\"white\" style=\"padding: 40px 30px 40px 30px;\">                                                                                                  "+
+//			"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
+//			"            <tr>                                                                                                                                                        "+
+//			"              <td style=\"color: #212121; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; padding: 20px 0 30px 0;\">                                "+
+//			"				                                                                                                                                                        "+
+//			"              </td>                                                                                                                                                     "+
+//			"            </tr>                                                                                                                                                       "+
+//			"          </table>                                                                                                                                                      "+
+//			"        </td>                                                                                                                                                           "+
+//			"      </tr>                                                                                                                                                             "+
+//			"      <tr>                                                                                                                                                              "+
+//			"        <td bgcolor=\"#F08080\" style=\"padding: 30px 30px 30px 30px;\">                                                                                                "+
+//			"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
+//			"            <tr>                                                                                                                                                        "+
+//			"              <td align=\"right\" width=\"75%\" style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 12px; \">                                            "+
+//			"                <b>&copy; [em] Tours</b>                                                                                                                                "+
+//			"              </td>                                                                                                                                                     "+
+//			"            </tr>                                                                                                                                                       "+
+//			"          </table>                                                                                                                                                      "+
+//			"        </td>                                                                                                                                                           "+
+//			"      </tr>                                                                                                                                                             "+
+//			"    </table>                                                                                                                                                            "+
+//			"  </body>                                                                                                                                                               "+
+//			"</html>                                                                                                                                                                 ";
 }
