@@ -64,7 +64,7 @@ public class EMailerService {
 				salutation = "Mr.";
 			}
 
-			String msg = String.format(INVALID_MSG, salutation, name);
+			String msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name));
 
 			sendMessage(email, subject, msg);
 		} else {
@@ -89,11 +89,11 @@ public class EMailerService {
 
 			String msg = "";
 			if (subject.equals("Invalid Information")) {
-				msg = String.format(INVALID_MSG, salutation, name);
+				msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name));
 			} else if (subject.equals("Request for further information")) {
-				msg = String.format(FURTHERINFO_MSG, salutation, name, executionId);
+				msg = String.format(FURTHERINFO_MSG, salutation, sanitizeSpecialCharacters(name), executionId);
 			} else if (subject.equals("No offer available")) {
-				msg = String.format(UNAVAILABLE_MSG, salutation, name);
+				msg = String.format(UNAVAILABLE_MSG, salutation, sanitizeSpecialCharacters(name));
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -130,12 +130,12 @@ public class EMailerService {
 			String msg = "";
 			if (subject.equals("Booking confirmation")) {
 				String activitiesFormat = formatActivitiesWithDate(activities);
-				msg = String.format(CONFIRMATION_MSG, salutation, name, destination, startDate, endDate, flight, hotel,
-						price, numberPeople, activitiesFormat, currentDate);
+				msg = String.format(CONFIRMATION_MSG, salutation, sanitizeSpecialCharacters(name), sanitizeSpecialCharacters(destination), startDate, endDate, 
+						sanitizeSpecialCharacters(flight), sanitizeSpecialCharacters(hotel),price, numberPeople, activitiesFormat, currentDate);
 			} else if (subject.equals("Travel recommendation")) {
 				String activitiesFormat = formatActivities(activities);
-				msg = String.format(RECOMMENDATION_MSG, salutation, name, startDate, endDate, flight, destination,
-						hotel, price, numberPeople, activitiesFormat, executionId, currentDate);
+				msg = String.format(RECOMMENDATION_MSG, salutation, sanitizeSpecialCharacters(name), startDate, endDate, sanitizeSpecialCharacters(flight),
+						sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, activitiesFormat, executionId, currentDate);
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -144,6 +144,24 @@ public class EMailerService {
 			System.out.println("E-Mail not send: invalid Mail Adress!");
 		}
 
+	}
+	
+	private String sanitizeSpecialCharacters(String var) {
+		System.out.println(var);
+		String result = var;
+		if(var.contains("ü")) {
+			System.out.println("contains ü");
+			result = result.replace("ü", "&#x00FC;");
+		}
+		if(var.contains("ä")) {
+			System.out.println("contains ä");
+			result = result.replace("ä", "&#x00E4;");
+		}
+		if(var.contains("ö")) {
+			System.out.println("contains ö");
+			result = result.replace("ö", "&#x00F6;");
+		}
+		return result;
 	}
 
 	private void sendMessage(String eMail, String subject, String msg) {
@@ -175,9 +193,9 @@ public class EMailerService {
 		List<Activity> as = (List<Activity>) activities;
 		String result = "";
 		for(int i=0; i<activities.size(); i++) {
-			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
-					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
-					"\nPrice: "+as.get(i).getPrice() + "\n";
+			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
+					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getProvider() + 
+					"<br/>Price: "+as.get(i).getPrice() + "<br/>";
 		}
 		return result;
 	}
@@ -186,47 +204,47 @@ public class EMailerService {
 		List<Activity> as = (List<Activity>) activities;
 		String result = "";
 		for(int i=0; i<as.size(); i++) {
-			result = result + "\nName: "+as.get(i).getName()+"\nDescription: "+as.get(i).getDescription() + 
-					"\nLocation: "+as.get(i).getLocation() + "\nProvider: "+as.get(i).getProvider() + 
-					"\nPrice: "+as.get(i).getPrice() + "\nDate: "+as.get(i).getDate() + "\n";
+			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
+					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getProvider() + 
+					"<br/>Price: "+as.get(i).getPrice() + "<br/>Date: "+as.get(i).getDate() + "<br/>";
 		}
 		return result;
 	}
 	
 
-	public static String INVALID_MSG = "Dear %s %s, " + "\nyour travel request can not be processed! "
-			+ "\nThe data you have entered is invalid." + "\n" + "\nWe are looking forward to your next request!" + "\n"
-			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	public static String INVALID_MSG = "<b>Dear %s %s, </b><br/>" + "<br/>your travel request can not be processed! "
+			+ "<br/>The data you have entered is invalid." + "<br/>" + "<br>We are looking forward to your next request!" + "<br/>"
+			+ "<br/>Yours sincerely," + "<br/><br/><b>emTours TravelAgency</b>";
 
-	public static String CONFIRMATION_MSG = "Dear %s %s, "
-			+ "\npack your bags! - your booking at emTours is confirmed: You are travelling to %s."
-			+ "\nThe facts of your travel are as follows:" + "\n" + "\nFrom: %s To: %s" + "\nFlight: %s"
-			+ "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
-			+ "\nYour journey includes the following activities:" + "\n%s" + "\n"
-			+ "\nYou can find information on payment and emTours account data in the attached documents. Please settle the invoice within 14 days from today: %s."
-			+ "\n" + "\nThank you for travelling with emTours - your #1 travel agency in MÃ¼nster!" + "\n"
-			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	public static String CONFIRMATION_MSG = "<b>Dear %s %s, </b><br/>"
+			+ "<br/>pack your bags! - your booking at emTours is confirmed: You are travelling to %s."
+			+ "<br/>The facts of your travel are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
+			+ "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
+			+ "<br/>Your journey includes the following activities:" + "<br/>%s" + "<br/>"
+			+ "<br/>You can find information on payment and emTours account data in the attached documents. Please settle the invoice within 14 days from today: %s."
+			+ "<br/>" + "<br/>Thank you for travelling with emTours - your #1 travel agency in M&#x00FC;nster!" + "<br/>"
+			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
-	public static String RECOMMENDATION_MSG = "Dear %s %s, "
-			+ "\nthank you for your travel request! We are happy to inform you that we were able to provide you with an unbeatable, exclusive travel package!"
-			+ "\nThe dates of our offer are as follows:" + "\n" + "\nFrom: %s To: %s" + "\nFlight: %s"
-			+ "\nDestination: %s" + "\nAccomodation: %s" + "\nPrice: %s" + "\nNumber of Travellers: %s"
-			+ "\nYour journey will include the following activities:" + "\n%s" + "\n"
-			+ "\nUse this link to give us feedback on this recommendation:"
-			+ "\n http://localhost:8081/feedback.html?executionId=%s" + "\n"
-			+ "\nWe are looking forward to your reply!" + "\n" + "\nYours sincerely," + "\nemTours TravelAgency";
+	public static String RECOMMENDATION_MSG = "<b>Dear %s %s,  </b><br/>"
+			+ "<br/>thank you for your travel request! We are happy to inform you that we were able to provide you with an unbeatable, exclusive travel package!"
+			+ "<br/>The dates of our offer are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
+			+ "<br/>Destination: %s" + "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
+			+ "<br/>Your journey will include the following activities:" + "<br/>%s" + "<br/>"
+			+ "<br/>You can reply on this recommendation <a href=\"http://localhost:8081/feedback.html?executionId=%s\">here</a>"
+			+ "<br/>"
+			+ "<br/>We are looking forward to your reply!" + "<br/>" + "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
-	public static String FURTHERINFO_MSG = "Dear %s %s, "
-			+ "\nto generate a proper travel recommendation, we need to get to know you and your attitudes better!\n"
-			+ "\nWould you like to take part in activities during your journey" + "\n"
-			+ "\nPlease choose your preferred type of activities and a number of how many activities you plan to experience by using this link:"
-			+ "\n http://localhost:8081/additionalInformation.html?executionId=%s"  + "\n"
-			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	public static String FURTHERINFO_MSG = "<b>Dear %s %s, </b><br/>"
+			+ "<br/>to generate a proper travel recommendation, we need to get to know you and your attitudes better!<br/>"
+			+ "<br/>Would you like to take part in activities during your journey" + "<br/>"
+			+ "<br/>Please choose your preferred type of activities and a number of how many activities you plan to experience <a href=\"http://localhost:8081/additionalInformation.html?executionId=%s\">here</a>"
+			+ "<br/>"
+			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
-	public static String UNAVAILABLE_MSG = "Dear %s %s, "
-			+ "\nwe are sorry to inform you that your requested booking can not be completed: Our partner informed us, that at least one of the proposed activities is already booked out."
-			+ "\nWe hope that you are still interested in travelling with us! - You will receive a new offer soon!"
-			+ "\nYours sincerely," + "\nemTours TravelAgency";
+	public static String UNAVAILABLE_MSG = "<b>Dear %s %s, </b><br/>"
+			+ "<br/>we are sorry to inform you that your requested booking can not be completed: Our partner informed us, that at least one of the proposed activities is already booked out."
+			+ "<br/>We hope that you are still interested in travelling with us! - You will receive a new offer soon!"
+			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
 	private String buildHTML(String msg) {
 		String html = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">                                           "+
@@ -241,7 +259,7 @@ public class EMailerService {
 				"      <tr>                                                                                                                                                              "+
 				"        <td align=\"center\" bgcolor=\"#F08080\" style=\"color: white; font-family: Arial, sans-serif; font-size: 24px; line-height: 20px; padding: 40px 0 30px 30px;\">"+
 				"                                                                                                                                                                        "+
-				"          <img src=\"images/logo.png\" alt=\"[em] Tours\" width=\"150px\" style=\"display: block;\" />                                                                  "+
+				"          <img src=\"https://image.ibb.co/h1izmo/logo.png\" alt=\"[em] Tours\" width=\"150px\" style=\"display: block;\" />                                                                  "+
 				"          <br/>                                                                                                                                                         "+
 				"        </td>                                                                                                                                                           "+
 				"                                                                                                                                                                        "+
@@ -272,48 +290,5 @@ public class EMailerService {
 				"</html>                                                                                                                                                                 ";
 
 		return html;
-	}
-	
-//	public static String HTML_TEMPLATE = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">                                           "+
-//			"<html xmlns=\"http://www.w3.org/1999/xhtml\">                                                                                                                           "+
-//			"  <head>                                                                                                                                                                "+
-//			"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />                                                                                           "+
-//			"    <title>[em] Tours</title>                                                                                                                                           "+
-//			"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>                                                                                         "+
-//			"  </head>                                                                                                                                                               "+
-//			"  <body style=\"margin: 0; padding: 10px 0px 10px 0px;\">                                                                                                               "+
-//			"    <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border-collapse: collapse; border: 1px solid #cccccc;\">             "+
-//			"      <tr>                                                                                                                                                              "+
-//			"        <td align=\"center\" bgcolor=\"#F08080\" style=\"color: white; font-family: Arial, sans-serif; font-size: 24px; line-height: 20px; padding: 40px 0 30px 30px;\">"+
-//			"                                                                                                                                                                        "+
-//			"          <img src=\"images/logo.png\" alt=\"[em] Tours\" width=\"150px\" style=\"display: block;\" />                                                                  "+
-//			"          <br/>                                                                                                                                                         "+
-//			"        </td>                                                                                                                                                           "+
-//			"                                                                                                                                                                        "+
-//			"      </tr>                                                                                                                                                             "+
-//			"      <tr>                                                                                                                                                              "+
-//			"        <td bgcolor=\"white\" style=\"padding: 40px 30px 40px 30px;\">                                                                                                  "+
-//			"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
-//			"            <tr>                                                                                                                                                        "+
-//			"              <td style=\"color: #212121; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; padding: 20px 0 30px 0;\">                                "+
-//			"				                                                                                                                                                        "+
-//			"              </td>                                                                                                                                                     "+
-//			"            </tr>                                                                                                                                                       "+
-//			"          </table>                                                                                                                                                      "+
-//			"        </td>                                                                                                                                                           "+
-//			"      </tr>                                                                                                                                                             "+
-//			"      <tr>                                                                                                                                                              "+
-//			"        <td bgcolor=\"#F08080\" style=\"padding: 30px 30px 30px 30px;\">                                                                                                "+
-//			"          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">                                                                                       "+
-//			"            <tr>                                                                                                                                                        "+
-//			"              <td align=\"right\" width=\"75%\" style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 12px; \">                                            "+
-//			"                <b>&copy; [em] Tours</b>                                                                                                                                "+
-//			"              </td>                                                                                                                                                     "+
-//			"            </tr>                                                                                                                                                       "+
-//			"          </table>                                                                                                                                                      "+
-//			"        </td>                                                                                                                                                           "+
-//			"      </tr>                                                                                                                                                             "+
-//			"    </table>                                                                                                                                                            "+
-//			"  </body>                                                                                                                                                               "+
-//			"</html>                                                                                                                                                                 ";
+	}                                                                                                                                                          
 }

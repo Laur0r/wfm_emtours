@@ -34,7 +34,7 @@ public class GenerateRecommendationDelegate implements JavaDelegate {
 		Optional<CustomerRequest> custrequesto = requestrepository.findById(requestId);
 		CustomerRequest custrequest = custrequesto.get();
 		String budget = (String) execution.getVariable("budget");
-		Double randomNum = ThreadLocalRandom.current().nextDouble(0.0, 51.0);
+		double randomNum = ThreadLocalRandom.current().nextDouble(0.0, 51.0);
 		double cost = 0.0;
 		if (budget.equals("low")) {
 			cost = cost + randomNum;
@@ -57,6 +57,7 @@ public class GenerateRecommendationDelegate implements JavaDelegate {
 	    
 	    Integer hotelcost = (Integer) accommodation.get((Object)"price");
 	    cost = cost + hotelcost*custrequest.getNumberPeople()*days;
+	    System.out.println(cost);
 	    cost = cost*100;
 	    cost = Math.round(cost);
 	    cost = cost/100;
