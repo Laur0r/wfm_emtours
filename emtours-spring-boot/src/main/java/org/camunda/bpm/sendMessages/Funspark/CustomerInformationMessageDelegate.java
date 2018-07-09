@@ -10,7 +10,10 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.entities.Recommendation;
+import org.camunda.bpm.properties.EmToursConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
+@PropertySource({"classpath:application.properties"})
 public class CustomerInformationMessageDelegate implements JavaDelegate {
 
 	@Autowired(required = true)
@@ -29,7 +33,11 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	@Autowired(required = true)
 	public CustomerRequestRepository requestrepository;
 	
-//	private EmToursConfigurationProperties config;
+	private EmToursConfigurationProperties config;
+	
+	@Value("${funspark.url}")
+	private String funsparkUrl;
+
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
@@ -44,8 +52,7 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 			
 			FunsparkRecommendation postElement = new FunsparkRecommendation();
 			postElement.setRecommendationId((Integer) execution.getVariable("recommendationId"));
-			postElement.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
-			postElement.setEmtoursExecutionId(execution.getId());
+			postElement.setExecutionId(execution.getId());
 			postElement.setCustomer(custrequest.getCustomer());
 			postElement.setDestination(recommendation.getDestination());
 			postElement.setStart(recommendation.getArrival());
@@ -64,14 +71,14 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/orderRecommendations");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	}	
-//	private String createUrlForIncomingInformation() {
-//		return config.getService().getFunspark().getLocation();
-//	}
+	private String createUrl() {
+		return config.getService().getFunspark().getLocation();
+	}
 }

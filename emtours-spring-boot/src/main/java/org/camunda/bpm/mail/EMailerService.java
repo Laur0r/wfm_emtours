@@ -230,14 +230,14 @@ public class EMailerService {
 			+ "<br/>The dates of our offer are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
 			+ "<br/>Destination: %s" + "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
 			+ "<br/>Your journey will include the following activities:" + "<br/>%s" + "<br/>"
-			+ "<br/>You can reply on this recommendation <a href=\"http://localhost:8081/feedback.html?executionId=%s\">here</a>"
+			+ "<br/>You can reply on this recommendation <a href=\"http://192.168.99.1:8081/feedback.html?executionId=%s\">here</a>"
 			+ "<br/>"
 			+ "<br/>We are looking forward to your reply!" + "<br/>" + "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
 	public static String FURTHERINFO_MSG = "<b>Dear %s %s, </b><br/>"
 			+ "<br/>to generate a proper travel recommendation, we need to get to know you and your attitudes better!<br/>"
 			+ "<br/>Would you like to take part in activities during your journey" + "<br/>"
-			+ "<br/>Please choose your preferred type of activities and a number of how many activities you plan to experience <a href=\"http://localhost:8081/additionalInformation.html?executionId=%s\">here</a>"
+			+ "<br/>Please choose your preferred type of activities and a number of how many activities you plan to experience <a href=\"http://192.168.99.1:8081/additionalInformation.html?executionId=%s\">here</a>"
 			+ "<br/>"
 			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 

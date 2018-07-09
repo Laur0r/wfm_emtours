@@ -47,15 +47,16 @@ public class FunsparkController {
 	 
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public String receiveFeedback(@RequestBody String json) throws IOException {
+		System.out.println("feedback");
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
-		JsonNode executionNode = node.at("/executionId");
+		JsonNode executionNode = node.at("/emTourExecutionId");
 		String executionId = executionNode.asText();
-		JsonNode funsparkNode = node.at("/funsparkExecutionId");
+		JsonNode funsparkNode = node.at("/executionId");
 		String funsparkExecutionId = funsparkNode.asText();
-		JsonNode feedbackNode = node.at("/feedback");
-		String feedback = feedbackNode.asText();
-		if(feedback.equals("yes")) {
+		JsonNode feedbackNode = node.at("/requestFurtherInformation");
+		boolean feedback = feedbackNode.asBoolean();
+		if(feedback) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);
 		} else {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", false);
@@ -74,12 +75,11 @@ public class FunsparkController {
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
 		String executionId = executionNode.asText();
-		JsonNode recommendationNode = node.at("/recommendation");
-		Integer recommendationId = recommendationNode.asInt();
 		JsonNode activitiesNode = node.at("/activities");
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<Activity>>() {
 		});
 		Collection<Activity> activityRecos = reader.readValue(activitiesNode);
+		int recommendationId = (Integer)camunda.getRuntimeService().getVariable(executionId, "recommendationId");
 		Optional<Recommendation> recommendationo = recoRepository.findById(recommendationId);
 		Recommendation recommendation = recommendationo.get();
 		for (Iterator<Activity> iterator = activityRecos.iterator(); iterator.hasNext();) {

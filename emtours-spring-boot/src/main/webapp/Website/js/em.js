@@ -23,7 +23,7 @@ $(document).ready(function(){
     var last_name = document.getElementById('last_name');
 		var email = document.getElementById('email');
     var gender = document.getElementById('gender');
-    var adress = document.getElementById('adress');
+    var adress = document.getElementById('address');
     var zip_code = document.getElementById('zip_code');
     var city = document.getElementById('city');
     var country = document.getElementById('country');
@@ -37,7 +37,7 @@ $(document).ready(function(){
     var activity = document.getElementById('activity');
     if (first_name.value != null && first_name.value != undefined && first_name.value != "" && first_name.validity.valid != false
     && last_name.value != undefined && last_name.value != null && last_name.value != "" && last_name.validity.valid != false
-		&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false)
+	&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false
     && gender.value != undefined && gender.value != null && gender.value != "" && gender.validity.valid != false
     && adress.value != undefined && adress.value != null && adress.value != "" && adress.validity.valid != false
     && zip_code.value != undefined && zip_code.value != null && zip_code.value != "" && zip_code.validity.valid != false
@@ -48,7 +48,7 @@ $(document).ready(function(){
     && return_date.value != undefined && return_date.value != null && return_date.value != "" && return_date.validity.valid != false && return_date.value > departure_date.value
     && budget.value != undefined && budget.value != null && budget.value != "" && budget.validity.valid != false
     && climate.value != undefined && climate.value != null && climate.value != "" && climate.validity.valid != false
-    && num_adults.value != undefined && num_adults.value != null && num_adults.value != "" && num_adults.validity.valid != false
+    && num_adults.value != undefined && num_adults.value != null && num_adults.value != "" && num_adults.validity.valid != false)
      {
 			submit();
 		} else {

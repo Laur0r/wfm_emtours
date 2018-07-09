@@ -5,6 +5,8 @@ import java.util.NoSuchElementException;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -13,9 +15,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@PropertySource({"classpath:application.properties"})
 public class CancellationNotificationMessageDelegate implements JavaDelegate {
 
-	
+	@Value("${funspark.url}")
+	private String funsparkUrl;
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
@@ -38,7 +42,7 @@ public class CancellationNotificationMessageDelegate implements JavaDelegate {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
 		HttpEntity<FunsparkNotification> request = new HttpEntity<>(string, headers);
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/recommendationFeedback");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkNotification.class);
