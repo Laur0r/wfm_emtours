@@ -4,6 +4,10 @@ import java.util.Date;
 
 import org.camunda.bpm.entities.Customer;
 
+/**
+ * Information which are sended to Funspark on which they are 
+ * choosing their activities
+ */
 public class FunsparkRecommendation {
 
 	private int recommendationId;

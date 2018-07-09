@@ -15,6 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Send Funspark a notification that the customer wants to refine their recommendation
+ */
 @PropertySource({"classpath:application.properties"})
 public class RefinementNotificationMessageDelegate implements JavaDelegate {
 

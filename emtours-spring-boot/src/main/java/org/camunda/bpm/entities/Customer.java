@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-@Entity // This tells Hibernate to make a table out of this class
+/**
+ * Customer class which is saved in the database
+ */
+@Entity
 public class Customer {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

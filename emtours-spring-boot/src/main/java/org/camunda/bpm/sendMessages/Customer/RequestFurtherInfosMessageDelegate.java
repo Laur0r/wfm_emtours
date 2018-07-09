@@ -5,6 +5,9 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
 import org.springframework.stereotype.Component;
 
+/**
+ * Send the customer a mail to request more information for Funspark
+ */
 @Component
 public class RequestFurtherInfosMessageDelegate implements JavaDelegate {
 

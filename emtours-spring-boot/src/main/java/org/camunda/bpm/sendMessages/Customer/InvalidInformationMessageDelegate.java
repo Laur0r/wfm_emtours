@@ -5,7 +5,9 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * Send the customer a mail that the information provided are not valid
+ */
 @Component
 public class InvalidInformationMessageDelegate implements JavaDelegate {
 

@@ -16,6 +16,9 @@ import org.camunda.bpm.entities.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Generates or completes the recommendation like calculating the prize
+ */
 @Component
 public class GenerateRecommendationDelegate implements JavaDelegate {
 

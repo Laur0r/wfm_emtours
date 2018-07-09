@@ -12,6 +12,9 @@ import org.camunda.bpm.entities.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Saves the initial incoming customer information in the database
+ */
 @Component
 public class SaveInfosDelegate implements JavaDelegate {
 	
@@ -21,7 +24,6 @@ public class SaveInfosDelegate implements JavaDelegate {
 	public CustomerRequestRepository requestrepository;
 
 	public void execute(DelegateExecution execution) throws Exception {
-		// TODO Auto-generated method stub
 		String name = (String) execution.getVariable("name");
 		String gender = (String) execution.getVariable("gender");
 		String address = (String) execution.getVariable("address");
@@ -45,13 +47,11 @@ public class SaveInfosDelegate implements JavaDelegate {
 			numberActivities = (Integer) execution.getVariable("numberActivities");
 		}
 
-		//	validate customer already exist via email
 
-		List<Customer> customers = custrepository.find(name, birthday);
-		System.out.println("Abfrage 1:  " + customers.toString());
-		
+		List<Customer> customers = custrepository.find(name, birthday);		
 		Customer cust;
 		
+		// If the customer already exists in the database, they should not be added
 		if(customers.isEmpty() == true){			
 			cust = new Customer();
 			cust.setName(name);
@@ -70,9 +70,6 @@ public class SaveInfosDelegate implements JavaDelegate {
 
 		
 		List<Customer> customers2 = custrepository.find(name, birthday);
-		System.out.println("Abfrage 2:  " + customers2.toString());
-		
-		System.out.println("Test: " + cust.toString());
 		
 		CustomerRequest custrequest = new CustomerRequest();
 		custrequest.setArrival(arrival);

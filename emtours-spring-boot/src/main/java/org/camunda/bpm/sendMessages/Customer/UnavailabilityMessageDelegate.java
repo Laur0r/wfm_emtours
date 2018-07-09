@@ -5,6 +5,9 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
 import org.springframework.stereotype.Component;
 
+/**
+ * Send the customer a mail to inform them that the activities are no longer available
+ */
 @Component
 public class UnavailabilityMessageDelegate implements JavaDelegate {
 

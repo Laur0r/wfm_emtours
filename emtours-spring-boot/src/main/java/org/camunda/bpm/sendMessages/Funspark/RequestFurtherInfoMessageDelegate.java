@@ -22,6 +22,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Send Funspark the updated customer information
+ */
 @Component
 @PropertySource({"classpath:application.properties"})
 public class RequestFurtherInfoMessageDelegate implements JavaDelegate {

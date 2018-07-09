@@ -1,5 +1,9 @@
 package org.camunda.bpm.sendMessages.Funspark;
 
+/**
+ * Class which contains the notification information for funspark 
+ * which is then converted to json
+ */
 public class FunsparkNotification {
 	
 	private int recommendationId;

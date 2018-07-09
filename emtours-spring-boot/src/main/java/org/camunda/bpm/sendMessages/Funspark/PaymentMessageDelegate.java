@@ -14,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Send Funspark the payment
+ */
 @PropertySource({"classpath:application.properties"})
 public class PaymentMessageDelegate implements JavaDelegate {
 

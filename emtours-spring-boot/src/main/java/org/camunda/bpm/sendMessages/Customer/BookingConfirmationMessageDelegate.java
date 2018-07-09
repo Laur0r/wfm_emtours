@@ -5,6 +5,9 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
 import org.springframework.stereotype.Component;
 
+/**
+ * Send the customer a mail to confirm the booking 
+ */
 @Component
 public class BookingConfirmationMessageDelegate implements JavaDelegate {
 
@@ -27,7 +30,6 @@ public class BookingConfirmationMessageDelegate implements JavaDelegate {
 			System.out.println("E-Mail:BookingConfirmation sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (BookingConfirmation): "+ex);
-		}
-		
+		}		
 	} 
 }

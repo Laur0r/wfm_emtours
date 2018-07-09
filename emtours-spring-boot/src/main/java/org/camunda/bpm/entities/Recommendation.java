@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * Recommendation class which is saved in the database.
+ * One recommendation always belongs to one customer request
+ */
 @Entity
 public class Recommendation {
 	@Id

@@ -11,6 +11,9 @@ import org.camunda.bpm.entities.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Save recommendation in the database
+ */
 @Component
 public class SaveRecommendation implements JavaDelegate {
 

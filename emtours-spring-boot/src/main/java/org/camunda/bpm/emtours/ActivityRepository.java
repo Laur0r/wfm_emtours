@@ -11,11 +11,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-
+/**
+ * Repository interface for the Entity class Activity which controls the database queries
+ */
 @Repository
 public interface ActivityRepository extends CrudRepository<Activity, Integer> {
-	
-	 @Query("SELECT c FROM Customer c WHERE LOWER(c.name) = LOWER(:name) AND (c.birthday) = (:birthday)")
-	    public List<Customer> find(@Param("name") String custName, @Param("birthday") Date custBirthday);
 
 }

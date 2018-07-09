@@ -16,6 +16,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Update the activities by adding the date
+ */
 @Component
 public class UpdateActivity implements JavaDelegate {
 

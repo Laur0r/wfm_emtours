@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Activity class which is saved in the database. 
+ * One activity always belongs to one recommendation.
+ */
 @Entity
 public class Activity {
 	@Id

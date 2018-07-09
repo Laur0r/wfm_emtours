@@ -13,6 +13,7 @@ import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +24,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 
-
+/**
+ * Rest Controller which receives all data from Funspark and processes it
+ */
+@Component
 @RestController
 public class FunsparkController {
 	
@@ -45,6 +49,10 @@ public class FunsparkController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	 
+	/**
+	 * Receive feedback if the data is enough
+	 * @param json
+	 */
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public String receiveFeedback(@RequestBody String json) throws IOException {
 		System.out.println("feedback");
@@ -68,7 +76,10 @@ public class FunsparkController {
 		return "";
 	}
 	
-	
+	/**
+	 * Receive the recommended activities
+	 * @param json
+	 */
 	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST, consumes="application/json")
 	public String receiveActivityRecos(@RequestBody String json) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
@@ -93,6 +104,10 @@ public class FunsparkController {
 		return "";
 	}
 	
+	/**
+	 * Receive information that the activities are no longer available
+	 * @param json
+	 */
 	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST, consumes="application/json")
 	public String receiveUnavailability(@RequestBody String json) throws IOException {
 		System.out.println("received unavailibility notification");
@@ -106,6 +121,10 @@ public class FunsparkController {
 		return "";
 	}
 	
+	/**
+	 * Receive activities with updated Date and the costs
+	 * @param json
+	 */
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
 	public String receiveBookingAndBill(@RequestBody String json) throws IOException {
 		System.out.println("received booking confirmation and bill from FunSpark");

@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 
 import org.camunda.bpm.entities.Customer;
 
+/**
+ * Customer request which is saved in the database.
+ * One request always belongs to one customer
+ */
 @Entity
 public class CustomerRequest {
 	

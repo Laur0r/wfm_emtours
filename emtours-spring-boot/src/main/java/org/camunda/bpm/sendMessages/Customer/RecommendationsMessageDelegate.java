@@ -5,6 +5,9 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.mail.EMailerService;
 import org.springframework.stereotype.Component;
 
+/**
+ * Send the customer a mail containing the recommendation offer
+ */
 @Component
 public class RecommendationsMessageDelegate implements JavaDelegate {
 	

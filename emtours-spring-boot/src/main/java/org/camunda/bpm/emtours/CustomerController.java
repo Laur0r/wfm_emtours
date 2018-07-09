@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Rest Controller which receives all Customer data and processes it
+ */
 @Component
 @RestController
 public class CustomerController {
@@ -30,6 +33,10 @@ public class CustomerController {
   @Autowired(required = true)
   public CustomerRequestRepository repository;
 
+  /**
+   * Initial Input of basic Customer Information which starts the process
+   * @param json Json with the information
+   */
   @CrossOrigin(origins="*")
   @RequestMapping(value="/basicCustomerInformation", method=RequestMethod.POST, consumes="application/json")
   public void incomingCustomerInformation(@RequestBody String json) throws IOException, ParseException {
@@ -87,26 +94,10 @@ public class CustomerController {
 	  			  .putValue("experienceType", experienceType));
   }
   
-  @RequestMapping(value="/testCustomerInformation", method=RequestMethod.POST, consumes="application/json")
-  public void incomingInformationPOST(@RequestBody String json) throws IOException {
-	  ObjectMapper mapper = new ObjectMapper();
-	  JsonNode node = mapper.readTree(json);
-	  JsonNode coordinatesNode = node.at("/executionId");
-	  JsonNode coordinatesNode2 = node.at("/cust");
-	  String cust = coordinatesNode.asText();
-			  //mapper.writerWithDefaultPrettyPrinter()
-      //.writeValueAsString(coordinatesNode);
-	  String executionId = mapper.writerWithDefaultPrettyPrinter()
-		      .writeValueAsString(coordinatesNode2);
-	  System.out.println("hallo");
-	  System.out.println(cust);
-	  System.out.println(executionId);
-	  /*camunda.getRuntimeService().startProcessInstanceByKey(//
-		        "SampleProcess", //
-		        Variables //
-		          .putValue("customer", customerJson));*/
-  }
-  
+  /**
+   * Receives further Customer Information
+   * @param json
+   */
   @CrossOrigin(origins="*")
   @RequestMapping(value="/furtherCustomerInformation", method=RequestMethod.POST, consumes="application/json")
 	public String receiveFurtherInformation(@RequestBody String json) throws IOException {
@@ -135,6 +126,10 @@ public class CustomerController {
 		return "";
   }
   
+  /**
+   * Receives the customer feedback on the recommendation
+   * @param json
+   */
   @CrossOrigin(origins="*")
   @RequestMapping(value="/customerRecommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public String receiveRecommendationFeedback(@RequestBody String json) throws IOException {

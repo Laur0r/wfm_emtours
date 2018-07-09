@@ -10,7 +10,6 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.entities.CustomerRequest;
 import org.camunda.bpm.entities.Recommendation;
-import org.camunda.bpm.properties.EmToursConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -23,6 +22,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Send Funspark the initial customer information
+ */
 @Component
 @PropertySource({"classpath:application.properties"})
 public class CustomerInformationMessageDelegate implements JavaDelegate {
@@ -32,8 +34,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	
 	@Autowired(required = true)
 	public CustomerRequestRepository requestrepository;
-	
-	private EmToursConfigurationProperties config;
 	
 	@Value("${funspark.url}")
 	private String funsparkUrl;
@@ -78,7 +78,4 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	    HttpStatus statusCode = response.getStatusCode();
 	    return statusCode.toString();
 	}	
-	private String createUrl() {
-		return config.getService().getFunspark().getLocation();
-	}
 }

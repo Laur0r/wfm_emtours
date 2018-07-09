@@ -4,6 +4,9 @@ import java.util.Date;
 
 import org.camunda.bpm.entities.Activity;
 
+/**
+ * Class which maps a date to each activity
+ */
 public class ActivityDate {
 
 	private Activity activity;
