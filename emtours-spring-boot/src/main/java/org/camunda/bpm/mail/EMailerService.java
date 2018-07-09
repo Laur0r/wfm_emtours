@@ -1,5 +1,6 @@
 package org.camunda.bpm.mail;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -118,9 +119,12 @@ public class EMailerService {
 
 			Optional<Recommendation> recommendation = recommendationRepository.findById(recommendationId);
 			String destination = recommendation.get().getDestination();
-			Date startDate = recommendation.get().getArrival();
-			Date endDate = recommendation.get().getDeparture();
-			Date currentDate = new Date();
+			
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+			String startDate = formatter.format(recommendation.get().getArrival());
+			String endDate = formatter.format(recommendation.get().getDeparture());
+			String currentDate = formatter.format(new Date());
+			
 			String flight = recommendation.get().getFlight();
 			String hotel = recommendation.get().getHotel();
 			Double price = recommendation.get().getCost();
@@ -149,17 +153,17 @@ public class EMailerService {
 	private String sanitizeSpecialCharacters(String var) {
 		System.out.println(var);
 		String result = var;
-		if(var.contains("ü")) {
-			System.out.println("contains ü");
-			result = result.replace("ü", "&#x00FC;");
+		if(var.contains("ï¿½")) {
+			System.out.println("contains ï¿½");
+			result = result.replace("ï¿½", "&#x00FC;");
 		}
-		if(var.contains("ä")) {
-			System.out.println("contains ä");
-			result = result.replace("ä", "&#x00E4;");
+		if(var.contains("ï¿½")) {
+			System.out.println("contains ï¿½");
+			result = result.replace("ï¿½", "&#x00E4;");
 		}
-		if(var.contains("ö")) {
-			System.out.println("contains ö");
-			result = result.replace("ö", "&#x00F6;");
+		if(var.contains("ï¿½")) {
+			System.out.println("contains ï¿½");
+			result = result.replace("ï¿½", "&#x00F6;");
 		}
 		return result;
 	}
