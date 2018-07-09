@@ -37,6 +37,7 @@ $(document).ready(function(){
     var activity = document.getElementById('activity');
     if (first_name.value != null && first_name.value != undefined && first_name.value != "" && first_name.validity.valid != false
     && last_name.value != undefined && last_name.value != null && last_name.value != "" && last_name.validity.valid != false
+		&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false
 	&& email.value != undefined && email.value != null && email.value != "" && email.validity.valid != false
     && gender.value != undefined && gender.value != null && gender.value != "" && gender.validity.valid != false
     && adress.value != undefined && adress.value != null && adress.value != "" && adress.validity.valid != false
