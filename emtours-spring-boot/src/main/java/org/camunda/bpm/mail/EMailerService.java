@@ -19,6 +19,8 @@ import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.Recommendation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -26,7 +28,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 /**
  * Email class which is responsible for formulating and sending the emails
  */
+
 @Service
+@PropertySource({"classpath:application.properties"})
 public class EMailerService {
 
 	@Autowired(required = true)
@@ -42,6 +46,9 @@ public class EMailerService {
 	public ActivityRepository activityRepository;
 
 	private JavaMailSender emailSender;
+	
+	@Value("${customer.url}")
+	private String customerUrl;
 
 	public EMailerService(JavaMailSender emailSender) {
 		this.emailSender = emailSender;
@@ -67,7 +74,7 @@ public class EMailerService {
 				salutation = "Mr.";
 			}
 
-			String msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name));
+			String msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name), customerUrl);
 
 			sendMessage(email, subject, msg);
 		} else {
@@ -92,9 +99,9 @@ public class EMailerService {
 
 			String msg = "";
 			if (subject.equals("Invalid Information")) {
-				msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name));
+				msg = String.format(INVALID_MSG, salutation, sanitizeSpecialCharacters(name), customerUrl);
 			} else if (subject.equals("Request for further information")) {
-				msg = String.format(FURTHERINFO_MSG, salutation, sanitizeSpecialCharacters(name), executionId);
+				msg = String.format(FURTHERINFO_MSG, salutation, sanitizeSpecialCharacters(name), customerUrl, executionId);
 			} else if (subject.equals("No offer available")) {
 				msg = String.format(UNAVAILABLE_MSG, salutation, sanitizeSpecialCharacters(name));
 			}
@@ -141,7 +148,7 @@ public class EMailerService {
 			} else if (subject.equals("Travel recommendation")) {
 				String activitiesFormat = formatActivities(activities);
 				msg = String.format(RECOMMENDATION_MSG, salutation, sanitizeSpecialCharacters(name), startDate, endDate, sanitizeSpecialCharacters(flight),
-						sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, activitiesFormat, executionId, currentDate);
+						sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, activitiesFormat, customerUrl, executionId, currentDate);
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -219,7 +226,8 @@ public class EMailerService {
 	
 
 	public static String INVALID_MSG = "<b>Dear %s %s, </b><br/>" + "<br/>your travel request can not be processed! "
-			+ "<br/>The data you have entered is invalid." + "<br/>" + "<br>We are looking forward to your next request!" + "<br/>"
+			+ "<br/>The data you have entered is invalid." + "<br/>" + "<br>If you are still interested in a holiday, you can try it again "
+			+ "<a href=\"%s\">here</a>." + "<br/>"
 			+ "<br/>Yours sincerely," + "<br/><br/><b>emTours TravelAgency</b>";
 
 	public static String CONFIRMATION_MSG = "<b>Dear %s %s, </b><br/>"
@@ -236,14 +244,14 @@ public class EMailerService {
 			+ "<br/>The dates of our offer are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
 			+ "<br/>Destination: %s" + "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
 			+ "<br/>Your journey will include the following activities:" + "<br/>%s" + "<br/>"
-			+ "<br/>You can reply on this recommendation <a href=\"http://192.168.99.1:8081/feedback.html?executionId=%s\">here</a>"
+			+ "<br/>You can reply on this recommendation <a href=\"http://%s/feedback.html?executionId=%s\">here</a>."
 			+ "<br/>"
 			+ "<br/>We are looking forward to your reply!" + "<br/>" + "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
 	public static String FURTHERINFO_MSG = "<b>Dear %s %s, </b><br/>"
 			+ "<br/>to generate a proper travel recommendation, we need to get to know you and your attitudes better!<br/>"
 			+ "<br/>Would you like to take part in activities during your journey" + "<br/>"
-			+ "<br/>Please choose your preferred type of activities and a number of how many activities you plan to experience <a href=\"http://192.168.99.1:8081/additionalInformation.html?executionId=%s\">here</a>"
+			+ "<br/>Please choose your preferred type of activities and a number of how many activities you plan to experience <a href=\"http://%s/additionalInformation.html?executionId=%s\">here</a>."
 			+ "<br/>"
 			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import org.camunda.bpm.engine.MismatchingMessageCorrelationException;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Recommendation;
@@ -54,8 +55,7 @@ public class FunsparkController {
 	 * @param json
 	 */
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
-	public String receiveFeedback(@RequestBody String json) throws IOException {
-		System.out.println("feedback");
+	public ResponseEntity<String> receiveFeedback(@RequestBody String json) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/emTourExecutionId");
@@ -64,16 +64,21 @@ public class FunsparkController {
 		String funsparkExecutionId = funsparkNode.asText();
 		JsonNode feedbackNode = node.at("/requestFurtherInformation");
 		boolean feedback = feedbackNode.asBoolean();
-		if(feedback) {
+		if(!feedback) {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", true);
 		} else {
 			camunda.getRuntimeService().setVariable(executionId, "feedback", false);
 		}
 		camunda.getRuntimeService().setVariable(executionId, "funsparkExecutionId", funsparkExecutionId);
-		camunda.getRuntimeService().createMessageCorrelation("feedback")
-		.processInstanceId(executionId).correlate();
+		try {
+			camunda.getRuntimeService().createMessageCorrelation("feedback")
+			.processInstanceId(executionId).correlate();
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		}
+		catch(MismatchingMessageCorrelationException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
 		
-		return "";
 	}
 	
 	/**
@@ -81,7 +86,7 @@ public class FunsparkController {
 	 * @param json
 	 */
 	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST, consumes="application/json")
-	public String receiveActivityRecos(@RequestBody String json) throws IOException {
+	public ResponseEntity<String> receiveActivityRecos(@RequestBody String json) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
@@ -101,7 +106,7 @@ public class FunsparkController {
 		camunda.getRuntimeService().createMessageCorrelation("activityRecos")
 		.processInstanceId(executionId).correlate();
 		
-		return "";
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	/**
@@ -109,7 +114,7 @@ public class FunsparkController {
 	 * @param json
 	 */
 	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST, consumes="application/json")
-	public String receiveUnavailability(@RequestBody String json) throws IOException {
+	public ResponseEntity<String> receiveUnavailability(@RequestBody String json) throws IOException {
 		System.out.println("received unavailibility notification");
 		ObjectMapper mapper = new ObjectMapper();
 		  JsonNode node = mapper.readTree(json);
@@ -118,7 +123,7 @@ public class FunsparkController {
 		camunda.getRuntimeService().createMessageCorrelation("unavailable")
 		.processInstanceId(executionId).correlate();
 		
-		return "";
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	/**
@@ -126,7 +131,7 @@ public class FunsparkController {
 	 * @param json
 	 */
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
-	public String receiveBookingAndBill(@RequestBody String json) throws IOException {
+	public ResponseEntity<String> receiveBookingAndBill(@RequestBody String json) throws IOException {
 		System.out.println("received booking confirmation and bill from FunSpark");
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -153,6 +158,6 @@ public class FunsparkController {
 		.processInstanceId(executionId).correlate();
 		
 		
-		return "";
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }
