@@ -61,10 +61,13 @@ public class CustomerController {
 	  String country = countryNode.asText();
 	  JsonNode birthdayNode = node.at("/birthday");
 	  Date birthday = dateFormat.parse(birthdayNode.asText());
+	  String birthdayString = dateFormat.format(birthday);
 	  JsonNode arrivalNode = node.at("/arrival");
 	  Date arrival = dateFormat.parse(arrivalNode.asText());
+	  String arrivalString = dateFormat.format(arrival);
 	  JsonNode departureNode = node.at("/departure");
 	  Date departure = dateFormat.parse(departureNode.asText());
+	  String departureString = dateFormat.format(departure);
 	  JsonNode climateNode = node.at("/climate");
 	  String climate = climateNode.asText();
 	  JsonNode peopleNode = node.at("/numberPeople");
@@ -84,9 +87,12 @@ public class CustomerController {
                   .putValue("city", city)
                   .putValue("country", country)
                   .putValue("birthday", birthday)
+                  .putValue("birthdayString", birthdayString)
 		          .putValue("email", email)
 	  			  .putValue("arrival", arrival)
+	  			  .putValue("arrivalString", arrivalString)
 	  			  .putValue("departure", departure)
+	  			  .putValue("departureString", departureString)
 	  			  .putValue("budget", budget)
 	  			  .putValue("climate", climate)
 	  			  .putValue("numberPeople", numberPeople)

@@ -2,7 +2,6 @@ package org.camunda.bpm.emtours;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,14 +94,9 @@ public class FunsparkController {
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<Activity>>() {
 		});
 		Collection<Activity> activityRecos = reader.readValue(activitiesNode);
-		int recommendationId = (Integer)camunda.getRuntimeService().getVariable(executionId, "recommendationId");
-		Optional<Recommendation> recommendationo = recoRepository.findById(recommendationId);
-		Recommendation recommendation = recommendationo.get();
-		for (Iterator<Activity> iterator = activityRecos.iterator(); iterator.hasNext();) {
-			Activity a = iterator.next();
-			a.setRecommendation(recommendation);
-			a = activityRepository.save(a);
-		}
+		String activityJson = mapper.writeValueAsString(activityRecos);
+		camunda.getRuntimeService().setVariable(executionId, "activityRecommendation", activityJson);
+		
 		camunda.getRuntimeService().createMessageCorrelation("activityRecos")
 		.processInstanceId(executionId).correlate();
 		
