@@ -27,15 +27,16 @@ public class PaymentMessageDelegate implements JavaDelegate {
 	
 	public void execute(DelegateExecution execution) throws Exception {
 
-		String executionId = (String) execution.getVariable("funsparkExecutionId");
-		doPost(executionId);
+		PaymentMessage payment = new PaymentMessage();
+		payment.setExecutionId((String) execution.getVariable("funsparkExecutionId"));
+		doPost(payment);
 	
 	}
-	private String doPost(String string) {
+	private String doPost(PaymentMessage string) {
 		HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-		HttpEntity<String> request = new HttpEntity<>(string, headers);
+		HttpEntity<PaymentMessage> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/receivePayment");
 //		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);

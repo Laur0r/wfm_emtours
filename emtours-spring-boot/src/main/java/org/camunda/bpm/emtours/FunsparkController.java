@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.camunda.bpm.engine.MismatchingMessageCorrelationException;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
-import org.camunda.bpm.sendMessages.Funspark.FunsparkActivity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +55,7 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<String> receiveFeedback(@RequestBody String json) throws IOException {
+		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/emTourExecutionId");
@@ -130,14 +129,14 @@ public class FunsparkController {
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
 	public ResponseEntity<String> receiveBookingAndBill(@RequestBody String json) throws IOException {
 		System.out.println("received booking confirmation and bill from FunSpark");
-		
+		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
 		String executionId = executionNode.asText();
-		JsonNode costNode = node.at("/costs");
+		JsonNode costNode = node.at("/totalPrize");
 		Double costs = costNode.asDouble();
-		JsonNode activitiesNode = node.at("/activities");
+		JsonNode activitiesNode = node.at("/activityDates");
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<ActivityDate>>() {
 		});
 		Collection<ActivityDate> activityBooking = reader.readValue(activitiesNode);

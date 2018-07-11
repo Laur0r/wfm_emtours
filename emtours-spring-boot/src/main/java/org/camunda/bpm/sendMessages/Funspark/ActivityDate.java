@@ -9,6 +9,7 @@ import org.camunda.bpm.entities.Activity;
  */
 public class ActivityDate {
 
+	private Integer id;
 	private Activity activity;
 	private Date bookingDate;
 	
@@ -23,5 +24,11 @@ public class ActivityDate {
 	}
 	public void setBookingDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

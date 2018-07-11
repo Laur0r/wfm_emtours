@@ -234,7 +234,7 @@ public class EMailerService {
 		for(int i=0; i<activities.size(); i++) {
 			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
 					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getLocalproviderName() + 
-					"<br/>Price: "+as.get(i).getPrice() + "<br/>";
+					"<br/>Localprovider phonenumber: "+as.get(i).getLocalproviderPhoneNumber() + "<br/>Price: "+as.get(i).getPrice() + "<br/>";
 		}
 		return result;
 	}
@@ -244,8 +244,8 @@ public class EMailerService {
 		String result = "";
 		for(int i=0; i<as.size(); i++) {
 			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
-					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getLocalproviderName() + 
-					"<br/>Price: "+as.get(i).getPrice() + "<br/>Date: "+as.get(i).getDate() + "<br/>";
+					"<br/>Location: "+as.get(i).getLocation() + "<br/>Localprovider: "+as.get(i).getLocalproviderName() + 
+					"<br/>Localprovider phonenumber: "+as.get(i).getLocalproviderPhoneNumber() + "<br/>Price: "+as.get(i).getPrice() + "<br/>Date: "+as.get(i).getDate() + "<br/>";
 		}
 		return result;
 	}

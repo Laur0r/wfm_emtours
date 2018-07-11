@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class Activity {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Integer activityId;
 	
 	@ManyToOne
 	@JoinColumn(name="recommendationId")
@@ -30,6 +30,7 @@ public class Activity {
 	private String activityType;
 	private String localproviderName;
 	private String localproviderPhoneNumber;
+	private Integer id;
 	
 	public Activity() {
 		
@@ -88,5 +89,17 @@ public class Activity {
 	}
 	public void setLocalproviderPhoneNumber(String localproviderPhoneNumber) {
 		this.localproviderPhoneNumber = localproviderPhoneNumber;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer getActivityId() {
+		return activityId;
+	}
+	public void setActivityId(Integer id) {
+		this.activityId = id;
 	}
 }

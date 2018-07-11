@@ -67,9 +67,6 @@ public class SaveInfosDelegate implements JavaDelegate {
 		else{
 			cust = customers.get(0);
 		}
-
-		
-		List<Customer> customers2 = custrepository.find(name, birthday);
 		
 		CustomerRequest custrequest = new CustomerRequest();
 		custrequest.setArrival(arrival);

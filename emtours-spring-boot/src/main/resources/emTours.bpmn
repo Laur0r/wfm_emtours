@@ -501,7 +501,7 @@
         <timeDuration xsi:type="tFormalExpression">P30D</timeDuration>
       </timerEventDefinition>
     </intermediateCatchEvent>
-    <sendTask id="sid-2E3C3D97-E5FF-4443-B341-54E9DE0317BD" name="Send booking request" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.RequestBookingMessageDelegate">
+    <sendTask id="sid-2E3C3D97-E5FF-4443-B341-54E9DE0317BD" name="Send booking request" camunda:asyncAfter="true" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.RequestBookingMessageDelegate">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -1404,7 +1404,7 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-B5579E73-BD40-4E35-A34A-66F25A52F823_gui" bpmnElement="sid-B5579E73-BD40-4E35-A34A-66F25A52F823">
         <omgdi:waypoint x="2693" y="400" />
-        <omgdi:waypoint x="3095" y="400" />
+        <omgdi:waypoint x="3195" y="400" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-C437860D-63A4-4EA8-9F7E-58F186975AC1_gui" bpmnElement="sid-C437860D-63A4-4EA8-9F7E-58F186975AC1">
         <omgdi:waypoint x="3350" y="471" />
