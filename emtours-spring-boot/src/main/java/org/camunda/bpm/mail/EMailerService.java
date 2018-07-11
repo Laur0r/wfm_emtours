@@ -1,5 +1,6 @@
 package org.camunda.bpm.mail;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -15,6 +16,7 @@ import org.camunda.bpm.emtours.ActivityRepository;
 import org.camunda.bpm.emtours.CustomerRepository;
 import org.camunda.bpm.emtours.CustomerRequestRepository;
 import org.camunda.bpm.emtours.RecommendationRepository;
+import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Customer;
 import org.camunda.bpm.entities.Recommendation;
@@ -23,6 +25,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 /**
@@ -44,6 +52,9 @@ public class EMailerService {
 
 	@Autowired(required = true)
 	public ActivityRepository activityRepository;
+	
+	@Autowired
+	private ProcessEngine camunda;
 
 	private JavaMailSender emailSender;
 	
@@ -112,7 +123,7 @@ public class EMailerService {
 		}
 	}
 
-	public void sendComplexMessage(int customerId, int recommendationId, String subject, String executionId) {
+	public void sendComplexMessage(int customerId, int recommendationId, String subject, String executionId) throws JsonParseException, JsonMappingException, IOException {
 		Optional<Customer> customer = custRepository.findById(customerId);
 
 		String eMail = customer.get().getEmail();
@@ -138,17 +149,32 @@ public class EMailerService {
 			String hotel = recommendation.get().getHotel();
 			Double price = recommendation.get().getCost();
 			int numberPeople = recommendation.get().getNumberPeople();
-			Collection<Activity> activities = recommendation.get().getActivities();
+			
+			String activityJson = (String) camunda.getRuntimeService().getVariable(executionId,"activityRecommendation");
+			ObjectMapper mapper = new ObjectMapper();
+			List<Activity> activities = mapper.readValue(activityJson, new TypeReference<List<Activity>>(){});
+			System.out.println("activities :"+activities);
+			System.out.println("activities to String: "+activities.toArray().toString());
 
 			String msg = "";
 			if (subject.equals("Booking confirmation")) {
-				String activitiesFormat = formatActivitiesWithDate(activities);
-				msg = String.format(CONFIRMATION_MSG, salutation, sanitizeSpecialCharacters(name), sanitizeSpecialCharacters(destination), startDate, endDate, 
-						sanitizeSpecialCharacters(flight), sanitizeSpecialCharacters(hotel),price, numberPeople, activitiesFormat, currentDate);
+				if(activities.size() == 0) {
+					String.format(CONFIRMATION_WTH_ACTIVITIES_MSG, salutation, sanitizeSpecialCharacters(name), sanitizeSpecialCharacters(destination), startDate, endDate, 
+							sanitizeSpecialCharacters(flight), sanitizeSpecialCharacters(hotel),price, numberPeople, currentDate);
+				} else {
+					String activitiesFormat = formatActivitiesWithDate(activities);
+					msg = String.format(CONFIRMATION_MSG, salutation, sanitizeSpecialCharacters(name), sanitizeSpecialCharacters(destination), startDate, endDate, 
+							sanitizeSpecialCharacters(flight), sanitizeSpecialCharacters(hotel),price, numberPeople, activitiesFormat, currentDate);
+				}
 			} else if (subject.equals("Travel recommendation")) {
-				String activitiesFormat = formatActivities(activities);
-				msg = String.format(RECOMMENDATION_MSG, salutation, sanitizeSpecialCharacters(name), startDate, endDate, sanitizeSpecialCharacters(flight),
-						sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, activitiesFormat, customerUrl, executionId, currentDate);
+				if(activities.size() == 0) {
+					msg = String.format(RECOMMENDATION_WTH_ACTIVITIES_MSG, salutation, sanitizeSpecialCharacters(name), startDate, endDate, sanitizeSpecialCharacters(flight),
+							sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, customerUrl, executionId, currentDate);
+				} else {
+					String activitiesFormat = formatActivities(activities);
+					msg = String.format(RECOMMENDATION_MSG, salutation, sanitizeSpecialCharacters(name), startDate, endDate, sanitizeSpecialCharacters(flight),
+							sanitizeSpecialCharacters(destination), sanitizeSpecialCharacters(hotel), price, numberPeople, activitiesFormat, customerUrl, executionId, currentDate);
+				}
 			}
 
 			sendMessage(eMail, subject, msg);
@@ -207,7 +233,7 @@ public class EMailerService {
 		String result = "";
 		for(int i=0; i<activities.size(); i++) {
 			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
-					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getProvider() + 
+					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getLocalproviderName() + 
 					"<br/>Price: "+as.get(i).getPrice() + "<br/>";
 		}
 		return result;
@@ -218,7 +244,7 @@ public class EMailerService {
 		String result = "";
 		for(int i=0; i<as.size(); i++) {
 			result = result + "<br/>Name: "+as.get(i).getName()+"<br/>Description: "+as.get(i).getDescription() + 
-					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getProvider() + 
+					"<br/>Location: "+as.get(i).getLocation() + "<br/>Provider: "+as.get(i).getLocalproviderName() + 
 					"<br/>Price: "+as.get(i).getPrice() + "<br/>Date: "+as.get(i).getDate() + "<br/>";
 		}
 		return result;
@@ -238,6 +264,15 @@ public class EMailerService {
 			+ "<br/>You can find information on payment and emTours account data in the attached documents. Please settle the invoice within 14 days from today: %s."
 			+ "<br/>" + "<br/>Thank you for travelling with emTours - your #1 travel agency in M&#x00FC;nster!" + "<br/>"
 			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
+	
+	public static String CONFIRMATION_WTH_ACTIVITIES_MSG = "<b>Dear %s %s, </b><br/>"
+			+ "<br/>pack your bags! - your booking at emTours is confirmed: You are travelling to %s."
+			+ "<br/>The facts of your travel are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
+			+ "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
+			+ "<br/>"
+			+ "<br/>You can find information on payment and emTours account data in the attached documents. Please settle the invoice within 14 days from today: %s."
+			+ "<br/>" + "<br/>Thank you for travelling with emTours - your #1 travel agency in M&#x00FC;nster!" + "<br/>"
+			+ "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
 	public static String RECOMMENDATION_MSG = "<b>Dear %s %s,  </b><br/>"
 			+ "<br/>thank you for your travel request! We are happy to inform you that we were able to provide you with an unbeatable, exclusive travel package!"
@@ -248,6 +283,16 @@ public class EMailerService {
 			+ "<br/>"
 			+ "<br/>We are looking forward to your reply!" + "<br/>" + "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
 
+	public static String RECOMMENDATION_WTH_ACTIVITIES_MSG = "<b>Dear %s %s,  </b><br/>"
+			+ "<br/>thank you for your travel request! We are happy to inform you that we were able to provide you with an unbeatable, exclusive travel package!"
+			+ "<br/>The dates of our offer are as follows:" + "<br/>" + "<br/>From: %s To: %s" + "<br/>Flight: %s"
+			+ "<br/>Destination: %s" + "<br/>Accomodation: %s" + "<br/>Price: %s" + "<br/>Number of Travellers: %s"
+			+ "<br/>Unfortunately there were no activities available for your holiday.<br/>"
+			+ "<br/>You can reply on this recommendation <a href=\"http://%s/feedback.html?executionId=%s\">here</a>."
+			+ "<br/>"
+			+ "<br/>We are looking forward to your reply!" + "<br/>" + "<br/>Yours sincerely," + "<br/><b>emTours TravelAgency</b>";
+
+	
 	public static String FURTHERINFO_MSG = "<b>Dear %s %s, </b><br/>"
 			+ "<br/>to generate a proper travel recommendation, we need to get to know you and your attitudes better!<br/>"
 			+ "<br/>Would you like to take part in activities during your journey" + "<br/>"

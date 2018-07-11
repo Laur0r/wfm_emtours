@@ -27,9 +27,11 @@ public class Activity {
 	private float price;
 	private String description;
 	private Date date;
-	private String provider;
+	private String activityType;
+	private String localproviderName;
+	private String localproviderPhoneNumber;
 	
-public Activity() {
+	public Activity() {
 		
 	}
 	public String getName() {
@@ -62,11 +64,11 @@ public Activity() {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getProvider() {
-		return provider;
+	public String getLocalproviderName() {
+		return localproviderName;
 	}
-	public void setProvider(String provider) {
-		this.provider = provider;
+	public void setLocalproviderName(String provider) {
+		this.localproviderName = provider;
 	}
 	
 	public Recommendation getRecommendation() {
@@ -74,5 +76,17 @@ public Activity() {
 	}
 	public void setRecommendation(Recommendation recommendation) {
 		this.recommendation = recommendation;
+	}
+	public String getActivityType() {
+		return activityType;
+	}
+	public void setActivityType(String activityType) {
+		this.activityType = activityType;
+	}
+	public String getLocalproviderPhoneNumber() {
+		return localproviderPhoneNumber;
+	}
+	public void setLocalproviderPhoneNumber(String localproviderPhoneNumber) {
+		this.localproviderPhoneNumber = localproviderPhoneNumber;
 	}
 }

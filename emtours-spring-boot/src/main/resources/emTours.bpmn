@@ -762,7 +762,7 @@
       <incoming>SequenceFlow_13hampo</incoming>
       <outgoing>sid-2678B6B1-BEE6-4A47-BAB0-170B4C023AE6</outgoing>
     </exclusiveGateway>
-    <sendTask id="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" name="&#10;Send customer information and recommendations" camunda:asyncAfter="true" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.CustomerInformationMessageDelegate">
+    <sendTask id="sid-44F9ECE6-CA94-4D0D-AD00-921A1622F17A" name="&#10;Send customer information and recommendations" implementation="##WebService" camunda:class="org.camunda.bpm.sendMessages.Funspark.CustomerInformationMessageDelegate">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
@@ -1263,8 +1263,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-EDC248F6-45CB-42AB-B2C8-54BF8B2E7D7E_gui" bpmnElement="sid-EDC248F6-45CB-42AB-B2C8-54BF8B2E7D7E">
         <omgdi:waypoint x="2631" y="235" />
-        <omgdi:waypoint x="2631" y="431" />
-        <omgdi:waypoint x="2766" y="431" />
+        <omgdi:waypoint x="2631" y="461" />
+        <omgdi:waypoint x="2766" y="461" />
         <omgdi:waypoint x="2766" y="650" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-B0144151-9E2F-4D1F-888D-27A9D3161D35_gui" bpmnElement="sid-B0144151-9E2F-4D1F-888D-27A9D3161D35">

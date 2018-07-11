@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.camunda.bpm.engine.MismatchingMessageCorrelationException;
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.entities.Activity;
 import org.camunda.bpm.entities.Recommendation;
 import org.camunda.bpm.sendMessages.Funspark.ActivityDate;
+import org.camunda.bpm.sendMessages.Funspark.FunsparkActivity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -86,11 +88,12 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<String> receiveActivityRecos(@RequestBody String json) throws IOException {
+		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
 		String executionId = executionNode.asText();
-		JsonNode activitiesNode = node.at("/activities");
+		JsonNode activitiesNode = node.at("/recommendations");
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<Activity>>() {
 		});
 		Collection<Activity> activityRecos = reader.readValue(activitiesNode);
