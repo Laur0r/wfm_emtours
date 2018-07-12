@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.camunda.bpm.entities.Activity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * Class which maps a date to each activity
  */
@@ -11,6 +13,7 @@ public class ActivityDate {
 
 	private Integer id;
 	private Activity activity;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM.dd.yyyy")
 	private Date bookingDate;
 	
 	public Activity getActivity() {
