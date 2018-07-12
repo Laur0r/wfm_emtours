@@ -46,7 +46,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 	
 	public void execute(DelegateExecution execution) throws Exception {
 		try {
-			// TODO updated object
 			int custId = (Integer) execution.getVariable("customerId");
 			Optional<Customer> custo = repository.findById(custId);
 			Customer cust = custo.get();
@@ -81,7 +80,6 @@ public class CustomerInformationMessageDelegate implements JavaDelegate {
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/orderRecommendations");
-//		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<String> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, String.class);

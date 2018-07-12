@@ -24,7 +24,6 @@ public class UnavailabilityMessageDelegate implements JavaDelegate {
 			String mailSubject = "No offer available";
 			
 			eMailerService.sendSimpleMessage(customerId, mailSubject, execution.getId());
-			System.out.println("E-Mail:Unavailability sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (Unavailability): "+ex);
 		}

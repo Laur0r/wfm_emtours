@@ -70,7 +70,6 @@ public class RequestFurtherInfoMessageDelegate implements JavaDelegate {
 
 		HttpEntity<FunsparkRecommendation> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/furtherInformation");
-//		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkRecommendation> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkRecommendation.class);

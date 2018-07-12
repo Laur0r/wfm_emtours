@@ -60,19 +60,14 @@ public class GenerateRecommendationDelegate implements JavaDelegate {
 	    
 	    Integer hotelcost = (Integer) accommodation.get((Object)"price");
 	    cost = cost + hotelcost*custrequest.getNumberPeople()*days;
-	    System.out.println(cost);
 	    cost = cost*100;
 	    cost = Math.round(cost);
 	    cost = cost/100;
-	    System.out.println(cost);
 	    
 	    execution.setVariable("cost", cost);
 	    execution.setVariable("destination", destination);
 	    execution.setVariable("hotel", hotel);
 	    execution.setVariable("flight", flight);
-	    
-	    System.out.println("DMN-Result: "+dmnresult);
-
 	}
 
 }

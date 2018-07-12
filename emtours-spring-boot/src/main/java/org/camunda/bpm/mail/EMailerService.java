@@ -76,6 +76,13 @@ public class EMailerService {
 		return result;
 	}
 
+	/**
+	 * Send email to the customer that they have submitted invalid informaiton
+	 * @param email
+	 * @param name
+	 * @param gender
+	 * @param subject
+	 */
 	public void sendInvalidMessage(String email, String name, String gender, String subject) {
 
 		if (isValidEmailAddress(email)) {
@@ -93,6 +100,13 @@ public class EMailerService {
 		}
 	}
 
+	/**
+	 * Send email that the activities are unavailable or that the customer needs
+	 * to add further information.
+	 * @param customerId
+	 * @param subject
+	 * @param executionId
+	 */
 	public void sendSimpleMessage(int customerId, String subject, String executionId) {
 
 		Optional<Customer> customer = custRepository.findById(customerId);
@@ -123,6 +137,16 @@ public class EMailerService {
 		}
 	}
 
+	/**
+	 * Send email recommendation or booking confirmation to the customer. 
+	 * @param customerId
+	 * @param recommendationId
+	 * @param subject
+	 * @param executionId
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	public void sendComplexMessage(int customerId, int recommendationId, String subject, String executionId) throws JsonParseException, JsonMappingException, IOException {
 		Optional<Customer> customer = custRepository.findById(customerId);
 
@@ -153,8 +177,6 @@ public class EMailerService {
 			String activityJson = (String) camunda.getRuntimeService().getVariable(executionId,"activityRecommendation");
 			ObjectMapper mapper = new ObjectMapper();
 			List<Activity> activities = mapper.readValue(activityJson, new TypeReference<List<Activity>>(){});
-			System.out.println("activities :"+activities);
-			System.out.println("activities to String: "+activities.toArray().toString());
 
 			String msg = "";
 			if (subject.equals("Booking confirmation")) {
@@ -185,24 +207,31 @@ public class EMailerService {
 
 	}
 	
+	/**
+	 * Replaces difficult characters with html compatible version 
+	 * @param var
+	 * @return
+	 */
 	private String sanitizeSpecialCharacters(String var) {
-		System.out.println(var);
 		String result = var;
-		if(var.contains("ï¿½")) {
-			System.out.println("contains ï¿½");
-			result = result.replace("ï¿½", "&#x00FC;");
+		if(var.contains("ü")) {
+			result = result.replace("ü", "&#x00FC;");
 		}
-		if(var.contains("ï¿½")) {
-			System.out.println("contains ï¿½");
-			result = result.replace("ï¿½", "&#x00E4;");
+		if(var.contains("ä")) {
+			result = result.replace("ä", "&#x00E4;");
 		}
-		if(var.contains("ï¿½")) {
-			System.out.println("contains ï¿½");
-			result = result.replace("ï¿½", "&#x00F6;");
+		if(var.contains("ö")) {
+			result = result.replace("ö", "&#x00F6;");
 		}
 		return result;
 	}
 
+	/**
+	 * Actual method where the email content and recipient is set and the mail is sent 
+	 * @param eMail
+	 * @param subject
+	 * @param msg
+	 */
 	private void sendMessage(String eMail, String subject, String msg) {
 
 		try {
@@ -214,20 +243,16 @@ public class EMailerService {
 			helper.setSubject(subject);
 			helper.setFrom("book.emtours@gmail.com");
 			emailSender.send(mimeMessage);
-			
-//			SimpleMailMessage message = new SimpleMailMessage();
-//			message.setTo(eMail);
-//			message.setSubject(subject);
-//			message.setText(msg);
-//			emailSender.send(message);
-			
-			System.out.println("E-Mail send");
 		} catch (MessagingException e) {
 			
 		}
 	}
 	
-
+	/**
+	 * Format activities without dates for the mail content
+	 * @param activities
+	 * @return
+	 */
 	public String formatActivities(Collection<Activity> activities) {
 		List<Activity> as = (List<Activity>) activities;
 		String result = "";
@@ -239,6 +264,11 @@ public class EMailerService {
 		return result;
 	}
 	
+	/**
+	 * Format activities with dates for the mail content
+	 * @param activities
+	 * @return
+	 */
 	public String formatActivitiesWithDate(Collection<Activity> activities) {
 		List<Activity> as = (List<Activity>) activities;
 		String result = "";

@@ -26,7 +26,6 @@ public class RecommendationsMessageDelegate implements JavaDelegate {
 		String mailSubject = "Travel recommendation";
 		
 		eMailerService.sendComplexMessage(customerId, recommendationId, mailSubject, execution.getId());
-		System.out.println("E-Mail:TravelRecommendation sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (TravelRecommendation): "+ex);
 		}

@@ -44,7 +44,6 @@ public class SaveRecommendation implements JavaDelegate {
 	    recommendation.setRequest(custrequest);
 	    recommendation.setCost(cost);
 	    recommendation = recomrepository.save(recommendation);
-	    System.out.println("recommendation was saved: "+recommendation.getId());
 	    execution.setVariable("recommendationId", recommendation.getId());
 	
 	}

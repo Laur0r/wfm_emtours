@@ -25,7 +25,6 @@ public class RequestFurtherInfosMessageDelegate implements JavaDelegate {
 			String mailSubject = "Request for further information";
 			
 			eMailerService.sendSimpleMessage(customerId, mailSubject, execution.getId());
-			System.out.println("E-Mail:RequestInformation sent");
 		}catch (Exception ex) {
 			System.out.println("Error in sending email (RequestInformation): "+ex);
 		}

@@ -39,15 +39,6 @@ public class FunsparkController {
 	
 	@Autowired(required = true)
 	public RecommendationRepository recoRepository;
-	
-	@RequestMapping(value="/testSend", method=RequestMethod.POST)
-	public ResponseEntity<String> testPOST(@RequestBody String cust) {
-		System.out.println("received Post request");
-		if(cust != null) {
-			System.out.println("Name: "+cust);
-		}
-		return ResponseEntity.status(HttpStatus.CREATED).build();
-	}
 	 
 	/**
 	 * Receive feedback if the data is enough
@@ -55,7 +46,6 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/recommendationFeedback", method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<String> receiveFeedback(@RequestBody String json) throws IOException {
-		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/emTourExecutionId");
@@ -87,7 +77,6 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/activityRecommendations", method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<String> receiveActivityRecos(@RequestBody String json) throws IOException {
-		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
@@ -111,7 +100,6 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/bookingUnavailable", method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<String> receiveUnavailability(@RequestBody String json) throws IOException {
-		System.out.println("received unavailibility notification");
 		ObjectMapper mapper = new ObjectMapper();
 		  JsonNode node = mapper.readTree(json);
 		  JsonNode executionNode = node.at("/executionId");
@@ -128,8 +116,6 @@ public class FunsparkController {
 	 */
 	@RequestMapping(value="/bookingAndBill", method=RequestMethod.POST)
 	public ResponseEntity<String> receiveBookingAndBill(@RequestBody String json) throws IOException {
-		System.out.println("received booking confirmation and bill from FunSpark");
-		System.out.println(json);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(json);
 		JsonNode executionNode = node.at("/executionId");
