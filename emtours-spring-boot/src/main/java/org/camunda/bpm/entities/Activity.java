@@ -30,6 +30,7 @@ public class Activity {
 	private String activityType;
 	private String localproviderName;
 	private String localproviderPhoneNumber;
+	private Integer localproviderId;
 	private Integer id;
 	
 	public Activity() {
@@ -101,5 +102,11 @@ public class Activity {
 	}
 	public void setActivityId(Integer id) {
 		this.activityId = id;
+	}
+	public Integer getLocalproviderId() {
+		return localproviderId;
+	}
+	public void setLocalproviderId(Integer localproviderId) {
+		this.localproviderId = localproviderId;
 	}
 }
