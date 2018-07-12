@@ -47,6 +47,7 @@ public class RefinementNotificationMessageDelegate implements JavaDelegate {
 
 		HttpEntity<FunsparkNotification> request = new HttpEntity<>(string, headers);
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(funsparkUrl +"/recommendationFeedback");
+//		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://localhost:8080/testSend");
 		builder.queryParam("name", string);
 		
 	    ResponseEntity<FunsparkNotification> response = new RestTemplate().postForEntity(builder.build().encode().toUri(), request, FunsparkNotification.class);
